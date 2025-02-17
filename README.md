@@ -15,5 +15,3 @@ Please communicate with positive feedback
 
 We are using Agile methodologies, Things will change and update please communicate any issues at all.
 Lets all help eachother and try our best
-
-
