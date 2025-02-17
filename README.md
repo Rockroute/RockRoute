@@ -1,5 +1,7 @@
 # TheClimbingApp
 
+Plan is to have the features merged into dev and then once a week maybe fortnightly we will then merge from dev, (Given that the code is working) into main to as a way to store version history. 
+
 Ticklist for merge Request:
 
 ✅ Camel Case <br>
