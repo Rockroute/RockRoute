@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ycf5H2S1bn0=",
+  "success": true,
+  "projectFilePath": "/home/pa1yn/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
+  "expectedPackageFiles": [
+    "/home/pa1yn/.nuget/packages/microsoft.aspnetcore.openapi/9.0.1/microsoft.aspnetcore.openapi.9.0.1.nupkg.sha512",
+    "/home/pa1yn/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512",
+    "/home/pa1yn/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.1/microsoft.aspnetcore.app.ref.9.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
