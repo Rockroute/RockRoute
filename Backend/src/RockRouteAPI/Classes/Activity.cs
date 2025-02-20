@@ -23,11 +23,11 @@ namespace RockRoute.Classes
 
         public string Notes 
         {
-            get => _notes: 
+            get => _notes; 
             set { _notes = value;}
         } 
 
-        public Activity(string Name, DateTime Date, Notes) { //When initialising the Class
+        public Activity(string Name, DateTime Date, string Notes) { //When initialising the Class
             this._date = Date
             this._name = Name
             this._notes = Notes
