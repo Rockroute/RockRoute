@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/pa1yn/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {}
+    "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {}
   },
   "projects": {
-    "/home/pa1yn/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {
+    "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/pa1yn/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
+        "projectUniqueName": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
         "projectName": "RockRouteAPI",
-        "projectPath": "/home/pa1yn/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
+        "projectPath": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
         "packagesPath": "/home/pa1yn/.nuget/packages/",
-        "outputPath": "/home/pa1yn/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/obj/",
+        "outputPath": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/pa1yn/.nuget/NuGet/NuGet.Config"
