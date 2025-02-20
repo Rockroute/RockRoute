@@ -24,5 +24,8 @@ build_property.EnableCodeStyleSeverity =
 [/home/pa1yn/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/home/pa1yn/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/MainWindow.axaml]
+[/home/pa1yn/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/Views/Example.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/home/pa1yn/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
