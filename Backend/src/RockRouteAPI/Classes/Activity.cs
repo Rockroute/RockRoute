@@ -26,9 +26,7 @@ namespace RockRoute.Classes
         {
             get => _notes: 
             set { _notes = value;}
-        }
-
-        public 
+        } 
 
         public Activity(string Name, DateTime Date, Notes) { //When initialising the Class
             this._date = Date
