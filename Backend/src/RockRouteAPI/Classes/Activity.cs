@@ -13,24 +13,24 @@ namespace RockRoute.Classes
         public string Name
         {
             get => _name;
-            set { _name;}
+            set { _name = value;}
         }
 
         public DateTime? Date 
         {
             get => _date;
-            set { _date;}
+            set { _date = value;}
         }
 
         public string Notes 
         {
-            get => _notes:
-            set { _notes;}
+            get => _notes: 
+            set { _notes = value;}
         }
 
         public 
 
-        public Activity(string Name, DateTime Date, Notes) {
+        public Activity(string Name, DateTime Date, Notes) { //When initialising the Class
             this._date = Date
             this._name = Name
             this._notes = Notes
