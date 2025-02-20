@@ -4,8 +4,7 @@ namespace RockRoute.Classes
 {
     public class Activity
     {
-
-        private string _name;
+        private string _name; 
         private DateTime? _date;
         private string _notes;
 
@@ -33,8 +32,5 @@ namespace RockRoute.Classes
             this._name = Name
             this._notes = Notes
         }
-
-
-
     }
 }
