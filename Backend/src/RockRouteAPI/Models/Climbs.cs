@@ -4,18 +4,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RockRoute.Models //accessible from other areas of the project 
 {
-    public class User //Defining a user
+    public class Climb //Defining a climb
     {
-        public string UserID {get; set;}
+        public string RouteName {get; set;}
         public string Name {get; set;}
         public string Email {get; set;}
         public string Password {get; set;}
     }
 
-    class UsersDB : DbContext
+    class ClimbsDB : DbContext
     {
-        public UsersDB(DbContextOptions options) : base(options) {}
-        public DbSet<User> Entries { get; set; } = null!;
+        public ClimbsDB(DbContextOptions options) : base(options) {}
+        public DbSet<Climb> Entries { get; set; } = null!;
     }
 
 }
