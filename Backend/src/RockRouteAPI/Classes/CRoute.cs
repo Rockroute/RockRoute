@@ -2,7 +2,7 @@ using System;
 using Microsoft.VisualBasic;
 
 namespace RockRoute.Classes {
-    public class Route {
+    public class CRoute {
         private string _routeID = string.Empty;
         private DateTime? _completeDate;
         private List<string>? _partnerID;
@@ -48,7 +48,7 @@ namespace RockRoute.Classes {
             }
         }
 
-        public Route(string routeID, DateTime? completedDate,List<string>? partnerID, int? attempts, bool? isOnSite, string? notes) {
+        public CRoute(string routeID, DateTime? completedDate,List<string>? partnerID, int? attempts, bool? isOnSite, string? notes) {
             RouteID = routeID;
             CompletedDate = completedDate;
             PartnerID = partnerID;

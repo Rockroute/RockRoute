@@ -34,9 +34,9 @@ namespace RockRoute.Classes
         } 
 
         public Activity(string Name, DateTime? Date, string Notes) { //When initialising the Class
-            _date = Date
-            _name = Name
-            _notes = Notes
+            _date = Date;
+            _name = Name;
+            _notes = Notes;
         }
     }
 }
