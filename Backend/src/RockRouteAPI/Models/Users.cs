@@ -6,7 +6,7 @@ namespace RockRoute.Models //accessible from other areas of the project
 {
     public class User //Defining a user
     {
-        public string UserID {get; set;}
+        public string UserId {get; set;}
         public string Name {get; set;}
         public string Email {get; set;}
         public string Password {get; set;}

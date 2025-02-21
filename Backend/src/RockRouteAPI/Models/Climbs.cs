@@ -7,8 +7,8 @@ namespace RockRoute.Models //accessible from other areas of the project
     public class Climb //Defining a climb
     {
         public string RouteName {get; set;}
-        public string RouteID {get; set;}
-        public string SectorID {get; set;}
+        public string RouteId {get; set;}
+        public string SectorId {get; set;}
         public string ParentSector {get; set;}
         public string Type {get; set;}
         public string YDS {get; set;}
