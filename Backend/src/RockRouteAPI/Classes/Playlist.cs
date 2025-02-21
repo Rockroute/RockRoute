@@ -13,14 +13,14 @@ namespace RockRoute.Classes {
             get => _name;
             set {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("RouteID cannot be null or empty.");
+                    throw new ArgumentException("Name cannot be null or empty.");
                     _name = value; }
         }
         public required string CreatorID {
             get => _creatorID;
             set {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("RouteID cannot be null or empty.");
+                    throw new ArgumentException("CreatorID cannot be null or empty.");
                     _creatorID = value; }
         }
         public List<String>? CollabID {

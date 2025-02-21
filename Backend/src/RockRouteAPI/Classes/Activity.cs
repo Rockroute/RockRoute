@@ -12,7 +12,10 @@ namespace RockRoute.Classes
         public string Name
         {
             get => _name;
-            set { _name = value;}
+            set { 
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Name cannot be null or empty.");
+                    _name = value; }
         }
 
         public DateTime? Date 
@@ -24,13 +27,16 @@ namespace RockRoute.Classes
         public string Notes 
         {
             get => _notes; 
-            set { _notes = value;}
+            set { 
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Notes cannot be null or empty.");
+                    _notes = value; }
         } 
 
-        public Activity(string Name, DateTime Date, string Notes) { //When initialising the Class
-            this._date = Date
-            this._name = Name
-            this._notes = Notes
+        public Activity(string Name, DateTime? Date, string Notes) { //When initialising the Class
+            _date = Date
+            _name = Name
+            _notes = Notes
         }
     }
 }
