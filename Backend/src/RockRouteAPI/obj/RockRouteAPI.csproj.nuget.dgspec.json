@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {}
+    "/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {}
   },
   "projects": {
-    "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {
+    "/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
+        "projectUniqueName": "/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
         "projectName": "RockRouteAPI",
-        "projectPath": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
-        "packagesPath": "/home/pa1yn/.nuget/packages/",
-        "outputPath": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/obj/",
+        "projectPath": "/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
+        "packagesPath": "/Users/harveymatthews/.nuget/packages/",
+        "outputPath": "/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/pa1yn/.nuget/NuGet/NuGet.Config"
+          "/Users/harveymatthews/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -88,12 +88,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[9.0.1, 9.0.1]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -102,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
+using RockRoute.Classes;
 
 
 namespace RockRoute.Models //makes accessible from other areas of the project 
@@ -14,15 +15,15 @@ namespace RockRoute.Models //makes accessible from other areas of the project
         public string ParentSector {get; set;}
         public string Type {get; set;}
         public string YDS {get; set;}
-        public Tuple<float, float> ParentLocation {get; set;}
+        public (float Lat, float Long) ParentLocation {get; set;}
         public string LocationDesciption {get; set;}
         public string ProtectionNotes {get; set;}
-        public List<Tuple<string, int>> UserRatings {get; set;} //List of Tuples with (String, int)
+        public List<CRatings> UserRatings {get; set;} //List of Tuples with (String, int)
     }
 
-    class ClimbsDB : DbContext
+    public class ClimbsDB : DbContext
     {
-        public ClimbsDB(DbContextOptions options) : base(options) {}
+        public ClimbsDB(DbContextOptions<ClimbsDB> options) : base(options) {}
         public DbSet<Climb> Entries { get; set; } = null!;
     }
 
