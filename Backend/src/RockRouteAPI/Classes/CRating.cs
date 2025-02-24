@@ -1,8 +1,8 @@
 using System;
-using Microsoft.VisualBasic;
 
 namespace RockRoute.Classes {
     public class CRating {
+        
         private string _userID = string.Empty;
         private int _rating;
         
