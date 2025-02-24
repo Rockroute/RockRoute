@@ -1,6 +1,7 @@
 using System;
 
 namespace RockRoute.Classes {
+
     public class CRating {
         
         private string _userID = string.Empty;

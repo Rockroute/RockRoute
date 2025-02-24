@@ -16,3 +16,5 @@ app.UseAuthorization();
 app.MapControllers();
 app.Run();
 //dotnet aspnet-codegenerator controller -name ClimbsDBController -async -api -m Climb -dc ClimbsDB -outDir Controllers
+//dotnet aspnet-codegenerator controller -name LogBookDBController -async -api -m LogBook -dc LoogBooksDB -outDir Controllers
+//dotnet aspnet-codegenerator controller -name ClimbsDBController -async -api -m Climb -dc ClimbsDB -outDir Controllers
