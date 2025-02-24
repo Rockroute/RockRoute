@@ -13,12 +13,12 @@ namespace RockRoute.Models //accessible from other areas of the project
         public string UserId { get; set; } 
         [ForeignKey(nameof(Climb))] // RouteId FK to ClimbsDB.
         public string RouteId { get; set; }
-        public List<Playlist> Playlist {get; set;} // List of type Playlist defined in class
+        public string Playlist {get; set;} // List <Playlist> defined in class
         
-        public List<CRoute> Route  {get; set;}
-        public List<Activity> Activity { get; set; }
-        public User User { get; set; } // Dependent navigation.
-        public Climb Climb { get; set; } // Dependent navigation.
+        public string Route  {get; set;} //List<CRoute>
+        public string Activity { get; set; } //List<Activity>
+        public string User { get; set; } // Type user
+        public string Climb { get; set; } // Type Climb
 
     }
 

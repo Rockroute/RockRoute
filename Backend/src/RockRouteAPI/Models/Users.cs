@@ -12,7 +12,7 @@ namespace RockRoute.Models //accessible from other areas of the project
         public string Name {get; set;}
         public string Email {get; set;}
         public string Password {get; set;}
-        public LogBook LogBook { get; set; } // Dependent navigation. (Allows to get primary key from logbook)
+        public string LogBook { get; set; } // Dependent navigation. //Type LogBook
     }
 
     class UsersDB : DbContext
