@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<LogBooksDB>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("LogBooksDB") ?? throw new InvalidOperationException("Connection string 'LogBooksDB' not found.")));
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
