@@ -13,9 +13,9 @@ namespace RockRouteAPI.Controllers
     [ApiController]
     public class LogBookDBController : ControllerBase
     {
-        private readonly LoogBooksDB _context;
+        private readonly LogBooksDB _context;
 
-        public LogBookDBController(LoogBooksDB context)
+        public LogBookDBController(LogBooksDB context)
         {
             _context = context;
         }

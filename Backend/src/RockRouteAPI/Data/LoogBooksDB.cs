@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RockRoute.Models;
 
-    public class LoogBooksDB : DbContext
+    public class LogBooksDB : DbContext
     {
-        public LoogBooksDB (DbContextOptions<LoogBooksDB> options)
+        public LogBooksDB (DbContextOptions<LogBooksDB> options)
             : base(options)
         {
         }
