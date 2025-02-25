@@ -291,3 +291,15 @@
 /Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/obj/Debug/net9.0/RockRouteAPI.pdb
 /Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/obj/Debug/net9.0/RockRouteAPI.genruntimeconfig.cache
 /Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/obj/Debug/net9.0/ref/RockRouteAPI.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/bin/Debug/net9.0/Namotion.Reflection.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/bin/Debug/net9.0/NJsonSchema.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/bin/Debug/net9.0/NJsonSchema.Annotations.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/bin/Debug/net9.0/NJsonSchema.NewtonsoftJson.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/bin/Debug/net9.0/NJsonSchema.Yaml.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/bin/Debug/net9.0/NSwag.Annotations.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/bin/Debug/net9.0/NSwag.AspNetCore.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/bin/Debug/net9.0/NSwag.Core.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/bin/Debug/net9.0/NSwag.Core.Yaml.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/bin/Debug/net9.0/NSwag.Generation.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/bin/Debug/net9.0/NSwag.Generation.AspNetCore.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/bin/Debug/net9.0/YamlDotNet.dll
