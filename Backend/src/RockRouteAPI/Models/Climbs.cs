@@ -1,28 +1,31 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
+using RockRoute.Classes;
 
 
 namespace RockRoute.Models //makes accessible from other areas of the project 
 {
+    [Owned] 
     public class Climb //Defining a climb
+
     {
-        public string RouteName {get; set;}
+        public required string RouteName {get; set;}
         [Key] //[Key] makes RouteId primary key.
-        public string RouteId {get; set;}
-        public string SectorId {get; set;}
-        public string ParentSector {get; set;}
-        public string Type {get; set;}
-        public string YDS {get; set;}
-        public Tuple<float, float> ParentLocation {get; set;}
-        public string LocationDesciption {get; set;}
-        public string ProtectionNotes {get; set;}
-        public List<Tuple<string, int>> UserRatings {get; set;} //List of Tuples with (String, int)
+        public required string RouteId {get; set;}
+        public required string SectorId {get; set;}
+        public required string ParentSector {get; set;}
+        public required string Type {get; set;}
+        public required string YDS {get; set;}
+        public required(float Lat, float Long) ParentLocation {get; set;}
+        public required string LocationDesciption {get; set;}
+        public required string ProtectionNotes {get; set;}
+        public required string UserRatings {get; set;} //List of Tuples with (String, int)
     }
 
-    class ClimbsDB : DbContext
+    public class ClimbsDB : DbContext
     {
-        public ClimbsDB(DbContextOptions options) : base(options) {}
+        public ClimbsDB(DbContextOptions<ClimbsDB> options) : base(options) {}
         public DbSet<Climb> Entries { get; set; } = null!;
     }
 
