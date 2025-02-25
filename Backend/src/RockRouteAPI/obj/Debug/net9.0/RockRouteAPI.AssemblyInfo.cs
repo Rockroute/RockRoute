@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RockRouteAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fef6071091fe6cf226f18e95a6d631dd855c57d5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a95cee79754de6923e24486cb6b44641b1b770b")]
 [assembly: System.Reflection.AssemblyProductAttribute("RockRouteAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RockRouteAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

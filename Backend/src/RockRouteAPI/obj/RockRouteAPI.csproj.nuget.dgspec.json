@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {}
+    "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {}
   },
   "projects": {
-    "/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {
+    "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
+        "projectUniqueName": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
         "projectName": "RockRouteAPI",
-        "projectPath": "/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
-        "packagesPath": "/Users/harveymatthews/.nuget/packages/",
-        "outputPath": "/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/obj/",
+        "projectPath": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
+        "packagesPath": "/home/pa1yn/.nuget/packages/",
+        "outputPath": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/harveymatthews/.nuget/NuGet/NuGet.Config"
+          "/home/pa1yn/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -76,6 +76,10 @@
               "target": "Package",
               "version": "[14.2.0, )"
             },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.1.4, )"
@@ -92,6 +96,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.1, 9.0.1]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -100,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
