@@ -1,4 +1,5 @@
 using RockRoute.Models;
+using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,9 +12,22 @@ builder.Services.AddDbContext<LogBooksDB>(opt => opt.UseInMemoryDatabase("LogBoo
 builder.Services.AddDbContext<UsersDB>(opt => opt.UseInMemoryDatabase("UsersDB"));
 
 builder.Services.AddControllers();
-
+if (builder.Environment.IsDevelopment())
+{
+    //app.MapOpenApi();
+    builder.Services.AddSwaggerGen(c =>{
+        c.SwaggerDoc("v1", new OpenApiInfo {Title = "RockRouteAPI", Description = "Climbing route locator system", Version = "v1"});
+    });
+}
 var app = builder.Build();
 
+if(builder.Environment.IsDevelopment()) {
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "RockRouteAPI V1");
+    });
+}
 app.UseDefaultFiles();
 app.UseStaticFiles();
 app.UseHttpsRedirection();
