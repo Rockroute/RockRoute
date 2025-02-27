@@ -65,3 +65,14 @@
 /home/pa1yn/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/Debug/net9.0/RockRoute.csproj.Up2Date
 /home/pa1yn/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/Debug/net9.0/RockRoute.genruntimeconfig.cache
 /home/pa1yn/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/Debug/net9.0/ref/RockRoute.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/Debug/net9.0/RockRoute.csproj.AssemblyReference.cache
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/Debug/net9.0/Avalonia/Resources.Inputs.cache
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/Debug/net9.0/Avalonia/resources
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/Debug/net9.0/RockRoute.GeneratedMSBuildEditorConfig.editorconfig
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/Debug/net9.0/RockRoute.AssemblyInfoInputs.cache
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/Debug/net9.0/RockRoute.AssemblyInfo.cs
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/Debug/net9.0/RockRoute.csproj.CoreCompileInputs.cache
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/Debug/net9.0/RockRoute.sourcelink.json
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/Debug/net9.0/RockRoute.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/Debug/net9.0/refint/RockRoute.dll
+/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/Debug/net9.0/RockRoute.pdb
