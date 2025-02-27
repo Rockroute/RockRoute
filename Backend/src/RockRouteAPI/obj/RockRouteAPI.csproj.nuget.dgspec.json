@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/pa1yn/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {}
+    "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {}
   },
   "projects": {
-    "/home/pa1yn/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {
+    "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/pa1yn/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
+        "projectUniqueName": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
         "projectName": "RockRouteAPI",
-        "projectPath": "/home/pa1yn/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
+        "projectPath": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
         "packagesPath": "/home/pa1yn/.nuget/packages/",
-        "outputPath": "/home/pa1yn/Documents/GitHub/TheClimbingApp/Backend/src/RockRouteAPI/obj/",
+        "outputPath": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/pa1yn/.nuget/NuGet/NuGet.Config"
@@ -44,9 +44,45 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[9.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "NSwag.AspNetCore": {
+              "target": "Package",
+              "version": "[14.2.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.4, )"
             }
           },
           "imports": [
