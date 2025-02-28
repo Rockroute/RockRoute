@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/pa1yn/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/RockRoute.csproj": {}
+    "C:\\Users\\morle\\OneDrive\\Documents\\GitHub\\RockRoute\\Frontend\\src\\rockroute\\RockRoute.csproj": {}
   },
   "projects": {
-    "/home/pa1yn/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/RockRoute.csproj": {
+    "C:\\Users\\morle\\OneDrive\\Documents\\GitHub\\RockRoute\\Frontend\\src\\rockroute\\RockRoute.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/pa1yn/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/RockRoute.csproj",
+        "projectUniqueName": "C:\\Users\\morle\\OneDrive\\Documents\\GitHub\\RockRoute\\Frontend\\src\\rockroute\\RockRoute.csproj",
         "projectName": "RockRoute",
-        "projectPath": "/home/pa1yn/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/RockRoute.csproj",
-        "packagesPath": "/home/pa1yn/.nuget/packages/",
-        "outputPath": "/home/pa1yn/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/",
+        "projectPath": "C:\\Users\\morle\\OneDrive\\Documents\\GitHub\\RockRoute\\Frontend\\src\\rockroute\\RockRoute.csproj",
+        "packagesPath": "C:\\Users\\morle\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\morle\\OneDrive\\Documents\\GitHub\\RockRoute\\Frontend\\src\\rockroute\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/pa1yn/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\morle\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -76,18 +76,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[9.0.1, 9.0.1]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
