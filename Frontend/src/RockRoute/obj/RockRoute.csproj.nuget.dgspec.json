@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\morle\\OneDrive\\Documents\\GitHub\\RockRoute\\Frontend\\src\\rockroute\\RockRoute.csproj": {}
+    "/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/RockRoute.csproj": {}
   },
   "projects": {
-    "C:\\Users\\morle\\OneDrive\\Documents\\GitHub\\RockRoute\\Frontend\\src\\rockroute\\RockRoute.csproj": {
+    "/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/RockRoute.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\morle\\OneDrive\\Documents\\GitHub\\RockRoute\\Frontend\\src\\rockroute\\RockRoute.csproj",
+        "projectUniqueName": "/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/RockRoute.csproj",
         "projectName": "RockRoute",
-        "projectPath": "C:\\Users\\morle\\OneDrive\\Documents\\GitHub\\RockRoute\\Frontend\\src\\rockroute\\RockRoute.csproj",
-        "packagesPath": "C:\\Users\\morle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\morle\\OneDrive\\Documents\\GitHub\\RockRoute\\Frontend\\src\\rockroute\\obj\\",
+        "projectPath": "/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/RockRoute.csproj",
+        "packagesPath": "/Users/harveymatthews/.nuget/packages/",
+        "outputPath": "/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\morle\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/harveymatthews/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
