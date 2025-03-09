@@ -1431,11 +1431,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/RockRoute.csproj",
+      "projectUniqueName": "/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/RockRoute.csproj",
       "projectName": "RockRoute",
-      "projectPath": "/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/RockRoute.csproj",
+      "projectPath": "/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/RockRoute.csproj",
       "packagesPath": "/Users/harveymatthews/.nuget/packages/",
-      "outputPath": "/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/obj/",
+      "outputPath": "/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/harveymatthews/.nuget/NuGet/NuGet.Config"

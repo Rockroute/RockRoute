@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Sk/jPFSmd/4=",
+  "dgSpecHash": "B+CIyhpO78U=",
   "success": true,
-  "projectFilePath": "/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/RockRoute.csproj",
+  "projectFilePath": "/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/RockRoute.csproj",
   "expectedPackageFiles": [
     "/Users/harveymatthews/.nuget/packages/avalonia/11.2.1/avalonia.11.2.1.nupkg.sha512",
     "/Users/harveymatthews/.nuget/packages/avalonia.angle.windows.natives/2.1.22045.20230930/avalonia.angle.windows.natives.2.1.22045.20230930.nupkg.sha512",

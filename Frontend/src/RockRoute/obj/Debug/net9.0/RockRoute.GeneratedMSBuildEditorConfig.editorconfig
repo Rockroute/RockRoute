@@ -15,17 +15,23 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RockRoute
-build_property.ProjectDir = /Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/
+build_property.ProjectDir = /Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/App.axaml]
+[/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/Views/Example.axaml]
+[/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/Views/CreateAccount.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/Users/harveymatthews/Documents/GitHub/TheClimbingApp/Frontend/src/RockRoute/Views/MainWindow.axaml]
+[/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/Views/Example.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/Views/Login.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
