@@ -2,6 +2,7 @@ using RockRoute.Classes;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 
 namespace RockRoute.Models //accessible from other areas of the project 
@@ -15,7 +16,7 @@ namespace RockRoute.Models //accessible from other areas of the project
         public required string RouteId { get; set; } = " ";
         public required string Playlist {get; set;} // List <Playlist> defined in class
         
-        public required List<Croute> Route  {get; set;} //List<CRoute>
+        public required List<CRoute> CRoute  {get; set;} //List<CRoute>
         public required List<Activity> Activity { get; set; } //List<Activity>
         public required User User { get; set; } // Type user
         public required Climb Climb { get; set; } // Type Climb

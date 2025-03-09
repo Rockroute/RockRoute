@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using RockRoute.Models;
 
 namespace RockRoute.Classes {
     public class Playlist {
         private string _name = string.Empty;
         private string _creatorID = string.Empty;
         private List<String>? _collabID;
-        private List<Route>? _listOfRoutes = new List<Route>();
+        private List<CRoute>? _listOfRoutes = new List<CRoute>();
         private byte[]? _playlistPicture;
 
         public required string Name {
@@ -29,7 +30,7 @@ namespace RockRoute.Classes {
                 _collabID = value; 
             }
         }
-        public List<Route>? ListOfRoutes {
+        public List<CRoute>? ListOfRoutes {
             get => _listOfRoutes;
             set {
                 _listOfRoutes = value;}
@@ -41,7 +42,7 @@ namespace RockRoute.Classes {
             }
         }
 
-        public Playlist(string name, string creatorID, List<string>? collabID, List<Route>? listOfRoutes, byte[]? playlistPicture) {
+        public Playlist(string name, string creatorID, List<string>? collabID, List<CRoute>? listOfRoutes, byte[]? playlistPicture) {
             _name = name;
             _creatorID = creatorID;
             _collabID = collabID;

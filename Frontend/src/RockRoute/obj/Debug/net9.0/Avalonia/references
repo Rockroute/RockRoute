@@ -25,6 +25,16 @@
 /Users/harveymatthews/.nuget/packages/harfbuzzsharp/7.3.0.2/lib/net6.0/HarfBuzzSharp.dll
 /Users/harveymatthews/.nuget/packages/microcom.runtime/0.11.0/lib/net5.0/MicroCom.Runtime.dll
 /usr/local/share/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.2/ref/net9.0/Microsoft.CSharp.dll
+/Users/harveymatthews/.nuget/packages/microsoft.entityframeworkcore.abstractions/9.0.2/lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/harveymatthews/.nuget/packages/microsoft.entityframeworkcore/9.0.2/lib/net8.0/Microsoft.EntityFrameworkCore.dll
+/Users/harveymatthews/.nuget/packages/microsoft.extensions.caching.abstractions/9.0.2/lib/net9.0/Microsoft.Extensions.Caching.Abstractions.dll
+/Users/harveymatthews/.nuget/packages/microsoft.extensions.caching.memory/9.0.2/lib/net9.0/Microsoft.Extensions.Caching.Memory.dll
+/Users/harveymatthews/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.2/lib/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/harveymatthews/.nuget/packages/microsoft.extensions.dependencyinjection/9.0.2/lib/net9.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/harveymatthews/.nuget/packages/microsoft.extensions.logging.abstractions/9.0.2/lib/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/harveymatthews/.nuget/packages/microsoft.extensions.logging/9.0.2/lib/net9.0/Microsoft.Extensions.Logging.dll
+/Users/harveymatthews/.nuget/packages/microsoft.extensions.options/9.0.2/lib/net9.0/Microsoft.Extensions.Options.dll
+/Users/harveymatthews/.nuget/packages/microsoft.extensions.primitives/9.0.2/lib/net9.0/Microsoft.Extensions.Primitives.dll
 /usr/local/share/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.2/ref/net9.0/Microsoft.VisualBasic.Core.dll
 /usr/local/share/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.2/ref/net9.0/Microsoft.VisualBasic.dll
 /usr/local/share/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.2/ref/net9.0/Microsoft.Win32.Primitives.dll

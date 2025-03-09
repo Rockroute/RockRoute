@@ -2,6 +2,8 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using RockRoute.Classes;
+using System.Collections.Generic;
+
 
 
 namespace RockRoute.Models //makes accessible from other areas of the project 
@@ -20,7 +22,7 @@ namespace RockRoute.Models //makes accessible from other areas of the project
         public required(float Lat, float Long) ParentLocation {get; set;}
         public required string LocationDesciption {get; set;}
         public required string ProtectionNotes {get; set;}
-        public required list<(string, int)> UserRatings {get; set;} //List of Tuples with (String, int)
+        public required List<(string, int)> UserRatings {get; set;} //List of Tuples with (String, int)
     }
 
     public class ClimbsDB : DbContext

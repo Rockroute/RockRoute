@@ -199,3 +199,13 @@ C:/Users/morle/OneDrive/Documents/GitHub/RockRoute/Frontend/src/RockRoute/obj/De
 /Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/obj/Debug/net9.0/RockRoute.csproj.Up2Date
 /Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/obj/Debug/net9.0/RockRoute.genruntimeconfig.cache
 /Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/obj/Debug/net9.0/ref/RockRoute.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Microsoft.Extensions.Caching.Abstractions.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Microsoft.Extensions.Caching.Memory.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Microsoft.Extensions.Logging.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Microsoft.Extensions.Options.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll
