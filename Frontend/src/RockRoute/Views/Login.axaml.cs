@@ -16,11 +16,15 @@ namespace RockRoute.Views
             AvaloniaXamlLoader.Load(this);
         }
 
-        private void NeedAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
+        private void NeedAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            LoginViewModel instanceOfClass = new LoginViewModel();
+            instanceOfClass.Hello12();
             var NewWindow = new CreateAccount();
-            NewWindow.WindowState = WindowState.Maximized;
+            //NewWindow.WindowState = WindowState.Maximized;
             NewWindow.Show();
             this.Close();
+
         }
     }
 }
