@@ -19,9 +19,10 @@ namespace RockRoute.Views
 
         private void NeedAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            LoginViewModel instanceOfClass = new LoginViewModel();
-            instanceOfClass.Hello12();
+            //LoginViewModel instanceOfClass = new LoginViewModel();
+            //instanceOfClass.Hello12();
             //above is backend frontend bits
+            
             //Below is frontend bits
             var NewWindow = new CreateAccount();
             NewWindow.WindowState = WindowState.Maximized;

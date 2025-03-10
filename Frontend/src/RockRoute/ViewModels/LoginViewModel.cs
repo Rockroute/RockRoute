@@ -1,5 +1,10 @@
 using RockRoute.Models;
 using RockRoute.Classes;
+using CommunityToolkit.Mvvm.Input;
+using System.Threading.Tasks;
+using System.Windows.Input;
+
+
 
 namespace RockRoute.ViewModels
 {
@@ -7,21 +12,29 @@ namespace RockRoute.ViewModels
     public class LoginViewModel : BaseViewModel
     {
 
+        public ICommand LoginQuerySubmitCommand { get; }//Binding button in viewmodel to Method
+
         public LoginViewModel()
         {
-            //Console.WriteLine(HelloKitt);
-
+            LoginQuerySubmitCommand = new AsyncRelayCommand(OnLoginQuerySubmitCommand);
         }
+        public async Task OnLoginQuerySubmitCommand()
+        {
+            //Process things here
+        }
+
         public void Hello12()
         {
             System.Console.WriteLine(HelloKitt);
         }
 
         private string _username;
-        public string Username {
+        public string Username
+        {
 
             get => _username;
-            set {
+            set
+            {
                 if (_username != value)
                 {
                     _username = value;
@@ -30,18 +43,20 @@ namespace RockRoute.ViewModels
             }
         }
         private string _password;
-        public string Password {
+        public string Password
+        {
 
             get => _password;
-            set {
+            set
+            {
                 if (_password != value)
                 {
                     _password = value;
                     OnPropertyChanged(Password);
                 }
             }
+
         }
 
     }
-
 }
