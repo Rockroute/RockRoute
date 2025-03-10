@@ -5,6 +5,9 @@ using Avalonia.Controls;
 using Avalonia.VisualTree;
 using Avalonia.Markup.Xaml;
 
+using RockRoute.Models;
+using RockRoute.Classes;
+
 namespace RockRoute.Views 
 {
     public partial class CreateAccount : Window
@@ -27,6 +30,13 @@ namespace RockRoute.Views
 
         private void CreateAccountButtonClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e) 
         {
+            RockRoute.Classes.Activity Test = new RockRoute.Classes.Activity("Hello", null, "HE");
+            if (Test.Name == "Hello")
+            {
+                Console.WriteLine("TEST World!");
+
+            }
+
             var NewWindow = new MainWindow();
             NewWindow.WindowState = WindowState.Maximized;
             NewWindow.Show();
