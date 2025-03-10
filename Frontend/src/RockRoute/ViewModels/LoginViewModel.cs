@@ -17,6 +17,31 @@ namespace RockRoute.ViewModels
             System.Console.WriteLine(HelloKitt);
         }
 
+        private string _username;
+        public string Username {
+
+            get => _username;
+            set {
+                if (_username != value)
+                {
+                    _username = value;
+                    OnPropertyChanged(Username);
+                }
+            }
+        }
+        private string _password;
+        public string Password {
+
+            get => _password;
+            set {
+                if (_password != value)
+                {
+                    _password = value;
+                    OnPropertyChanged(Password);
+                }
+            }
+        }
+
     }
 
 }
