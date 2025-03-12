@@ -209,3 +209,4 @@ C:/Users/morle/OneDrive/Documents/GitHub/RockRoute/Frontend/src/RockRoute/obj/De
 /Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
 /Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Microsoft.Extensions.Options.dll
 /Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/CommunityToolkit.Mvvm.dll
