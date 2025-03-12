@@ -20,12 +20,13 @@ namespace RockRoute.ViewModels
         }
         public async Task OnLoginQuerySubmitCommand()
         {
-            //Process things here
+            //Process here
         }
 
         public void Hello12()
         {
-            System.Console.WriteLine(HelloKitt);
+            //System.Console.WriteLine(HelloKitt);
+            //LogBook();
         }
 
         private string _username;

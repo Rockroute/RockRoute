@@ -23,22 +23,24 @@ namespace RockRoute.Views
 
         private void GotAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
             var NewWindow = new Login();
-            NewWindow.WindowState = WindowState.Maximized;
+           //NewWindow.WindowState = WindowState.Maximized;
             NewWindow.Show();
             this.Close();
         }
 
         private void CreateAccountButtonClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e) 
         {
+            /*
             RockRoute.Classes.Activity Test = new RockRoute.Classes.Activity("Hello", null, "HE");
             if (Test.Name == "Hello")
             {
                 Console.WriteLine("TEST World!");
 
             }
-
+            */
+            
             var NewWindow = new MainWindow();
-            NewWindow.WindowState = WindowState.Maximized;
+           //NewWindow.WindowState = WindowState.Maximized;
             NewWindow.Show();
             this.Close();
         }
