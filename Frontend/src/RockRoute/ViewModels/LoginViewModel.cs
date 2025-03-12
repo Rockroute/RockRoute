@@ -26,7 +26,7 @@ namespace RockRoute.ViewModels
         public void Hello12()
         {
             //System.Console.WriteLine(HelloKitt);
-            //LogBook();
+            LogBookConvert();
         }
 
         private string _username;

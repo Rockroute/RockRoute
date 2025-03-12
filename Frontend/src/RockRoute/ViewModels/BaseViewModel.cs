@@ -1,8 +1,9 @@
 using System.Net.Http;
 using System.ComponentModel;
 using RockRoute.Classes;
-using System.Text.Json.Serialization;
-using System.Text.Json;
+using RockRoute.Models;
+using Newtonsoft.Json;
+
 
 
 //This is generic code for the views 
@@ -27,24 +28,10 @@ namespace RockRoute.ViewModels
             _httpClient = new HttpClient();
         }
 
-        public void LogBook()
+        public void LogBookConvert()
         {
 
-            
-            /*
-            What the API returns
-            {
-            "userId": "string",
-            "routeId": "string",
-            "playlist": "string",
-            "route": "string",
-            "activity": "string",
-            "user": "string",
-            "climb": "string"
-            }
-            
-            //repace this with the API call
-            var jsonData = new
+            var theApiCall = new //Replace this with what the API returns
             {
                 userId = "string",
                 routeId = "string",
@@ -55,9 +42,10 @@ namespace RockRoute.ViewModels
                 climb = "string"
             };
 
-            var LogBookData = JsonSerializer.Deserialize<RockRoute.Models.LogBook>(jsonData);
-            //System.Console.WriteLine(LogBookData.RouteID);
-            */
+            string ApiAsString = JsonConvert.SerializeObject(theApiCall); //Converts the ApiJson into JSON String
+            System.Console.WriteLine(ApiAsString); //Prints the JSON string
+            
+            
         }
     }
 }
