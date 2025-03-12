@@ -23,7 +23,7 @@ namespace RockRoute.ViewModels
             //Process here
         }
 
-        public void Hello12()
+        public void PrintLogBookObject()
         {
             //System.Console.WriteLine(HelloKitt);
             LogBookConvert();

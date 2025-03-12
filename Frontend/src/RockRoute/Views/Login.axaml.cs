@@ -35,7 +35,8 @@ namespace RockRoute.Views
             //LogBookConvert();
             var NewWindow = new CreateAccount();
            //NewWindow.WindowState = WindowState.Maximized;
-            Hello12();
+            LoginViewModel instanceOfClass = new LoginViewModel();
+            instanceOfClass.PrintLogBookObject();
             NewWindow.Show();
             this.Close();
 

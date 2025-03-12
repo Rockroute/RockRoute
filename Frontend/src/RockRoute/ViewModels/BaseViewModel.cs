@@ -30,7 +30,7 @@ namespace RockRoute.ViewModels
 
         public void LogBookConvert()
         {
-
+            //Converts the json inti a Logbook object
             var theApiCall = new //Replace this with what the API returns
             {
                 userId = "string",
