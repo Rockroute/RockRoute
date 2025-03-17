@@ -9,7 +9,7 @@ namespace RockRoute.Classes {
         private string _userID = string.Empty;
         private int _rating;
         
-        public required string UserID {
+        public string UserID {
             get => _userID;
             set {
                 if (string.IsNullOrWhiteSpace(value))
@@ -17,7 +17,7 @@ namespace RockRoute.Classes {
                     _userID = value; }
         }
         
-        public required int Rating {
+        public int Rating {
             get => _rating;
             set {
                 _rating = value;
