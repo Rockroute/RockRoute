@@ -19,6 +19,11 @@ namespace RockRoute.Views
         {
             AvaloniaXamlLoader.Load(this);
         }
+        private void TestTheCroute(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            LoginViewModel AnotherInstance = new LoginViewModel();
+            AnotherInstance.printTheCroute();
+        }
 
         private void NeedAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
@@ -31,12 +36,13 @@ namespace RockRoute.Views
             //CRating ratingJSONagain = JsonConvert.DeserializeObject<CRating>(ratingAsString); //Converts the JSON string into Object rating
             //System.Console.WriteLine(ratingJSONagain.UserID); //prints the converted object UserID (21)
             
+
+            LoginViewModel instanceOfClass = new LoginViewModel();
+            instanceOfClass.PrintLogBookObject();
             //Below is frontend bits
             //LogBookConvert();
             var NewWindow = new CreateAccount();
            //NewWindow.WindowState = WindowState.Maximized;
-            LoginViewModel instanceOfClass = new LoginViewModel();
-            instanceOfClass.PrintLogBookObject();
             NewWindow.Show();
             this.Close();
 
