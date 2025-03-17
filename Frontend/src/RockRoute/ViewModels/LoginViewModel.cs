@@ -3,6 +3,10 @@ using RockRoute.Classes;
 using CommunityToolkit.Mvvm.Input;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+
 
 
 
@@ -23,9 +27,36 @@ namespace RockRoute.ViewModels
             //Process here
         }
 
-        public void PrintLogBookObject()
+        public void printTheCroute()
         {
             //System.Console.WriteLine(HelloKitt);
+            string routeID = "283hdk98";
+            DateTime? completedDate = null;
+            List<string>? partnerID = null;
+            int? attempts = 3;
+            bool? isOnSite = true;
+            string? notes = "Interesting climb, Recommend";
+
+            // Creating an instance
+            CRoute myRoute = new CRoute(routeID, completedDate, partnerID, attempts, isOnSite, notes);
+
+            System.Console.WriteLine(myRoute.Notes);
+
+            //string ApiAsString = JsonConvert.SerializeObject(myRoute); //Converts the ApiJson into JSON String
+            //System.Console.WriteLine(ApiAsString); //Prints the JSON string
+
+        }
+
+        public bool checkUser(string inputUserName, string InputPassword)
+        {
+            User TestUser = new User()
+
+
+
+
+    public void PrintLogBookObject()
+        {
+
             LogBookConvert();
         }
 
@@ -60,4 +91,5 @@ namespace RockRoute.ViewModels
         }
 
     }
+
 }

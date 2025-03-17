@@ -4,7 +4,6 @@ namespace RockRoute.ViewModels
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        
     }
 
 }

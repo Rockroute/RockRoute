@@ -14,7 +14,7 @@ namespace RockRoute.Classes {
         private string? _notes;
 
         
-        public required string RouteID {
+        public string RouteID {
             get => _routeID;
             set {
                 if (string.IsNullOrWhiteSpace(value))
