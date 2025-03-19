@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using RockRoute.Classes;
 
 
-namespace RockRoute.Models //makes accessible from other areas of the project 
+namespace RockRoute.PreModels //makes accessible from other areas of the project 
 {
     [Owned] 
-    public class Climb //Defining a climb
+    public class PreClimb //Defining a climb
 
     {
         public required string RouteName {get; set;}
@@ -21,12 +21,6 @@ namespace RockRoute.Models //makes accessible from other areas of the project
         public required string LocationDescription {get; set;}
         public required string ProtectionNotes {get; set;}
         public required string UserRatings {get; set;} //List of Tuples with (String, int)
-    }
-
-    public class ClimbsDB : DbContext
-    {
-        public ClimbsDB(DbContextOptions<ClimbsDB> options) : base(options) {}
-        public DbSet<Climb> Entries { get; set; } = null!;
     }
 
 }

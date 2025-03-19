@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace RockRoute.Models //accessible from other areas of the project 
+namespace RockRoute.PreModels //accessible from other areas of the project 
 {
-    public class LogBook //Defining a Logbook
+    public class PreLogBook //Defining a Logbook
     {
         [Key]
         [ForeignKey(nameof(User))] // UserId FK to UsersDB.
@@ -22,9 +22,4 @@ namespace RockRoute.Models //accessible from other areas of the project
 
     }
 
-    class LogBooksDB : DbContext
-    {
-        public LogBooksDB(DbContextOptions options) : base(options) {}
-        public DbSet<LogBook> Entries { get; set; } = null!;
-    }
 }
