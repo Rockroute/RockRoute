@@ -27,7 +27,7 @@ namespace RockRouteAPI.Migrations
                     b.Property<string>("RouteId")
                         .HasColumnType("text");
 
-                    b.Property<string>("LocationDesciption")
+                    b.Property<string>("LocationDescription")
                         .IsRequired()
                         .HasColumnType("text");
 

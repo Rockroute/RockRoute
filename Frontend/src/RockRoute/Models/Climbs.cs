@@ -20,7 +20,7 @@ namespace RockRoute.Models //makes accessible from other areas of the project
         public required string Type {get; set;}
         public required string YDS {get; set;}
         public required(float Lat, float Long) ParentLocation {get; set;}
-        public required string LocationDesciption {get; set;}
+        public required string LocationDescription {get; set;}
         public required string ProtectionNotes {get; set;}
         public required List<(string, int)> UserRatings {get; set;} //List of Tuples with (String, int)
     }

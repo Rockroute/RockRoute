@@ -22,7 +22,7 @@ namespace RockRouteAPI.Migrations
                     Type = table.Column<string>(type: "text", nullable: false),
                     YDS = table.Column<string>(type: "text", nullable: false),
                     ParentLocation = table.Column<ValueTuple<float, float>>(type: "record", nullable: false),
-                    LocationDesciption = table.Column<string>(type: "text", nullable: false),
+                    LocationDescription = table.Column<string>(type: "text", nullable: false),
                     ProtectionNotes = table.Column<string>(type: "text", nullable: false),
                     UserRatings = table.Column<string>(type: "text", nullable: false)
                 },
