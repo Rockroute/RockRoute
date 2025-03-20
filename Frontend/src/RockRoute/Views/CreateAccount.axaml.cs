@@ -23,7 +23,7 @@ namespace RockRoute.Views
 
         private void GotAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
             var NewWindow = new Login();
-           //NewWindow.WindowState = WindowState.Maximized;
+           //NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
             NewWindow.Show();
             this.Close();
         }
@@ -40,7 +40,7 @@ namespace RockRoute.Views
             */
             
             var NewWindow = new MainWindow();
-           //NewWindow.WindowState = WindowState.Maximized;
+           //NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
             NewWindow.Show();
             this.Close();
         }

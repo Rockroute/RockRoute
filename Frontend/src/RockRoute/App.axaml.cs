@@ -19,7 +19,7 @@ public partial class App : Application
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             var mainWindow = new Login();
-            mainWindow.WindowState = WindowState.Maximized;
+            //mainWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
             desktop.MainWindow = mainWindow;
             //{
                 //DataContext = new MainWindowViewModel(),

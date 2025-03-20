@@ -2,6 +2,8 @@ using RockRoute.Classes;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic; //to use List //This is needed in Frontend but not the backend setion?
+
 
 
 namespace RockRoute.Models //accessible from other areas of the project 
