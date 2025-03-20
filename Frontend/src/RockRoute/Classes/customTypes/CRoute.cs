@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using RockRoute.Models;
-
 using Microsoft.VisualBasic;
 
 namespace RockRoute.Classes {
@@ -14,7 +11,7 @@ namespace RockRoute.Classes {
         private string? _notes;
 
         
-        public string RouteID {
+        public required string RouteID {
             get => _routeID;
             set {
                 if (string.IsNullOrWhiteSpace(value))
