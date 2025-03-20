@@ -49,12 +49,12 @@ namespace RockRoute.ViewModels
 
         public bool checkUser(string inputUserName, string InputPassword)
         {
-            User TestUser = new User()
+
+            return true;
+        }
 
 
-
-
-    public void PrintLogBookObject()
+        public void PrintLogBookObject()
         {
 
             LogBookConvert();

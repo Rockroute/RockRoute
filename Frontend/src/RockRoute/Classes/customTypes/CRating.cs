@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using RockRoute.Models;
 
 namespace RockRoute.Classes {
 
@@ -9,7 +7,7 @@ namespace RockRoute.Classes {
         private string _userID = string.Empty;
         private int _rating;
         
-        public string UserID {
+        public required string UserID {
             get => _userID;
             set {
                 if (string.IsNullOrWhiteSpace(value))
@@ -17,7 +15,7 @@ namespace RockRoute.Classes {
                     _userID = value; }
         }
         
-        public int Rating {
+        public required int Rating {
             get => _rating;
             set {
                 _rating = value;

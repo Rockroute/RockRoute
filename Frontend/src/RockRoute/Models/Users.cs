@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 
 namespace RockRoute.Models //accessible from other areas of the project 
@@ -13,7 +12,6 @@ namespace RockRoute.Models //accessible from other areas of the project
         public required string Name {get; set;}
         public required string Email {get; set;}
         public required string Password {get; set;}
-        public required string LogBook { get; set; } // Dependent navigation. //Type LogBook
     }
 
     public class UsersDB : DbContext

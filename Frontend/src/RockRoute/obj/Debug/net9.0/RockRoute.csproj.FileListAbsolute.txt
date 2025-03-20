@@ -211,6 +211,3 @@ C:/Users/morle/OneDrive/Documents/GitHub/RockRoute/Frontend/src/RockRoute/obj/De
 /Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll
 /Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/CommunityToolkit.Mvvm.dll
 /Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/bin/Debug/net9.0/Newtonsoft.Json.dll
-/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/obj/Debug/net9.0/RockRoute.dll
-/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/obj/Debug/net9.0/refint/RockRoute.dll
-/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/obj/Debug/net9.0/RockRoute.pdb

@@ -3,7 +3,7 @@ using Avalonia.Markup.Xaml;
 using RockRoute.ViewModels;
 using RockRoute.Classes;
 using Newtonsoft.Json;
- 
+using RockRoute.Helper;
 
 namespace RockRoute.Views
 {
@@ -21,8 +21,9 @@ namespace RockRoute.Views
         }
         private void TestTheCroute(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            LoginViewModel AnotherInstance = new LoginViewModel();
-            AnotherInstance.printTheCroute();
+            
+            //LoginViewModel AnotherInstance = new LoginViewModel();
+            //AnotherInstance.printTheCroute();
         }
 
         private void NeedAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
