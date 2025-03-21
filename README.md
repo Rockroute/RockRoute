@@ -6,7 +6,7 @@ Plan is to have the features merged into dev and then once a week maybe fortnigh
 
 Tick-list for merge Request:
 
-✅ Camel Case <br>
+✅ CamelCase for Functions and pascalCase for Variables (NO UNDERSCORE IN NAMES)<br>
 ✅ Separate Branch for feature <br>
 ✅ Being merged into Dev Only <br>
 ✅ Merge Request to be done by a different member of the team <br>

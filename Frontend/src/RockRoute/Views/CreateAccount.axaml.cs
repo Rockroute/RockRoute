@@ -32,6 +32,7 @@ namespace RockRoute.Views
 
         private void CreateAccountButtonClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e) 
         {
+
             System.Console.WriteLine(LoginFunctions.CreateAccount("NEWUSER?A?!?!?", "NerUsersEmail", "newUsersPassword", "newUsersPassword"));
 
             var NewWindow = new MainWindow();
