@@ -1,11 +1,12 @@
 using RockRoute.Models;
 using RockRoute.Classes;
+using RockRoute.Helper;
 using CommunityToolkit.Mvvm.Input;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
+using System.Collections.Generic; //to use List
 
 
 
@@ -29,7 +30,7 @@ namespace RockRoute.ViewModels
 
         public void printTheCroute()
         {
-            //System.Console.WriteLine(HelloKitt);
+            //Just temp data for testing creating an instance
             string routeID = "283hdk98";
             DateTime? completedDate = null;
             List<string>? partnerID = null;
@@ -37,11 +38,8 @@ namespace RockRoute.ViewModels
             bool? isOnSite = true;
             string? notes = "Interesting climb, Recommend";
 
+            testingHelper.TestHelpName("or? go through this");
             // Creating an instance
-            CRoute myRoute = new CRoute(routeID, completedDate, partnerID, attempts, isOnSite, notes);
-
-            System.Console.WriteLine(myRoute.Notes);
-
             //string ApiAsString = JsonConvert.SerializeObject(myRoute); //Converts the ApiJson into JSON String
             //System.Console.WriteLine(ApiAsString); //Prints the JSON string
 

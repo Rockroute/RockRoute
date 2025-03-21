@@ -42,8 +42,8 @@ namespace RockRoute.ViewModels
                 climb = "string"
             };
     
-            string ApiAsString = JsonConvert.SerializeObject(theApiCall); //Converts the ApiJson into JSON String
-            System.Console.WriteLine(ApiAsString); //Prints the JSON string
+            //string ApiAsString = JsonConvert.SerializeObject(theApiCall); //Converts the ApiJson into JSON String
+            //System.Console.WriteLine(ApiAsString); //Prints the JSON string
             
             
         }

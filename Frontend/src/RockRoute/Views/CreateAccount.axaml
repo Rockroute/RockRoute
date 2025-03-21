@@ -5,6 +5,8 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="RockRoute.Views.CreateAccount">
         <StackPanel>
+                <TextBlock Margin="5" HorizontalAlignment="Center" Text="Name:"/>
+                <TextBox Name="NameBox" Watermark="Enter Name" Width="250" Margin="5" HorizontalAlignment="Center"/>
                 <TextBlock Margin="5" HorizontalAlignment="Center" Text="Email:"/>
                 <TextBox Name="EmailBox" Watermark="Enter Email" Width="250" Margin="5" HorizontalAlignment="Center"/>
                 <TextBlock Margin="5" HorizontalAlignment="Center" Text="Password:"/>
