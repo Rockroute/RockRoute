@@ -24,7 +24,7 @@ namespace RockRoute.Models //accessible from other areas of the project
 
     class LogBooksDB : DbContext
     {
-        public LogBooksDB(DbContextOptions options) : base(options) {}
+        public LogBooksDB(DbContextOptions<LogBooksDB> options) : base(options) {}
         public DbSet<LogBook> Entries { get; set; } = null!;
     }
 }
