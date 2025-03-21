@@ -9008,19 +9008,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/harveymatthews/.nuget/packages/": {}
+    "/home/pa1yn/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/harveymatthews/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
+      "projectUniqueName": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
       "projectName": "RockRouteAPI",
-      "projectPath": "/Users/harveymatthews/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
-      "packagesPath": "/Users/harveymatthews/.nuget/packages/",
-      "outputPath": "/Users/harveymatthews/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/obj/",
+      "projectPath": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/RockRouteAPI.csproj",
+      "packagesPath": "/home/pa1yn/.nuget/packages/",
+      "outputPath": "/home/pa1yn/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/harveymatthews/.nuget/NuGet/NuGet.Config"
+        "/home/pa1yn/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -9044,7 +9044,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -9102,6 +9102,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[9.0.1, 9.0.1]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -9110,7 +9116,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

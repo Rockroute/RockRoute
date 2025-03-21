@@ -1,5 +1,7 @@
 using System;
-using Microsoft.VisualBasic;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace RockRoute.Classes {
@@ -11,7 +13,7 @@ namespace RockRoute.Classes {
         private bool? _isOnSite;
         private string? _notes;
 
-        
+        [Key]
         public required string RouteID {
             get => _routeID;
             set {
