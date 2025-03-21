@@ -7,6 +7,8 @@ using Avalonia.Markup.Xaml;
 
 using RockRoute.Models;
 using RockRoute.Classes;
+using RockRoute.Helper;
+using RockRoute.enums;
 
 namespace RockRoute.Views 
 {
@@ -30,15 +32,8 @@ namespace RockRoute.Views
 
         private void CreateAccountButtonClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e) 
         {
-            /*
-            RockRoute.Classes.Activity Test = new RockRoute.Classes.Activity("Hello", null, "HE");
-            if (Test.Name == "Hello")
-            {
-                Console.WriteLine("TEST World!");
+            System.Console.WriteLine(LoginFunctions.CreateAccount("NEWUSER?A?!?!?", "NerUsersEmail", "newUsersPassword", "newUsersPassword"));
 
-            }
-            */
-            
             var NewWindow = new MainWindow();
            //NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
             NewWindow.Show();

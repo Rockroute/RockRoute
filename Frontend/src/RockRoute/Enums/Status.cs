@@ -7,8 +7,8 @@ namespace RockRoute.enums
             Account_Does_Not_Exists, //2
             Incorrect_Details, //3
             Successfull_Login, //4
-            Passwords_Dont_Match //5
-
-
+            Passwords_Dont_Match, //5
+            Account_Created, //6
+            Error //7 Somethings gone wrong
         }
 }

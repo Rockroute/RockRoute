@@ -1,4 +1,6 @@
 using System.Collections.Generic; //to use List
+using Newtonsoft.Json;//for JSON serilization
+
 using RockRoute.enums;
 using RockRoute.Classes;
 using RockRoute.Models;
@@ -57,7 +59,7 @@ namespace RockRoute.Helper
             Password = "PretendThisIsEncrypted"
         };
 
-        private static void newUserID()
+        private static void Create_new_UserID()
         {
             //This will check exisiting UserIDs and create a new newUserID
         }
@@ -71,20 +73,42 @@ namespace RockRoute.Helper
             //Will be simple but just need to see the return of JSON
             return (true);
         }
-        public static login_Status CreateAccount(string email, string password, string checkPassword)
+        public static login_Status CreateAccount(string input_Name, string input_email, string input_Password, string input_CheckPassword)
         {
             //Check if already exists
             //Passwords Match ✅
             //Create new UserId 
             //create new instance of user
             //Store the in by using -> /api/UsersDB
-            if (password != checkPassword)
+            if (input_Password != input_CheckPassword)
             {
-                return(login_Status.Passwords_Dont_Match);
+                return (login_Status.Passwords_Dont_Match);
             }
 
+            string newUserID = "5627yh"; //Replace this with the function
+            //create new userID
 
-            return (login_Status.Account_Does_Not_Exists);
+            User newUser = new User //Creating a new instance to push to database
+            {
+                UserId = newUserID,
+                Name = input_Name,
+                Email = input_email,
+                Password = input_Password
+            };
+
+            //SEND newUser object into the API
+            //if API returns code *** then 
+
+            //else (If API returns code ***)
+            //return(login_Status.Error);
+
+
+            //THE TWO LINES BELOW ARE TO BE COMMENTED OUT AFTER API WORKING:
+            string newUserAsString = JsonConvert.SerializeObject(newUser); //Converts the rating into JSON String
+            System.Console.WriteLine(newUserAsString); //Prints the JSON string
+
+            return (login_Status.Account_Created);
+
         }
 
         public static login_Status LoginAccount(string email, string password)
@@ -102,13 +126,15 @@ namespace RockRoute.Helper
                 if (testUser.Password == password)
                 {
                     return (login_Status.Successfull_Login);
-                } else 
-                {
-                    return(login_Status.Incorrect_Details);
                 }
-            } else
+                else
+                {
+                    return (login_Status.Incorrect_Details);
+                }
+            }
+            else
             {
-                return(login_Status.Incorrect_Details);
+                return (login_Status.Incorrect_Details);
 
             }
 
