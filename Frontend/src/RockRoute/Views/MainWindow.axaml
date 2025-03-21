@@ -5,7 +5,7 @@
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
         x:Class="HomeScreen.MainWindow"
         Title="HomeScreen"
-		Background="White">
+        Background="White">
 
 	<!--Colours are grey and blue, can change-->
 	
