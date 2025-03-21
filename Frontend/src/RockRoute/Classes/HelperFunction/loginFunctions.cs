@@ -64,7 +64,7 @@ namespace RockRoute.Helper
             //This will check exisiting UserIDs and create a new newUserID
         }
 
-        private static bool doesExist(string email)
+        private static bool DoesExist(string email)
         {
             //Complete this
             //I need to see what the return of /api/UsersDB/{id} looks like for this
@@ -73,14 +73,14 @@ namespace RockRoute.Helper
             //Will be simple but just need to see the return of JSON
             return (true);
         }
-        public static login_Status CreateAccount(string input_Name, string input_email, string input_Password, string input_CheckPassword)
+        public static login_Status CreateAccount(string inputName, string inputEmail, string inputPassword, string inputCheckPassword)
         {
             //Check if already exists
             //Passwords Match ✅
             //Create new UserId 
             //create new instance of user
             //Store the in by using -> /api/UsersDB
-            if (input_Password != input_CheckPassword)
+            if (inputPassword != inputCheckPassword)
             {
                 return (login_Status.Passwords_Dont_Match);
             }
@@ -91,9 +91,9 @@ namespace RockRoute.Helper
             User newUser = new User //Creating a new instance to push to database
             {
                 UserId = newUserID,
-                Name = input_Name,
-                Email = input_email,
-                Password = input_Password
+                Name = inputName,
+                Email = inputEmail,
+                Password = inputPassword
             };
 
             //SEND newUser object into the API

@@ -1,6 +1,6 @@
 namespace RockRoute.enums
 {
-    public enum login_Status
+    public enum login_Status //Login and Create Account Status
         {
             Account_Exists, //0
             Account_Already_Exists, //1 //For if the user tries to make a new account with existing email
