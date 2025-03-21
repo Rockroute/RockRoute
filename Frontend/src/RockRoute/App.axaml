@@ -6,5 +6,7 @@
 
     <Application.Styles>
         <FluentTheme />
+        <!--Makes Icons usable-->
+        <StyleInclude Source="avares://HomeScreen/Icons.axaml"></StyleInclude>
     </Application.Styles>
 </Application>
