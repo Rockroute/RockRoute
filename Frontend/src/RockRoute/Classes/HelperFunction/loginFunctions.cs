@@ -59,7 +59,7 @@ namespace RockRoute.Helper
             Password = "PretendThisIsEncrypted"
         };
 
-        private static void Create_new_UserID()
+        private static void CreatenewUserID()
         {
             //This will check exisiting UserIDs and create a new newUserID
         }
@@ -73,7 +73,7 @@ namespace RockRoute.Helper
             //Will be simple but just need to see the return of JSON
             return (true);
         }
-        public static login_Status CreateAccount(string inputName, string inputEmail, string inputPassword, string inputCheckPassword)
+        public static loginStatus CreateAccount(string inputName, string inputEmail, string inputPassword, string inputCheckPassword)
         {
             //Check if already exists
             //Passwords Match ✅
@@ -82,7 +82,7 @@ namespace RockRoute.Helper
             //Store the in by using -> /api/UsersDB
             if (inputPassword != inputCheckPassword)
             {
-                return (login_Status.Passwords_Dont_Match);
+                return (loginStatus.Passwords_Dont_Match);
             }
 
             string newUserID = "5627yh"; //Replace this with the function
@@ -100,18 +100,18 @@ namespace RockRoute.Helper
             //if API returns code *** then 
 
             //else (If API returns code ***)
-            //return(login_Status.Error);
+            //return(loginStatus.Error);
 
 
             //THE TWO LINES BELOW ARE TO BE COMMENTED OUT AFTER API WORKING:
             string newUserAsString = JsonConvert.SerializeObject(newUser); //Converts the rating into JSON String
             System.Console.WriteLine(newUserAsString); //Prints the JSON string
 
-            return (login_Status.Account_Created);
+            return (loginStatus.Account_Created);
 
         }
 
-        public static login_Status LoginAccount(string email, string password)
+        public static loginStatus LoginAccount(string email, string password)
         {
             //First do something like
             /*
@@ -125,25 +125,20 @@ namespace RockRoute.Helper
             {
                 if (testUser.Password == password)
                 {
-                    return (login_Status.Successfull_Login);
+                    return (loginStatus.Successfull_Login);
                 }
                 else
                 {
-                    return (login_Status.Incorrect_Details);
+                    return (loginStatus.Incorrect_Details);
                 }
             }
             else
             {
-                return (login_Status.Incorrect_Details);
+                return (loginStatus.Incorrect_Details);
 
             }
 
-
-
         }
-
-
-
 
 
     }

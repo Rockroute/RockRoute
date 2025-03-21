@@ -27,5 +27,6 @@ namespace RockRoute.Classes {
             UserID = userID;
             Rating = rating;
         }
+        
     }
 }

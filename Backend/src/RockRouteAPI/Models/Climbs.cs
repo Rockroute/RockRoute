@@ -6,29 +6,32 @@ using RockRoute.Classes;
 
 namespace RockRoute.Models //makes accessible from other areas of the project 
 {
-    [Owned] 
+    [Owned]
     public class Climb //Defining a climb
 
     {
-        public required string RouteName {get; set;}
+        public required string RouteName { get; set; }
         [Key] //[Key] makes RouteId primary key.
-        public required string RouteId {get; set;}
-        public required string SectorId {get; set;}
-        public required string ParentSector {get; set;}
-        public required string Type {get; set;} //Change this to custom Type, Means that if spelt wrong, Just wont let you
+        public required string RouteId { get; set; }
+        public required string SectorId { get; set; }
+        public required string ParentSector { get; set; }
+        public required string Type { get; set; } //Change this to custom Type, Means that if spelt wrong, Just wont let you
         //do like a 4 way 'boolean'
 
-        public required string YDS {get; set;}
-        public required (float Lat, float Long) ParentLocation {get; set;}
-        public required string LocationDescription {get; set;}
-        public required string Protection_Notes {get; set;}
-        public required List<CRating> UserRatings {get; set;} //List of Tuples with (String, int)
+        public required string YDS { get; set; }
+        public required (float Lat, float Long) ParentLocation { get; set; }
+        public required string LocationDescription { get; set; }
+        public required string Protection_Notes { get; set; }
+        public required List<CRating> UserRatings { get; set; } //List of Tuples with (String, int)
     }
 
     public class ClimbsDB : DbContext
     {
-        public ClimbsDB(DbContextOptions<ClimbsDB> options) : base(options) {}
+        public ClimbsDB(DbContextOptions<ClimbsDB> options) : base(options) { }
         public DbSet<Climb> Entries { get; set; } = null!;
     }
-
-}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CRating>().HasNoKey();
+        }
+    }

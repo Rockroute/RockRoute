@@ -927,3 +927,11 @@
 /Users/harveymatthews/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/obj/Debug/net9.0/RockRouteAPI.pdb
 /Users/harveymatthews/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/obj/Debug/net9.0/RockRouteAPI.genruntimeconfig.cache
 /Users/harveymatthews/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/obj/Debug/net9.0/ref/RockRouteAPI.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/bin/Debug/net9.0/Microsoft.Extensions.Caching.Abstractions.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/bin/Debug/net9.0/Microsoft.Extensions.Caching.Memory.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/bin/Debug/net9.0/Microsoft.Extensions.Logging.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/bin/Debug/net9.0/Microsoft.Extensions.Options.dll
+/Users/harveymatthews/Documents/GitHub/RockRoute/Backend/src/RockRouteAPI/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll
