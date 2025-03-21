@@ -1,5 +1,7 @@
 using System.Collections.Generic; //to use List
 using RockRoute.enums;
+using RockRoute.Classes;
+using RockRoute.Models;
 
 namespace RockRoute.Helper
 {
@@ -44,25 +46,61 @@ namespace RockRoute.Helper
 
     public static class LoginFunctions
     {
-        
-        private static void doesExist(string email)
+        //REPLACE HERE WITH API CALL
+        //REPLACE HERE WITH API CALL
+        //REPLACE HERE WITH API CALL
+        private static User testUser = new User
         {
-            //status status = status.Account_Exist
-        }
-        public static login_Status CreateAccount()
+            UserId = "U2827",
+            Name = "Harvey",
+            Email = "Email@Email.com",
+            Password = "PretendThisIsEncrypted"
+        };
+
+
+
+        private static bool doesExist(string email)
         {
-            return(login_Status.Incorrect_Details);
-
+            //Complete this
+            return (true);
         }
-
-        public static void LoginAccount(string email, string password)
+        public static login_Status CreateAccount(int input)
         {
+            return (login_Status.Account_Does_Not_Exists);
+        }
 
+        public static login_Status LoginAccount(string email, string password)
+        {
+            //First do
+            /*
+            If doesExist(testUser.Email)
+            {
+
+            }else
+            {
+            return(status.Account_Does_Not_Exists)
+            }
+            */
+
+            if (testUser.Email == email)
+            {
+                if (testUser.Password == password)
+                {
+                    return (login_Status.Successfull_Login);
+                } else 
+                {
+                    return(login_Status.Incorrect_Details);
+                }
+            } else
+            {
+                return(login_Status.Incorrect_Details);
+
+            }
 
 
 
         }
-        
+
 
 
 

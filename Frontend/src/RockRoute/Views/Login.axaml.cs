@@ -24,7 +24,7 @@ namespace RockRoute.Views
         private void TestTheCroute(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             
-            System.Console.WriteLine(LoginFunctions.CreateAccount());
+            System.Console.WriteLine(LoginFunctions.LoginAccount("Email@Email.com", "PretendThisIsEncrypted"));
             //testingHelper.testingList();
             //testingHelper.TestHelpName("NEVERMIND PRINT HERE INSTEAD");
             //LoginViewModel ahhh = new LoginViewModel(); //These two lines are none static -> meaning you need to create an instance first
