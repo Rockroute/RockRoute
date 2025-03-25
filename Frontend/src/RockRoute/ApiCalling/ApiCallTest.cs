@@ -27,7 +27,7 @@ namespace RockRoute.ApiCall
         static async Task<Uri> CreateClimbAsync(Climb climb)
         {
             HttpResponseMessage response = await client.PostAsJsonAsync(
-                "api/climbs", climb);
+                "api/ClimbsDB", climb);
             response.EnsureSuccessStatusCode();
 
             // return URI of the created resource.
@@ -48,7 +48,7 @@ namespace RockRoute.ApiCall
         static async Task<Climb> UpdateClimbAsync(Climb climb)
         {
             HttpResponseMessage response = await client.PutAsJsonAsync(
-                $"api/climbs/{climb.RouteId}", climb);
+                $"api/ClimbsDB/{climb.RouteId}", climb);
             response.EnsureSuccessStatusCode();
 
             // Deserialize the updated climb from the response body.
@@ -59,7 +59,7 @@ namespace RockRoute.ApiCall
         static async Task<HttpStatusCode> DeleteClimbAsync(string routeId)
         {
             HttpResponseMessage response = await client.DeleteAsync(
-                $"api/climbs/{routeId}");
+                $"api/ClimbsDB/{routeId}");
             return response.StatusCode;
         }
 
@@ -82,7 +82,7 @@ namespace RockRoute.ApiCall
                 Climb climb = new Climb
                 {
                     RouteName = "TheRouteName",
-                    RouteId = "LSO(SAY)",
+                    RouteId = "LSOSAY", //No brackets in RouteID?
                     SectorId = "djs8d",
                     ParentSector = "ClimbSector",
                     Type = climbTypes.Boulder,
@@ -101,17 +101,17 @@ namespace RockRoute.ApiCall
                 ShowClimb(climb);
 
                 // Update the climb
-                Console.WriteLine("Updating price...");
-                climb.RouteName = "NEWNAME";
-                await UpdateClimbAsync(climb);
+                //Console.WriteLine("Updating price...");
+                //climb.RouteName = "NEWNAME";
+                //await UpdateClimbAsync(climb);
 
                 // Get the updated climb
-                climb = await GetClimbAsync(url.PathAndQuery);
-                ShowClimb(climb);
+                //climb = await GetClimbAsync(url.PathAndQuery);
+                //ShowClimb(climb);
 
                 // Delete the climb
-                var statusCode = await DeleteClimbAsync(climb.RouteId);
-                Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode})");
+                //var statusCode = await DeleteClimbAsync(climb.RouteId);
+                //Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode})");
 
             }
             catch (Exception e)
