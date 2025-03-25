@@ -7,6 +7,8 @@ using RockRoute.Models;
 
 namespace RockRoute.Helper
 {
+    //This class isnt being used anywhere but to just test 
+    //out thinggs with types
     public static class testingHelper
     {
         public static void TestHelpName(string hello)
@@ -44,7 +46,38 @@ namespace RockRoute.Helper
             }
             //System.Console.WriteLine(stringsOfApex);
         }
+
+        public static void tupleTesting()
+        {
+            (double, double) tupleTest = (292.12, 19.23);
+            //System.Console.WriteLine(tupleTest);
+
+            var testingTuple = new Climb
+            {
+                RouteName = "TheRouteName",
+                RouteId = "LSO(SAY)",
+                SectorId = "djs8d",
+                ParentSector = "ClimbSector",
+                Type = climbTypes.Boulder,
+                YDS = "V2",
+                ParentLocation = (37.733, -119.637),
+                LocationDescription = "Description of a climb",
+                Protection_Notes = "Bring snacks",
+                UserRatings = new List<CRating>()
+            };
+            string testingTupleAsString = JsonConvert.SerializeObject(testingTuple); //Converts the rating into JSON String
+            //System.Console.WriteLine(testingTupleAsString); //Prints the JSON string
+
+            Climb backToObject = JsonConvert.DeserializeObject<Climb>(testingTupleAsString); //Converts the JSON string into Object rating
+            System.Console.WriteLine(backToObject.ParentLocation); //prints the converted object UserID (21)
+            //This is just confirming that is a tuple when converted into Object.
+        }
+
     }
+
+
+
+
 
     public static class LoginFunctions
     {

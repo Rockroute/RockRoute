@@ -1,6 +1,5 @@
 namespace RockRoute.enums
-//IF CHANGE ANYTHING HERE. CHANGE IN BACKEND ENUMS ASWELL!!!
-
+//IF CHANGE ANYTHING HERE. CHANGE IN FRONTEND ENUMS ASWELL!!!
 {
     public enum climbTypes
     {

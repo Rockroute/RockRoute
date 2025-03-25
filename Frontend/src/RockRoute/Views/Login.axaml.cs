@@ -5,6 +5,8 @@ using RockRoute.Classes;
 using Newtonsoft.Json;
 using RockRoute.Helper;
 using RockRoute.enums;
+using RockRoute.ApiCall;
+
 
 
 namespace RockRoute.Views
@@ -21,10 +23,14 @@ namespace RockRoute.Views
         {
             AvaloniaXamlLoader.Load(this);
         }
-        private void TestTheCroute(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+
+        //Harveys Magic Print Button
+        private async void TestTheCroute(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            
-            System.Console.WriteLine(LoginFunctions.LoginAccount("Email@Email.com", "PretendThisIsEncrypted"));
+            await APIprogram.RunAsync();
+
+            //testingHelper.tupleTesting();
+            //System.Console.WriteLine(LoginFunctions.LoginAccount("Email@Email.com", "PretendThisIsEncrypted"));
             //testingHelper.testingList();
             //testingHelper.TestHelpName("NEVERMIND PRINT HERE INSTEAD");
             //LoginViewModel ahhh = new LoginViewModel(); //These two lines are none static -> meaning you need to create an instance first
