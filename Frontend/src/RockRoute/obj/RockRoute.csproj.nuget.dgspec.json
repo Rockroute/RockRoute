@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/RockRoute.csproj": {}
+    "C:\\Users\\Owner\\Documents\\GitHub\\RockRoute\\frontend\\src\\rockroute\\RockRoute.csproj": {}
   },
   "projects": {
-    "/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/RockRoute.csproj": {
+    "C:\\Users\\Owner\\Documents\\GitHub\\RockRoute\\frontend\\src\\rockroute\\RockRoute.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/RockRoute.csproj",
+        "projectUniqueName": "C:\\Users\\Owner\\Documents\\GitHub\\RockRoute\\frontend\\src\\rockroute\\RockRoute.csproj",
         "projectName": "RockRoute",
-        "projectPath": "/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/RockRoute.csproj",
-        "packagesPath": "/Users/harveymatthews/.nuget/packages/",
-        "outputPath": "/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/obj/",
+        "projectPath": "C:\\Users\\Owner\\Documents\\GitHub\\RockRoute\\frontend\\src\\rockroute\\RockRoute.csproj",
+        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Owner\\Documents\\GitHub\\RockRoute\\frontend\\src\\rockroute\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/harveymatthews/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -93,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
