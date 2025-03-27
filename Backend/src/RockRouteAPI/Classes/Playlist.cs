@@ -1,15 +1,12 @@
 using System;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic; //to use List
 
 namespace RockRoute.Classes {
     public class Playlist {
-        private long _iD;
         private string _name = string.Empty;
         private string _creatorID = string.Empty;
         private List<String>? _collabID;
+        
         /*
         We dont want a list of routes, Cause we have to define the routes 
         when defining pLaylist, Leading to when defining Logbook.
@@ -19,11 +16,6 @@ namespace RockRoute.Classes {
         private List<String>? _listOfRoute_ID;
         private byte[]? _playlistPicture;
 
-        [Key]
-        public long Id {
-            get => _iD;
-            set {_iD = value;}
-        }
         public required string Name {
             get => _name;
             set {
@@ -57,8 +49,7 @@ namespace RockRoute.Classes {
                 _playlistPicture = value;
             }
         }
-        public Playlist(long Id, string name, string creatorID, List<string>? collabID, List<string>? ListOfRoute_ID, byte[]? playlistPicture) {
-            _iD = Id;
+        public Playlist(string name, string creatorID, List<string>? collabID, List<string>? ListOfRoute_ID, byte[]? playlistPicture) {
             _name = name;
             _creatorID = creatorID;
             _collabID = collabID;
