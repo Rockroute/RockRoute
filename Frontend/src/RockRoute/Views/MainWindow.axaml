@@ -2,20 +2,63 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RockRoute.Views;assembly=RockRoute"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
         x:Class="RockRoute.Views.MainWindow"
-        Title="RockRoute">
-    <DockPanel>
-        <StackPanel>
-            <TabControl Margin="10">
-                <TabItem Header="Header 1">
-                    <local:Example />
-                </TabItem>
-                <TabItem Header="Header 2">
-                    <local:Example />
-                </TabItem>
-            </TabControl>
-        </StackPanel>
-    </DockPanel>
+        Title="HomeScreen"
+        Background="White">
+
+	<!--Colours are grey and blue, can change-->
+	
+	<StackPanel>
+		<!--Profile button, working on it opening side menu-->
+		<Button Margin="2" CornerRadius="15" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="Black" Background="CornflowerBlue" Click="Profile_OnClick">
+			<PathIcon Data="{StaticResource person_regular}" Foreground="Black"></PathIcon>
+		</Button>
+
+		<!--Title-->
+		<Border Margin="5" CornerRadius="10" Background="White">
+			<TextBlock Margin="5" FontSize="24" Foreground="Black" HorizontalAlignment="Center" Text="RockRoute"></TextBlock>
+		</Border>
+
+		<!--Quick add activity-->
+		<Border Margin="2" CornerRadius="10" Background="LightGray" HorizontalAlignment="Center">
+			<Grid ShowGridLines="False" Margin="5"
+				  ColumnDefinitions="200, 150"
+				  RowDefinitions="Auto, Auto, Auto">
+				<Label Grid.Row="0" Grid.Column="0" Margin="10">Activity</Label>
+				<TextBox Grid.Row="0" Grid.Column="1" Margin="0 5" Name="Activity"></TextBox>
+				<Label Grid.Row="1" Grid.Column="0" Margin="10">How was it?</Label>
+				<TextBox Grid.Row="1" Grid.Column="1" Margin="0 5" Name="HowItWas"></TextBox>
+				<Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Foreground="Black" Background="White" Click="AddPic_OnClick">
+					<PathIcon Data="{StaticResource image_regular}" Foreground="Black"></PathIcon>
+				</Button>
+				<Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Foreground="Black" Background="CornflowerBlue" Click="QuickAdd_OnClick">Add</Button>
+			</Grid>
+		</Border>
+
+		<!--Space for others posts, not completed-->
+		<Border Margin="0" CornerRadius="10" HorizontalAlignment="Center">
+			<StackPanel Width="200" Height="245">
+			</StackPanel>
+		</Border>
+		
+		<!--Button bar at bottom-->
+		<Border Margin="0" CornerRadius="15" Background="LightGray" HorizontalAlignment="Center">
+			<Grid ShowGridLines="False"
+				ColumnDefinitions="100, 100, 100, 100">
+				<Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Background="WhiteSmoke" Click="Home_OnClick">
+				    <PathIcon Data="{StaticResource home_regular}" Foreground="Black"></PathIcon>
+				</Button>
+				<Button Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Background="WhiteSmoke" Click="Add_OnClick">
+					<PathIcon Data="{StaticResource add_regular}" Foreground="Black"></PathIcon>
+				</Button>
+				<Button Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Background="WhiteSmoke" Click="Map_OnClick">
+					<PathIcon Data="{StaticResource map_regular}" Foreground="Black"></PathIcon>
+				</Button>
+				<Button Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Background="WhiteSmoke" Click="Saved_OnClick">
+					<PathIcon Data="{StaticResource bookmark_regular}" Foreground="Black"></PathIcon>
+				</Button>
+			</Grid>
+		</Border>
+	</StackPanel>
 </Window>

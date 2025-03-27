@@ -1,3 +1,4 @@
+/*
 using System;
 using System.Net;
 using System.Net.Http;
@@ -36,6 +37,7 @@ namespace RockRoute.ApiCall
             return response.Headers.Location;
         }
 
+        
         static async Task<Climb> GetClimbAsync(string path)
         {
             Climb climb = null;
@@ -47,15 +49,15 @@ namespace RockRoute.ApiCall
             return climb;
         }
 
-        static async Task<Climb> UpdateClimbAsync(Climb climb)
+        /*static async Task<Climb> UpdateClimbAsync(Climb climb)
         {
             HttpResponseMessage response = await client.PutAsJsonAsync(
                 $"api/ClimbsDB/{climb.RouteId}", climb);
             response.EnsureSuccessStatusCode();
 
             // Deserialize the updated climb from the response body.
-            climb = await response.Content.ReadAsAsync<Climb>();
-            return climb;
+            //climb = await response.Content.ReadAsAsync<Climb>();
+            //return climb;
         }
 
         static async Task<HttpStatusCode> DeleteClimbAsync(string routeId)
@@ -69,7 +71,7 @@ namespace RockRoute.ApiCall
         {
             RunAsync().GetAwaiter().GetResult();
         }
-*/
+
         public static async Task RunAsync()
         {
             // Update port # in the following line.
@@ -125,3 +127,4 @@ namespace RockRoute.ApiCall
         }
     }
 }
+*/
