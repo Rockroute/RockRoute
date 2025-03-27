@@ -8,7 +8,6 @@
         Background="White">
 
 	<!--Colours are grey and blue, can change-->
-	
 	<StackPanel>
 		<!--Profile button, working on it opening side menu-->
 		<Button Margin="2" CornerRadius="15" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="Black" Background="CornflowerBlue" Click="Profile_OnClick">

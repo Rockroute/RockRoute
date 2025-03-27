@@ -11,7 +11,7 @@
             <TextBox Watermark="Password" PasswordChar="*" Width="250" Margin="5" HorizontalAlignment="Center"/>
             <CheckBox Margin="5" Content="Show Password" HorizontalAlignment="Center"/>
             <Button Margin="5" Content="Login" HorizontalAlignment="Center"/>
-            <Button Click="TestTheCroute" Margin="10" Content="Harveys Magic Print Button" HorizontalAlignment="Center"/>
+            <!--Button Click="TestTheCroute" Margin="10" Content="Harveys Magic Print Button" HorizontalAlignment="Center"/-->
             <Button Click="NeedAccountButton" Margin="5" Background="White" Foreground="#349beb" Content="Need an Account?" HorizontalAlignment="Center"/>
             <Button Margin="5" Content="Continue as Guest" HorizontalAlignment="Right"/>
         </StackPanel>

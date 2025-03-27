@@ -1,0 +1,54 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RockRoute.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:DataType="local:HomeTabViewModel"
+        x:Class="RockRoute.Views.HomeTab">
+    <UserControl.DataContext>
+        <local:HomeTabViewModel/>
+    </UserControl.DataContext>
+    
+    <DockPanel>
+        <Menu DockPanel.Dock="Bottom" Background="#FFCCCB" CornerRadius="10">
+            <MenuItem Header="Settings"/>
+            <MenuItem Header="Log out"/>
+        </Menu>
+
+        <Border DockPanel.Dock="Top" Margin="2" CornerRadius="10" Background="LightGray" HorizontalAlignment="Center">
+            <Grid ShowGridLines="False" Margin="5" ColumnDefinitions="200, 150" RowDefinitions="Auto, Auto, Auto">
+                <Label Grid.Row="0" Grid.Column="0" Margin="10">Activity</Label>
+                <TextBox Grid.Row="0" Grid.Column="1" Margin="0 5" Name="Activity"></TextBox>
+                <Label Grid.Row="1" Grid.Column="0" Margin="10">How was it?</Label>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="0 5" Name="HowItWas"></TextBox>
+                <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Foreground="Black" Background="White" Content="add Image"/>
+                <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Foreground="Black" Background="CornflowerBlue" Content="add climb"/>
+
+            </Grid>
+        </Border>
+
+        <Border CornerRadius="10" DockPanel.Dock="Top" BorderThickness="10"><TextBlock Text="Climbing near you" HorizontalAlignment="Center"/></Border>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
+        <StackPanel>
+            <ItemsControl ItemsSource="{Binding recommendations}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="10" Background="LightGray" CornerRadius="10"><StackPanel>
+                            <TextBlock Text="{Binding routeName}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding imageUrl}" HorizontalAlignment="Center" />
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Width="300" TextWrapping="Wrap" Text="{Binding routeDescription}" HorizontalAlignment="Center" />
+                                <Button Content="Add to logbook?"/>
+                            </StackPanel>
+                        </StackPanel></Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Button Content="See more?" Background="white" Foreground="LightBlue" HorizontalAlignment="Right" Click="SeeMoreButton"/>
+        </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+
+</UserControl>
