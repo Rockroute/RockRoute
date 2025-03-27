@@ -29,9 +29,6 @@ build_property.EnableCodeStyleSeverity =
 [/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/Icons.axaml]
-build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
-
 [/Users/harveymatthews/Documents/GitHub/RockRoute/Frontend/src/RockRoute/Views/CreateAccount.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
