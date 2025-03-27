@@ -1,3 +1,2 @@
 .DS_Store
-/Frontend/src/bin
-/Backend/src/bin
+bin/
