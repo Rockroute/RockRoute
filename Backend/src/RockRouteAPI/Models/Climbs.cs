@@ -2,6 +2,8 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using RockRoute.Classes;
+using System.Collections.Generic; //to use List //This is needed in Frontend but not the backend setion?
+
 using RockRoute.enums;
 
 
@@ -17,7 +19,6 @@ namespace RockRoute.Models //makes accessible from other areas of the project
         public required string SectorId {get; set;}
         public required string ParentSector {get; set;}
         public required climbTypes Type {get; set;} 
-
         public required string YDS {get; set;}
         public required (double Lat, double Long) ParentLocation {get; set;}
         public required string LocationDescription {get; set;}
