@@ -6,7 +6,5 @@
 
     <Application.Styles>
         <FluentTheme />
-        <!--Makes Icons usable-->
-        <StyleInclude Source="avares://RockRoute/Icons.axaml"></StyleInclude>
     </Application.Styles>
 </Application>
