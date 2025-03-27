@@ -1,12 +1,15 @@
 using System;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RockRoute.Classes {
-
-    public class CRating {
         
+    public class CRating {
         private string _userID = string.Empty;
         private int _rating;
         
+        [Key]
         public required string UserID {
             get => _userID;
             set {
