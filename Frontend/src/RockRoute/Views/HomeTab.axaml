@@ -21,8 +21,10 @@
                 <Label Grid.Row="0" Grid.Column="0" Margin="10">Activity</Label>
                 <TextBox Grid.Row="0" Grid.Column="1" Margin="0 5" Name="Activity"></TextBox>
                 <Label Grid.Row="1" Grid.Column="0" Margin="10">How was it?</Label>
-                <TextBox Grid.Row="1" Grid.Column="1" Margin="0 5" Name="HowItWas"></TextBox>
-                <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Foreground="Black" Background="White" Content="add Image"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="0 5" Name="HowItWas" TextWrapping="Wrap"></TextBox>
+                <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Foreground="Black" Background="White">
+                    <PathIcon Data="{StaticResource image_regular}" Foreground="Black"></PathIcon>
+                </Button>
                 <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Foreground="Black" Background="CornflowerBlue" Content="add climb"/>
 
             </Grid>

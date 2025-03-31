@@ -10,13 +10,14 @@
      <TabControl HorizontalAlignment="Center">
 
         <TabItem Header="       Home       " BorderThickness="15">
-            <local:HomeTab />
+            <local:HomeTab/>
         </TabItem>
 
         <TabItem Header="       Search       " BorderThickness="15">
         </TabItem>
 
         <TabItem Header="       Log Book       " BorderThickness="15">
+            <local:LogBookTab/>
         </TabItem>
 
     </TabControl>
