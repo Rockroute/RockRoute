@@ -3,6 +3,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using RockRoute.Views;
 using RockRoute.ViewModels;
+using Avalonia.Controls;
 
 namespace RockRoute;
 
@@ -17,10 +18,12 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new MainWindow
-            {
-                DataContext = new MainWindowViewModel(),
-            };
+            var mainWindow = new Login();
+            //mainWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+            desktop.MainWindow = mainWindow;
+            //{
+                //DataContext = new MainWindowViewModel(),
+            //};
         }
 
         base.OnFrameworkInitializationCompleted();

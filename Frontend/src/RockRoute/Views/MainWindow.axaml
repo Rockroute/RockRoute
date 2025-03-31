@@ -6,16 +6,19 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="RockRoute.Views.MainWindow"
         Title="RockRoute">
-    <DockPanel>
-        <StackPanel>
-            <TabControl Margin="10">
-                <TabItem Header="Header 1">
-                    <local:Example />
-                </TabItem>
-                <TabItem Header="Header 2">
-                    <local:Example />
-                </TabItem>
-            </TabControl>
-        </StackPanel>
-    </DockPanel>
+
+     <TabControl HorizontalAlignment="Center">
+
+        <TabItem Header="       Home       " BorderThickness="15">
+            <local:HomeTab/>
+        </TabItem>
+
+        <TabItem Header="       Search       " BorderThickness="15">
+        </TabItem>
+
+        <TabItem Header="       Log Book       " BorderThickness="15">
+            <local:LogBookTab/>
+        </TabItem>
+
+    </TabControl>
 </Window>

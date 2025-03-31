@@ -1,6 +1,5 @@
 ﻿using Avalonia;
 using System;
-
 namespace RockRoute;
 
 class Program

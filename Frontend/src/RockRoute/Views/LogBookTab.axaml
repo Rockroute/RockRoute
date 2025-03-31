@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RockRoute.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:DataType="local:LogBookTabViewModel"
+        x:Class="RockRoute.Views.LogBookTab">
+        <UserControl.DataContext>
+         <local:LogBookTabViewModel/>
+        </UserControl.DataContext>
+
+        <DockPanel>
+                <Menu DockPanel.Dock="Bottom" Background="#FFCCCB" CornerRadius="10">
+                        <MenuItem Header="Settings"/>
+                        <MenuItem Header="Log out"/>
+                </Menu>
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
+                        <StackPanel>
+                        <ItemsControl ItemsSource="{Binding playlists}">
+                                <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                        <TextBlock Text="test playlists"/>
+                                </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        </StackPanel>
+                </ScrollViewer>
+        </DockPanel>
+
+</UserControl>
