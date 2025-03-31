@@ -22,14 +22,6 @@ namespace RockRoute.ApiCall
 
         static HttpClient client = new HttpClient(handler);
 
-        static APIprogram()
-        {
-            client.BaseAddress = new Uri(_baseAPIUrl);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-        }
-
         static void ShowClimb(Climb climb)
         {
             Console.WriteLine($"Name: {climb.RouteName}\tPrice: {climb.RouteName}\tCategory: {climb.RouteName}");
@@ -37,7 +29,7 @@ namespace RockRoute.ApiCall
 
         static async Task<Uri> CreateClimbAsync(Climb climb)
         {
-            HttpResponseMessage response = await client.PostAsJsonAsync("api/ClimbsDB", climb);
+            HttpResponseMessage response = await client.PostAsJsonAsync($"{_baseAPIUrl}api/ClimbsDB", climb);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }
@@ -45,7 +37,7 @@ namespace RockRoute.ApiCall
         static async Task<Climb> GetClimbAsync(string path)
         {
             Climb climb = null;
-            HttpResponseMessage response = await client.GetAsync(path);
+            HttpResponseMessage response = await client.GetAsync($"{_baseAPIUrl}{path}");
             if (response.IsSuccessStatusCode)
             {
                 climb = await response.Content.ReadAsAsync<Climb>();
@@ -55,7 +47,7 @@ namespace RockRoute.ApiCall
 
         static async Task<Climb> UpdateClimbAsync(Climb climb)
         {
-            HttpResponseMessage response = await client.PutAsJsonAsync($"api/ClimbsDB/{climb.RouteId}", climb);
+            HttpResponseMessage response = await client.PutAsJsonAsync($"{_baseAPIUrl}api/ClimbsDB/{climb.RouteId}", climb);
             response.EnsureSuccessStatusCode();
             climb = await response.Content.ReadAsAsync<Climb>();
             return climb;
@@ -63,7 +55,7 @@ namespace RockRoute.ApiCall
 
         static async Task<HttpStatusCode> DeleteClimbAsync(string routeId)
         {
-            HttpResponseMessage response = await client.DeleteAsync($"api/ClimbsDB/{routeId}");
+            HttpResponseMessage response = await client.DeleteAsync($"{_baseAPIUrl}api/ClimbsDB/{routeId}");
             return response.StatusCode;
         }
 
@@ -88,7 +80,7 @@ namespace RockRoute.ApiCall
                 var url = await CreateClimbAsync(climb);
                 Console.WriteLine($"Created at {url}");
 
-                climb = await GetClimbAsync(url.PathAndQuery);
+                climb = await GetClimbAsync(url.AbsolutePath);
                 ShowClimb(climb);
             }
             catch (Exception e)
