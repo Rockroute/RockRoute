@@ -1,9 +1,10 @@
 using System;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+
 
 using RockRoute.Classes;
 using RockRoute.Models;
@@ -40,7 +41,7 @@ namespace RockRoute.ApiTest
             HttpResponseMessage response = await client.GetAsync($"{_baseAPIUrl}{path}");
             if (response.IsSuccessStatusCode)
             {
-                climb = await response.Content.ReadAsAsync<Climb>();
+                climb = await response.Content.ReadFromJsonAsync<Climb>();
             }
             return climb;
         }
@@ -49,7 +50,7 @@ namespace RockRoute.ApiTest
         {
             HttpResponseMessage response = await client.PutAsJsonAsync($"{_baseAPIUrl}api/ClimbsDB/{climb.RouteId}", climb);
             response.EnsureSuccessStatusCode();
-            climb = await response.Content.ReadAsAsync<Climb>();
+            climb = await response.Content.ReadFromJsonAsync<Climb>();
             return climb;
         }
 
