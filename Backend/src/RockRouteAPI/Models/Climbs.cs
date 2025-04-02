@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using RockRoute.Classes;
+using RockRoute.Enums;
 
 
 namespace RockRoute.Models //makes accessible from other areas of the project 
@@ -15,8 +16,7 @@ namespace RockRoute.Models //makes accessible from other areas of the project
         public required string RouteId {get; set;}
         public required string SectorId {get; set;}
         public required string ParentSector {get; set;}
-        public required string Type {get; set;} //Change this to custom Type, Means that if spelt wrong, Just wont let you
-        //do like a 4 way 'boolean'
+        public required climbTypes Type {get; set;} 
 
         public required string YDS {get; set;}
         public required (float Lat, float Long) ParentLocation {get; set;}
