@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using System.Collections.Generic;
+using System.Collections.Generic; //For List
 
 
 using RockRoute.Classes;
@@ -28,14 +28,14 @@ namespace RockRoute.ApiTest
             Console.WriteLine($"Name: {climb.RouteName}\tPrice: {climb.RouteName}\tCategory: {climb.RouteName}");
         }
 
-        static async Task<Uri> CreateClimbAsync(Climb climb)
+        public static async Task<Uri> CreateClimbAsync(Climb climb)
         {
             HttpResponseMessage response = await client.PostAsJsonAsync($"{_baseAPIUrl}api/ClimbsDB", climb);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }
 
-        static async Task<Climb> GetClimbAsync(string path)
+        public static async Task<Climb> GetClimbAsync(string path)
         {
             Climb climb = null;
             HttpResponseMessage response = await client.GetAsync($"{_baseAPIUrl}{path}");
@@ -46,7 +46,7 @@ namespace RockRoute.ApiTest
             return climb;
         }
 
-        static async Task<Climb> UpdateClimbAsync(Climb climb)
+        public static async Task<Climb> UpdateClimbAsync(Climb climb)
         {
             HttpResponseMessage response = await client.PutAsJsonAsync($"{_baseAPIUrl}api/ClimbsDB/{climb.RouteId}", climb);
             response.EnsureSuccessStatusCode();
@@ -54,7 +54,7 @@ namespace RockRoute.ApiTest
             return climb;
         }
 
-        static async Task<HttpStatusCode> DeleteClimbAsync(string routeId)
+        public static async Task<HttpStatusCode> DeleteClimbAsync(string routeId)
         {
             HttpResponseMessage response = await client.DeleteAsync($"{_baseAPIUrl}api/ClimbsDB/{routeId}");
             return response.StatusCode;
