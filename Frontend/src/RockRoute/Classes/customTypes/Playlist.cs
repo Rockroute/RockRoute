@@ -6,12 +6,6 @@ namespace RockRoute.Classes {
         private string _name = string.Empty;
         private string _creatorID = string.Empty;
         private List<String>? _collabID;
-        /*
-        We dont want a list of routes, Cause we have to define the routes 
-        when defining pLaylist, Leading to when defining Logbook.
-            We are better of just doing list of routeID, 
-            then a helper function will match them up
-        */
         private List<String>? _listOfRoute_ID;
         private byte[]? _playlistPicture;
 

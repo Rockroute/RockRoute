@@ -53,9 +53,9 @@ namespace RockRoute.Helper
         //REPLACE HERE WITH API CALL
         private static User testUser = new User
         {
-            UserId = "U2827",
-            Name = "Harvey",
-            Email = "Email@Email.com",
+            UserId = "Admin",
+            Name = "Admin",
+            Email = "Admin@Admin.com",
             Password = "PretendThisIsEncrypted"
         };
 
