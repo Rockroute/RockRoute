@@ -1,10 +1,18 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using RockRoute.ViewModels;
-using RockRoute.Classes;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
+
 using RockRoute.Helper;
 using RockRoute.enums;
+using RockRoute.ViewModels;
+using RockRoute.Classes;
+using RockRoute.Models;
+
+//Following Usings are temp and will be moved to helper
+using System;
+using System.Collections.Generic; //For List
+using RockRoute.ApiTest;
 
 
 namespace RockRoute.Views
@@ -21,36 +29,46 @@ namespace RockRoute.Views
         {
             AvaloniaXamlLoader.Load(this);
         }
-        private void TestTheCroute(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+
+        //Start of backend Testing Stuff
+
+        Climb Testclimb = new Climb
         {
-            
-            System.Console.WriteLine(LoginFunctions.LoginAccount("Email@Email.com", "PretendThisIsEncrypted"));
-            //testingHelper.testingList();
-            //testingHelper.TestHelpName("NEVERMIND PRINT HERE INSTEAD");
-            //LoginViewModel ahhh = new LoginViewModel(); //These two lines are none static -> meaning you need to create an instance first
-            //ahhh.printTheCroute
-            
-            //LoginViewModel.printTheCroute(); //This is if it were static on LogivViewModel.cs
+            RouteName = "TheRouteName",
+            RouteId = "LSOSAY",
+            SectorId = "djs8d",
+            ParentSector = "ClimbSector",
+            Type = climbTypes.Boulder,
+            YDS = "V2",
+            ParentLocation = (37.733, -119.637),
+            LocationDescription = "Description of a climb",
+            Protection_Notes = "Bring snacks",
+            UserRatings = new List<CRating>()
+        };
+        private void DeleteClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+
+            System.Console.WriteLine("Delete");
         }
+        private void GetAllClimbs(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+
+        }
+        private void GetAClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+
+        }
+        private async void SaveAClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            var url = await APIprogram.CreateClimbAsync(Testclimb);
+        }
+        //End of the backend testing stuff, If you want it gone just just do one comments block shown as ->     /* The code in here  */
+
 
         private void NeedAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            
-            //CRating rating = new CRating("21", 6); //Create a new rating of User id 21, rate 6
-            
-            //string ratingAsString = JsonConvert.SerializeObject(rating); //Converts the rating into JSON String
-            //System.Console.WriteLine(ratingAsString); //Prints the JSON string
-            
-            //CRating ratingJSONagain = JsonConvert.DeserializeObject<CRating>(ratingAsString); //Converts the JSON string into Object rating
-            //System.Console.WriteLine(ratingJSONagain.UserID); //prints the converted object UserID (21)
-            
-
-            LoginViewModel instanceOfClass = new LoginViewModel();
-            instanceOfClass.PrintLogBookObject();
-            //Below is frontend bits
-            //LogBookConvert();
             var NewWindow = new CreateAccount();
-           //NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+            //NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
             NewWindow.Show();
             this.Close();
 
