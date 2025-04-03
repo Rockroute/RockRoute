@@ -1,21 +1,16 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace RockRoute.Classes
 {
+    [Owned]
     public class Activity
     {
-        private long _id;
         private string _name;
         private DateTime? _date;
         private string _notes;
-
-        [Key]
-        public long Id
-        {
-            get => _id;
-            set => _id = value;
-        }
 
         public string Name
         {
@@ -35,9 +30,8 @@ namespace RockRoute.Classes
             set => _notes = value;
         }
 
-        public Activity(long id, string name, DateTime? date, string notes)
+        public Activity(string name, DateTime? date, string notes)
         {
-            _id = id;
             _name = name;
             _date = date;
             _notes = notes;

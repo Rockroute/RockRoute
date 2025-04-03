@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace RockRoute.Classes {
+    [Owned]
+
     public class CRoute {
         private string _routeID = string.Empty;
         private DateTime? _completeDate;
@@ -11,7 +14,6 @@ namespace RockRoute.Classes {
         private bool? _isOnSite;
         private string? _notes;
 
-        [Key]
         public required string RouteID {
             get => _routeID;
             set {

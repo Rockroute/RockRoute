@@ -7,7 +7,7 @@ namespace RockRoute.Classes {
         private string _creatorID = string.Empty;
         private List<String>? _collabID;
         private List<String>? _listOfRoute_ID;
-        private byte[]? _playlistPicture;
+        private string? _playlistPicture;
 
         public required string Name {
             get => _name;
@@ -36,13 +36,13 @@ namespace RockRoute.Classes {
                 _listOfRoute_ID = value;}
         }
         
-        public byte[]? PlaylistPicture {
+        public string? PlaylistPicture {
             get => _playlistPicture;
             set {
                 _playlistPicture = value;
             }
         }
-        public Playlist(string name, string creatorID, List<string>? collabID, List<string>? ListOfRoute_ID, byte[]? playlistPicture) {
+        public Playlist(string name, string creatorID, List<string>? collabID, List<string>? ListOfRoute_ID, string? playlistPicture) {
             _name = name;
             _creatorID = creatorID;
             _collabID = collabID;

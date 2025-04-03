@@ -75,7 +75,7 @@ namespace RockRouteAPI.Controllers
         // POST: api/LogBookDB
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<LogBook>> PostLogBook(LogBook logBook)
+        public async Task<ActionResult<LogBook>> PostLogBook([FromBody] LogBook logBook)
         {
             _context.LogBook.Add(logBook);
             try

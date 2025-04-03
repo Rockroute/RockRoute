@@ -1,13 +1,18 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+
+[Owned]
+public class Playlist
+
 
 namespace RockRoute.Classes {
-
+[Owned]
     public class CRating {
         private string _userID = string.Empty;
         private int _rating;
 
-        [Key]
+        
         public required string UserID {
             get => _userID;
             set {
