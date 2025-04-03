@@ -63,7 +63,7 @@ namespace RockRoute.Classes {
             _creatorID = creatorID;
             _collabID = collabID;
             _listOfRoute_ID = ListOfRoute_ID;
-            _playlistPicture = playlistPicture
+            _playlistPicture = playlistPicture;
         }  
     }
 }
