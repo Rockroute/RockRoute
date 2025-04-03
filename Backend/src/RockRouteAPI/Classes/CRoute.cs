@@ -1,17 +1,17 @@
 using System;
 using Microsoft.VisualBasic;
-using System.Collections.Generic;//List
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace RockRoute.Classes {
-    public class CRoute {
-        private string _routeID = string.Empty;
-        private DateTime? _completeDate;
-        private List<string>? _partnerID;
-        private int? _attempts;
+@@ -11,7 +13,7 @@ public class CRoute {
         private bool? _isOnSite;
         private string? _notes;
 
-        
+
+        [Key]
         public required string RouteID {
             get => _routeID;
             set {
@@ -48,7 +48,6 @@ namespace RockRoute.Classes {
                 _notes = value;
             }
         }
-
         public CRoute(string routeID, DateTime? completedDate,List<string>? partnerID, int? attempts, bool? isOnSite, string? notes) {
             RouteID = routeID;
             CompletedDate = completedDate;
