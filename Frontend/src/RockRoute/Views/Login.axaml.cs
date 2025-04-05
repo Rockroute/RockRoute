@@ -21,6 +21,7 @@ namespace RockRoute.Views
 
     public partial class Login : Window
     {
+        //Simple way of hiding buttons and can be used for future
         void hideButtonDebug(string ButtonName)
         {
             if (!Program.DebugMode) //From the program.cs file
@@ -35,6 +36,7 @@ namespace RockRoute.Views
             InitializeComponent();
             DataContext = new LoginViewModel(); //Connects ViewModel to View
             
+            //Hides buttons if debug mode is on, It follows the name not the click from .axaml.cs
             hideButtonDebug("DeleteButton");
             hideButtonDebug("GetAll");
             hideButtonDebug("GetA");
