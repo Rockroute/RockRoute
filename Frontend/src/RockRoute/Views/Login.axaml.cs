@@ -17,12 +17,28 @@ using RockRoute.ApiTest;
 
 namespace RockRoute.Views
 {
+
+
     public partial class Login : Window
     {
+        void hideButtonDebug(string ButtonName)
+        {
+            if (!Program.DebugMode) //From the program.cs file
+            {
+                //If NOT in debug mode, hide button
+                var hideButton = this.FindControl<Button>(ButtonName);
+                hideButton.IsVisible = false;
+            }
+        }
         public Login()
         {
             InitializeComponent();
             DataContext = new LoginViewModel(); //Connects ViewModel to View
+            
+            hideButtonDebug("DeleteButton");
+            hideButtonDebug("GetAll");
+            hideButtonDebug("GetA");
+            hideButtonDebug("SaveA");
         }
 
         private void InitializeComponent()
@@ -31,6 +47,8 @@ namespace RockRoute.Views
         }
 
         //Start of backend Testing Stuff
+
+
 
         Climb Testclimb = new Climb
         {
