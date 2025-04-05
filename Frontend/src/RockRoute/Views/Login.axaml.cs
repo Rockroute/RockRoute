@@ -135,10 +135,13 @@ namespace RockRoute.Views
 
         }
         //Above this line is debug stuff
-        private void Login(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void LoginButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             //Login.LoginAccount(string email, string password)
-            if (Login.LoginAccount(string email, string password) = Successfull_Login)
+            string UserInputEmail = "Admin@Admin.com";
+            string UserInputPassword = "Admin";
+
+            if (LoginFunctions.LoginAccount(UserInputEmail, UserInputPassword) == login_Status.Successfull_Login)
             {
                 var NewWindow = new MainWindow();
                 if (!Program.DebugMode)
@@ -150,11 +153,7 @@ namespace RockRoute.Views
                 this.Close();
             }
 
-            var NewWindow = new MainWindow();
-            if (!Program.DebugMode)
-            {
-                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
-            }
+            
 
 
         }
