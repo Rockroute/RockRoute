@@ -41,6 +41,7 @@ namespace RockRoute.Views
             hideButtonDebug("GetAll");
             hideButtonDebug("GetA");
             hideButtonDebug("SaveA");
+            hideButtonDebug("LoginAsAdmin");
         }
 
         private void InitializeComponent()
@@ -119,11 +120,54 @@ namespace RockRoute.Views
         }
         //End of the backend testing stuff, If you want it gone just just do one comments block shown as ->     /* The code in here  */
 
+        private void AdminLogin(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            LoginFunctions.CreateAccount("Admin", "Admin@Admin.gmail.com", "Admin", "Admin");
+
+            var NewWindow = new MainWindow();
+            if (!Program.DebugMode)
+            {
+                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+            }
+
+            NewWindow.Show();
+            this.Close();
+
+        }
+        //Above this line is debug stuff
+        private void Login(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            //Login.LoginAccount(string email, string password)
+            if (Login.LoginAccount(string email, string password) = Successfull_Login)
+            {
+                var NewWindow = new MainWindow();
+                if (!Program.DebugMode)
+                {
+                    NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+                }
+
+                NewWindow.Show();
+                this.Close();
+            }
+
+            var NewWindow = new MainWindow();
+            if (!Program.DebugMode)
+            {
+                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+            }
+
+
+        }
+
 
         private void NeedAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             var NewWindow = new CreateAccount();
-            //NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+            if (!Program.DebugMode)
+            {
+                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+            }
+
             NewWindow.Show();
             this.Close();
 
