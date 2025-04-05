@@ -35,7 +35,7 @@ namespace RockRoute.Views
         {
             InitializeComponent();
             DataContext = new LoginViewModel(); //Connects ViewModel to View
-            
+
             //Hides buttons if debug mode is on, It follows the name not the click from .axaml.cs
             hideButtonDebug("DeleteButton");
             hideButtonDebug("GetAll");
@@ -67,8 +67,11 @@ namespace RockRoute.Views
             Protection_Notes = "Bring snacks",
             UserRatings = new List<CRating>()
         };
-        private void DeleteClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void DeleteClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+
+            //This works but there is not error handling
+            var status = await APIprogram.DeleteClimbAsync("LSOSAY");
 
             System.Console.WriteLine("Delete");
         }
@@ -76,7 +79,7 @@ namespace RockRoute.Views
         {
             //This works
             System.Console.WriteLine("Get All");
-            
+
             List<Climb> retrievedClimbs = await APIprogram.GetAllClimbsAsync("api/ClimbsDB");
             if (retrievedClimbs.Count > 0)
             {
@@ -84,26 +87,28 @@ namespace RockRoute.Views
                 {
                     System.Console.WriteLine(oneClimb.RouteName);
                 }
-               
-            } else
+
+            }
+            else
             {
                 System.Console.WriteLine("No Climbs not found");
             }
         }
         private async void GetAClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            
+
             System.Console.WriteLine("Get A");
             //This works
             Climb retrievedClimb = await APIprogram.GetClimbAsync("api/ClimbsDB/LSOSAY");
             if (retrievedClimb != null)
             {
                 System.Console.WriteLine(retrievedClimb.RouteName);
-            } else
+            }
+            else
             {
                 System.Console.WriteLine("Climb not found");
             }
-            
+
 
         }
         private async void SaveAClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
