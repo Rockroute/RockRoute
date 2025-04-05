@@ -33,7 +33,7 @@ namespace RockRoute.Views
         private void CreateAccountButtonClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e) 
         {
             //I dont know how you get the Writing from Textbox, But just fill in the function below:
-            LoginFunctions.CreateAccount("NEWUSER?A?!?!?", "NerUsersEmail", "newUsersPassword", "newUsersPassword");
+            LoginFunctions.CreateAccountFunc("NEWUSER?A?!?!?", "NerUsersEmail", "newUsersPassword", "newUsersPassword");
             //System.Console.WriteLine(LoginFunctions.CreateAccount("NEWUSER?A?!?!?", "NerUsersEmail", "newUsersPassword", "newUsersPassword"));
 
             var NewWindow = new MainWindow();

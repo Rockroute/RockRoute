@@ -36,7 +36,7 @@ namespace RockRoute.Helper
             //Will be simple but just need to see the return of JSON
             return (true);
         }
-        public async static Task<login_Status> CreateAccount(string input_Name, string input_email, string input_Password, string input_CheckPassword)
+        public async static Task<login_Status> CreateAccountFunc(string input_Name, string input_email, string input_Password, string input_CheckPassword)
         {
             //Check if already exists
             //Passwords Match ✅

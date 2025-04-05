@@ -42,6 +42,8 @@ namespace RockRoute.Views
             hideButtonDebug("GetA");
             hideButtonDebug("SaveA");
             hideButtonDebug("LoginAsAdmin");
+            EmailTxtBox = this.FindControl<TextBox>("EmailTxtBox");
+
         }
 
         private void InitializeComponent()
@@ -71,10 +73,8 @@ namespace RockRoute.Views
         private async void DeleteClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
 
-            //This works but there is not error handling
-            var status = await API_Climbs.DeleteClimbAsync("LSOSAY");
+            LoginFunctions.CreateAccountFunc("Admin", "Admin@Admin.gmail.com", "Admin", "Admin");
 
-            System.Console.WriteLine("Delete");
         }
         private async void GetAllClimbs(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
@@ -122,7 +122,7 @@ namespace RockRoute.Views
 
         private void AdminLogin(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            LoginFunctions.CreateAccount("Admin", "Admin@Admin.gmail.com", "Admin", "Admin");
+            LoginFunctions.CreateAccountFunc("Admin", "Admin@Admin.gmail.com", "Admin", "Admin");
 
             var NewWindow = new MainWindow();
             if (!Program.DebugMode)
@@ -138,22 +138,30 @@ namespace RockRoute.Views
         private void LoginButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             //Login.LoginAccount(string email, string password)
-            string UserInputEmail = "Admin@Admin.com";
-            string UserInputPassword = "Admin";
-
-            if (LoginFunctions.LoginAccount(UserInputEmail, UserInputPassword) == login_Status.Successfull_Login)
+            if (EmailTxtBox.Text == null)
             {
-                var NewWindow = new MainWindow();
-                if (!Program.DebugMode)
-                {
-                    NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
-                }
-
-                NewWindow.Show();
-                this.Close();
+                System.Console.WriteLine("NULL");
             }
+            //string InputEmail = EmailTxtBox.Text;
 
-            
+            //System.Console.WriteLine(InputEmail);
+            //System.Console.WriteLine(PasswordTxtBox.Text);
+
+            /*
+                        if (LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordTxtBox.Text) == login_Status.Successfull_Login)
+                        {
+                            var NewWindow = new MainWindow();
+                            if (!Program.DebugMode)
+                            {
+                                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+                            }
+
+                            NewWindow.Show();
+                            this.Close();
+
+                        }
+
+                        */
 
 
         }

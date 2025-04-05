@@ -6,9 +6,9 @@
         x:Class="RockRoute.Views.Login">
         <StackPanel>
             <TextBlock Margin="5" HorizontalAlignment="Center" Text="Email:"/>
-            <TextBox Watermark="Enter Email" Width="250" Margin="5" HorizontalAlignment="Center"/>
+            <TextBox Name="EmailTxtBox" Watermark="Enter Email" Width="250" Margin="5" HorizontalAlignment="Center"/>
             <TextBlock Margin="5" HorizontalAlignment="Center" Text="Password:"/>
-            <TextBox Watermark="Password" PasswordChar="*" Width="250" Margin="5" HorizontalAlignment="Center"/>
+            <TextBox x:Name="PasswordTxtBox" Watermark="Password" PasswordChar="*" Width="250" Margin="5" HorizontalAlignment="Center"/>
             <CheckBox Margin="5" Content="Show Password" HorizontalAlignment="Center"/>
             <Button Margin="5" Click="LoginButton" Content="Login" HorizontalAlignment="Center"/>
             
@@ -16,7 +16,7 @@
             
             <Button Name="LoginAsAdmin" Click="AdminLogin" Margin="5" Content="Login as Admin" HorizontalAlignment="Center"/>
 
-            <Button Name="DeleteButton" Click="DeleteClimb" Margin="5" Content="Delete" HorizontalAlignment="Center"/>
+            <Button Name="DeleteButton" Click="DeleteClimb" Margin="5" Content="Create Admin" HorizontalAlignment="Center"/>
             <Button Name="GetAll" Click="GetAllClimbs" Margin="5" Content="getAll" HorizontalAlignment="Center"/>
             <Button Name="GetA" Click="GetAClimb" Margin="5" Content="Get A" HorizontalAlignment="Center"/>
             <Button Name="SaveA" Click="SaveAClimb" Margin="5" Content="Save A" HorizontalAlignment="Center"/>
