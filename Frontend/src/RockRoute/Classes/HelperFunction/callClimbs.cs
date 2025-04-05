@@ -1,60 +1,6 @@
-using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-
-using RockRoute.Helper;
-using RockRoute.enums;
-using RockRoute.ViewModels;
-using RockRoute.Classes;
-using RockRoute.Models;
-
-//Following Usings are temp and will be moved to helper
-using System;
-using System.Collections.Generic; //For List
-using RockRoute.ApiTest;
-
-
-namespace RockRoute.Views
-{
-
-
-    public partial class Login : Window
-    {
-        //Simple way of hiding buttons and can be used for future
-        void hideButtonDebug(string ButtonName)
-        {
-            if (!Program.DebugMode) //From the program.cs file
-            {
-                //If NOT in debug mode, hide button
-                var hideButton = this.FindControl<Button>(ButtonName);
-                hideButton.IsVisible = false;
-            }
-        }
-        public Login()
-        {
-            InitializeComponent();
-            DataContext = new LoginViewModel(); //Connects ViewModel to View
-
-            //Hides buttons if debug mode is on, It follows the name not the click from .axaml.cs
-            hideButtonDebug("DeleteButton");
-            hideButtonDebug("GetAll");
-            hideButtonDebug("GetA");
-            hideButtonDebug("SaveA");
-        }
-
-        private void InitializeComponent()
-        {
-            AvaloniaXamlLoader.Load(this);
-        }
-
-        //Start of backend Testing Stuff
-        //If your curious what Im doing here
-        //Im just testing them all out here in the buttons at the login
-        //When they work Ill then move the code below into a helper function
-        //where the data will be processed there and passed into here easily
-        //This makes it all look nicer and more effienct
-        Climb Testclimb = new Climb
+//IGNORE THIS FILE JUST SAVING HERE TEMP
+/*
+Climb Testclimb = new Climb
         {
             RouteName = "TheRouteName",
             RouteId = "LSOSAY",
@@ -117,7 +63,7 @@ namespace RockRoute.Views
             //THIS WORKS
             var url = await API_Climbs.CreateClimbAsync(Testclimb);
         }
-        //End of the backend testing stuff, If you want it gone just just do one comments block shown as ->     /* The code in here  */
+        //End of the backend testing stuff, If you want it gone just just do one comments block shown as ->
 
 
         private void NeedAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -128,5 +74,6 @@ namespace RockRoute.Views
             this.Close();
 
         }
-    }
-}
+
+
+        */

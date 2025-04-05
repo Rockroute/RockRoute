@@ -38,7 +38,6 @@ namespace RockRoute.ViewModels
             bool? isOnSite = true;
             string? notes = "Interesting climb, Recommend";
 
-            testingHelper.TestHelpName("or? go through this");
             // Creating an instance
             //string ApiAsString = JsonConvert.SerializeObject(myRoute); //Converts the ApiJson into JSON String
             //System.Console.WriteLine(ApiAsString); //Prints the JSON string

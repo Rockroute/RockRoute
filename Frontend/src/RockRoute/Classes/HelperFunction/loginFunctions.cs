@@ -1,51 +1,14 @@
 using System.Collections.Generic; //to use List
 using Newtonsoft.Json;//for JSON serilization
+using System.Threading.Tasks;
 
 using RockRoute.enums;
 using RockRoute.Classes;
 using RockRoute.Models;
+using RockRoute.ApiTest;
 
 namespace RockRoute.Helper
 {
-    public static class testingHelper
-    {
-        public static void TestHelpName(string hello)
-        {
-
-            System.Console.WriteLine(hello);
-        }
-
-        public static void testingList()
-        {
-            List<string> stringsOfApex = new List<string>();
-            stringsOfApex.Add("One");
-            stringsOfApex.Add("Two");
-            stringsOfApex.Add("Three");
-            stringsOfApex.Add("Four");
-            stringsOfApex.Remove("One");
-            int removeHere = stringsOfApex.IndexOf("Three");
-            stringsOfApex.RemoveAt(removeHere);
-            //Should Print Two Four
-            /*
-            Things you can use
-            Sort()
-            Reverse()
-            RemoveAt()
-            Remove()
-            Insert()
-            IndexOf()
-            Forrach()
-            Contains()
-            Add()
-            */
-            foreach (string item in stringsOfApex)
-            {
-                System.Console.WriteLine(item);
-            }
-            //System.Console.WriteLine(stringsOfApex);
-        }
-    }
-
     public static class LoginFunctions
     {
         //REPLACE HERE WITH API CALL
@@ -73,20 +36,21 @@ namespace RockRoute.Helper
             //Will be simple but just need to see the return of JSON
             return (true);
         }
-        public static login_Status CreateAccount(string input_Name, string input_email, string input_Password, string input_CheckPassword)
+        public async static Task<login_Status> CreateAccount(string input_Name, string input_email, string input_Password, string input_CheckPassword)
         {
             //Check if already exists
             //Passwords Match ✅
             //Create new UserId 
             //create new instance of user
             //Store the in by using -> /api/UsersDB
-            if (input_Password != input_CheckPassword)
+
+            if (input_Password != input_CheckPassword) //Passwords match
             {
                 return (login_Status.Passwords_Dont_Match);
             }
 
-            string newUserID = "5627yh"; //Replace this with the function
-            //create new userID
+            string newUserID = "5627yh"; //Replace this with the function:
+            //create new userID()
 
             User newUser = new User //Creating a new instance to push to database
             {
@@ -95,18 +59,14 @@ namespace RockRoute.Helper
                 Email = input_email,
                 Password = input_Password
             };
+            var url = await API_Users.CreateUserAsync(newUser);
 
             //SEND newUser object into the API
             //if API returns code *** then 
 
             //else (If API returns code ***)
             //return(login_Status.Error);
-
-
-            //THE TWO LINES BELOW ARE TO BE COMMENTED OUT AFTER API WORKING:
-            string newUserAsString = JsonConvert.SerializeObject(newUser); //Converts the rating into JSON String
-            System.Console.WriteLine(newUserAsString); //Prints the JSON string
-
+            
             return (login_Status.Account_Created);
 
         }
