@@ -49,9 +49,11 @@ namespace RockRoute.Views
         }
 
         //Start of backend Testing Stuff
-
-
-
+        //If your curious what Im doing here
+        //Im just testing them all out here in the buttons at the login
+        //When they work Ill then move the code below into a helper function
+        //where the data will be processed there and passed into here easily
+        //This makes it all look nicer and more effienct
         Climb Testclimb = new Climb
         {
             RouteName = "TheRouteName",
@@ -70,16 +72,44 @@ namespace RockRoute.Views
 
             System.Console.WriteLine("Delete");
         }
-        private void GetAllClimbs(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void GetAllClimbs(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-
+            //This works
+            System.Console.WriteLine("Get All");
+            
+            List<Climb> retrievedClimbs = await APIprogram.GetAllClimbsAsync("api/ClimbsDB");
+            if (retrievedClimbs.Count > 0)
+            {
+                foreach (var oneClimb in retrievedClimbs)
+                {
+                    System.Console.WriteLine(oneClimb.RouteName);
+                }
+               
+            } else
+            {
+                System.Console.WriteLine("No Climbs not found");
+            }
         }
-        private void GetAClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void GetAClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+            
+            System.Console.WriteLine("Get A");
+            //This works
+            Climb retrievedClimb = await APIprogram.GetClimbAsync("api/ClimbsDB/LSOSAY");
+            if (retrievedClimb != null)
+            {
+                System.Console.WriteLine(retrievedClimb.RouteName);
+            } else
+            {
+                System.Console.WriteLine("Climb not found");
+            }
+            
 
         }
         private async void SaveAClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+            System.Console.WriteLine("Save A");
+            //THIS WORKS
             var url = await APIprogram.CreateClimbAsync(Testclimb);
         }
         //End of the backend testing stuff, If you want it gone just just do one comments block shown as ->     /* The code in here  */

@@ -46,6 +46,16 @@ namespace RockRoute.ApiTest
             }
             return climb;
         }
+        public static async Task<List<Climb>> GetAllClimbsAsync(string path)
+        {
+            List<Climb>? climb = new();
+            HttpResponseMessage response = await client.GetAsync($"{_baseAPIUrl}{path}");
+            if (response.IsSuccessStatusCode)
+            {
+                climb = await response.Content.ReadFromJsonAsync<List<Climb>>();
+            }
+            return climb ?? new List<Climb>(); //Will return the climbs or if null return a empty list
+        }
 
         public static async Task<Climb> UpdateClimbAsync(Climb climb)
         {
