@@ -17,12 +17,30 @@ using RockRoute.ApiTest;
 
 namespace RockRoute.Views
 {
+
+
     public partial class Login : Window
     {
+        //Simple way of hiding buttons and can be used for future
+        void hideButtonDebug(string ButtonName)
+        {
+            if (!Program.DebugMode) //From the program.cs file
+            {
+                //If NOT in debug mode, hide button
+                var hideButton = this.FindControl<Button>(ButtonName);
+                hideButton.IsVisible = false;
+            }
+        }
         public Login()
         {
             InitializeComponent();
             DataContext = new LoginViewModel(); //Connects ViewModel to View
+            
+            //Hides buttons if debug mode is on, It follows the name not the click from .axaml.cs
+            hideButtonDebug("DeleteButton");
+            hideButtonDebug("GetAll");
+            hideButtonDebug("GetA");
+            hideButtonDebug("SaveA");
         }
 
         private void InitializeComponent()
@@ -31,6 +49,8 @@ namespace RockRoute.Views
         }
 
         //Start of backend Testing Stuff
+
+
 
         Climb Testclimb = new Climb
         {

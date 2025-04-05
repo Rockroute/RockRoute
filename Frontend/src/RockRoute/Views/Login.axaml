@@ -14,10 +14,10 @@
             
             <!--         Start of Testing Backend stuff                -->
             
-            <Button Click="DeleteClimb" Margin="5" Content="Delete" HorizontalAlignment="Center"/>
-            <Button Click="GetAllClimbs" Margin="5" Content="getAll" HorizontalAlignment="Center"/>
-            <Button Click="GetAClimb" Margin="5" Content="Get A" HorizontalAlignment="Center"/>
-            <Button Click="SaveAClimb" Margin="5" Content="Save A" HorizontalAlignment="Center"/>
+            <Button Name="DeleteButton" Click="DeleteClimb" Margin="5" Content="Delete" HorizontalAlignment="Center"/>
+            <Button Name="GetAll" Click="GetAllClimbs" Margin="5" Content="getAll" HorizontalAlignment="Center"/>
+            <Button Name="GetA" Click="GetAClimb" Margin="5" Content="Get A" HorizontalAlignment="Center"/>
+            <Button Name="SaveA" Click="SaveAClimb" Margin="5" Content="Save A" HorizontalAlignment="Center"/>
 
             <!--            End of Testing Backend stuff                           -->
 

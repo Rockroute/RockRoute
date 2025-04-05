@@ -22,7 +22,7 @@ namespace RockRoute.Models //makes accessible from other areas of the project
         public required (double Lat, double Long) ParentLocation {get; set;}
         public required string LocationDescription {get; set;}
         public required string Protection_Notes {get; set;}
-        //public required List<CRating> UserRatings {get; set;} //List of Tuples with (String, int)
+        public required List<CRating> UserRatings {get; set;} //List of Tuples with (String, int)
     }
 
     public class ClimbsDB : DbContext
