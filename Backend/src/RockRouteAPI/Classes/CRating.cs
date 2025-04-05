@@ -2,10 +2,6 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
-[Owned]
-public class Playlist
-
-
 namespace RockRoute.Classes {
 [Owned]
     public class CRating {
