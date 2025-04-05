@@ -14,6 +14,8 @@
             
             <!--         Start of Testing Backend stuff                -->
             
+            <Button Name="LoginAsAdmin" Click="AdminLogin" Margin="5" Content="Login as Admin" HorizontalAlignment="Center"/>
+
             <Button Name="DeleteButton" Click="DeleteClimb" Margin="5" Content="Delete" HorizontalAlignment="Center"/>
             <Button Name="GetAll" Click="GetAllClimbs" Margin="5" Content="getAll" HorizontalAlignment="Center"/>
             <Button Name="GetA" Click="GetAClimb" Margin="5" Content="Get A" HorizontalAlignment="Center"/>

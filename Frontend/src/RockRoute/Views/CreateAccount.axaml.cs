@@ -32,9 +32,16 @@ namespace RockRoute.Views
 
         private void CreateAccountButtonClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e) 
         {
-            System.Console.WriteLine(LoginFunctions.CreateAccount("NEWUSER?A?!?!?", "NerUsersEmail", "newUsersPassword", "newUsersPassword"));
+            //I dont know how you get the Writing from Textbox, But just fill in the function below:
+            LoginFunctions.CreateAccount("NEWUSER?A?!?!?", "NerUsersEmail", "newUsersPassword", "newUsersPassword");
+            //System.Console.WriteLine(LoginFunctions.CreateAccount("NEWUSER?A?!?!?", "NerUsersEmail", "newUsersPassword", "newUsersPassword"));
 
             var NewWindow = new MainWindow();
+            if (!Program.DebugMode)
+            {
+                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+            }
+           
            //NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
             NewWindow.Show();
             this.Close();

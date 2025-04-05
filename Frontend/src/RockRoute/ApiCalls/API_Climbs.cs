@@ -12,7 +12,7 @@ using RockRoute.enums;
 
 namespace RockRoute.ApiTest
 {
-    class APIprogram
+    class API_Climbs
     
     {
         private static readonly string _baseAPIUrl = "http://localhost:5297/";
@@ -45,6 +45,16 @@ namespace RockRoute.ApiTest
                 climb = await response.Content.ReadFromJsonAsync<Climb>();
             }
             return climb;
+        }
+        public static async Task<List<Climb>> GetAllClimbsAsync(string path)
+        {
+            List<Climb>? climb = new();
+            HttpResponseMessage response = await client.GetAsync($"{_baseAPIUrl}{path}");
+            if (response.IsSuccessStatusCode)
+            {
+                climb = await response.Content.ReadFromJsonAsync<List<Climb>>();
+            }
+            return climb ?? new List<Climb>(); //Will return the climbs or if null return a empty list
         }
 
         public static async Task<Climb> UpdateClimbAsync(Climb climb)

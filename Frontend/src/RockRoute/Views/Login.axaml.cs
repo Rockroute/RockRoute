@@ -35,12 +35,13 @@ namespace RockRoute.Views
         {
             InitializeComponent();
             DataContext = new LoginViewModel(); //Connects ViewModel to View
-            
+
             //Hides buttons if debug mode is on, It follows the name not the click from .axaml.cs
             hideButtonDebug("DeleteButton");
             hideButtonDebug("GetAll");
             hideButtonDebug("GetA");
             hideButtonDebug("SaveA");
+            hideButtonDebug("LoginAsAdmin");
         }
 
         private void InitializeComponent()
@@ -49,9 +50,11 @@ namespace RockRoute.Views
         }
 
         //Start of backend Testing Stuff
-
-
-
+        //If your curious what Im doing here
+        //Im just testing them all out here in the buttons at the login
+        //When they work Ill then move the code below into a helper function
+        //where the data will be processed there and passed into here easily
+        //This makes it all look nicer and more effienct
         Climb Testclimb = new Climb
         {
             RouteName = "TheRouteName",
@@ -65,30 +68,106 @@ namespace RockRoute.Views
             Protection_Notes = "Bring snacks",
             UserRatings = new List<CRating>()
         };
-        private void DeleteClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void DeleteClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+
+            //This works but there is not error handling
+            var status = await API_Climbs.DeleteClimbAsync("LSOSAY");
 
             System.Console.WriteLine("Delete");
         }
-        private void GetAllClimbs(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void GetAllClimbs(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            //This works
+            System.Console.WriteLine("Get All");
+
+            List<Climb> retrievedClimbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
+            if (retrievedClimbs.Count > 0)
+            {
+                foreach (var oneClimb in retrievedClimbs)
+                {
+                    System.Console.WriteLine(oneClimb.RouteName);
+                }
+
+            }
+            else
+            {
+                System.Console.WriteLine("No Climbs not found");
+            }
+        }
+        private async void GetAClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
 
-        }
-        private void GetAClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
+            System.Console.WriteLine("Get A");
+            //This works
+            Climb retrievedClimb = await API_Climbs.GetClimbAsync("api/ClimbsDB/LSOSAY");
+            if (retrievedClimb != null)
+            {
+                System.Console.WriteLine(retrievedClimb.RouteName);
+            }
+            else
+            {
+                System.Console.WriteLine("Climb not found");
+            }
+
 
         }
         private async void SaveAClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            var url = await APIprogram.CreateClimbAsync(Testclimb);
+            System.Console.WriteLine("Save A");
+            //THIS WORKS
+            var url = await API_Climbs.CreateClimbAsync(Testclimb);
         }
         //End of the backend testing stuff, If you want it gone just just do one comments block shown as ->     /* The code in here  */
+
+        private void AdminLogin(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            LoginFunctions.CreateAccount("Admin", "Admin@Admin.gmail.com", "Admin", "Admin");
+
+            var NewWindow = new MainWindow();
+            if (!Program.DebugMode)
+            {
+                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+            }
+
+            NewWindow.Show();
+            this.Close();
+
+        }
+        //Above this line is debug stuff
+        private void Login(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            //Login.LoginAccount(string email, string password)
+            if (Login.LoginAccount(string email, string password) = Successfull_Login)
+            {
+                var NewWindow = new MainWindow();
+                if (!Program.DebugMode)
+                {
+                    NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+                }
+
+                NewWindow.Show();
+                this.Close();
+            }
+
+            var NewWindow = new MainWindow();
+            if (!Program.DebugMode)
+            {
+                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+            }
+
+
+        }
 
 
         private void NeedAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             var NewWindow = new CreateAccount();
-            //NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+            if (!Program.DebugMode)
+            {
+                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+            }
+
             NewWindow.Show();
             this.Close();
 
