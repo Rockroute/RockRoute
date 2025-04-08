@@ -37,13 +37,15 @@ namespace RockRoute.Views
             DataContext = new LoginViewModel(); //Connects ViewModel to View
 
             //Hides buttons if debug mode is on, It follows the name not the click from .axaml.cs
-            hideButtonDebug("DeleteButton");
-            hideButtonDebug("GetAll");
-            hideButtonDebug("GetA");
-            hideButtonDebug("SaveA");
-            hideButtonDebug("LoginAsAdmin");
-            EmailTxtBox = this.FindControl<TextBox>("EmailTxtBox");
+            hideButtonDebug("Temp1");
+            hideButtonDebug("Temp2");
+            hideButtonDebug("Temp3");
+            hideButtonDebug("Temp4");
+            hideButtonDebug("Temp5");
 
+            //Need to get the text from the email and password box
+            EmailTxtBox = this.FindControl<TextBox>("EmailTxtBox");
+            //Todo Put the code for password box here
         }
 
         private void InitializeComponent()
@@ -51,8 +53,9 @@ namespace RockRoute.Views
             AvaloniaXamlLoader.Load(this);
         }
         //############################################################
-        //
-        //
+        //############################################################
+        //############################################################
+        //############################################################
         //
         //Start of backend Testing Stuff
         //If your curious what Im doing here
@@ -60,6 +63,9 @@ namespace RockRoute.Views
         //When they work Ill then move the code below into a helper function
         //where the data will be processed there and passed into here easily
         //This makes it all look nicer and more effienct
+        //
+        //I have named them all temp and I regulary change the name and was getting confused
+        //with number I can remeber what number I am working on at a time
         Climb Testclimb = new Climb
         {
             RouteName = "TheRouteName",
@@ -73,7 +79,7 @@ namespace RockRoute.Views
             Protection_Notes = "Bring snacks",
             UserRatings = new List<CRating>()
         };
-        private async void DeleteClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void Temp_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
 
             login_Status createAdminStatus = await LoginFunctions.CreateAccountFunc("Admin", "Admin@Admin.com", "Admin", "Admin");
@@ -81,14 +87,14 @@ namespace RockRoute.Views
             System.Console.WriteLine("Admin Created, Name: Admin  Email:Admin@Admin.com   Pasword: Admin");
             System.Console.WriteLine(createAdminStatus);
         }
-        private async void DoesExist(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void Temp_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
 
             //bool doesitExist = await LoginFunctions.doesExist(EmailTxtBox.Text);
             //System.Console.WriteLine(doesitExist);
 
         }
-        private async void GetAClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void Temp_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
 
             System.Console.WriteLine("Get A");
@@ -105,7 +111,7 @@ namespace RockRoute.Views
 
 
         }
-        private async void SaveAClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void Temp_4(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             System.Console.WriteLine("Save A");
             //THIS WORKS
@@ -113,7 +119,7 @@ namespace RockRoute.Views
         }
         //End of the backend testing stuff, If you want it gone just just do one comments block shown as ->     /* The code in here  */
 
-        private void AdminLogin(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void Temp_5(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             LoginFunctions.CreateAccountFunc("Admin", "Admin@Admin.gmail.com", "Admin", "Admin");
 
@@ -129,6 +135,13 @@ namespace RockRoute.Views
         }
         //Above this line is debug stuff
         //############################################################
+        //############################################################
+        //############################################################
+        //############################################################
+        //############################################################
+        //############################################################
+        //############################################################
+
 
         private void LoginButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
