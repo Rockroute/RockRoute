@@ -90,7 +90,7 @@ namespace RockRoute.Views
         private async void Temp_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
 
-            //bool doesitExist = await LoginFunctions.doesExist(EmailTxtBox.Text);
+            //bool doesitExist = await LoginFunctions.doesEmailExist(EmailTxtBox.Text);
             //System.Console.WriteLine(doesitExist);
 
         }

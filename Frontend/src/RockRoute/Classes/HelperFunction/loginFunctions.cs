@@ -22,16 +22,43 @@ namespace RockRoute.Helper
             Password = "PretendThisIsEncrypted"
         };
 
-        private static void Create_new_UserID()
+        private static void CreateNewUsername(string InputName)
         {
-            //This will check exisiting UserIDs and create a new newUserID
+            //FirstHalf = first 8 characters of InutName
+            //Second Half = 000
+            //While (theNewUserName = FirstHalf + string(secondHalf).doesIdExist) == false
+            //If the usrename exist, Add 1 digit to the three digit code
+            //secondHalf += 1
+            //end while
+            //return theNewUserName //If the username doesnt exist then return the newUsername
+
+             
         }
-
-        //Workds
-        private async static Task<bool> doesExist(string InputEmail)
+        private async static Task<bool> doesIdExist(string InputUserName)
         {
-            //
+            List<User> retrievedUsers = await API_Users.GetAllUsersAsync("api/UsersDB");
+            if (retrievedUsers.Count > 0)
+            {
+                foreach (var oneUser in retrievedUsers)
+                {
+                    System.Console.WriteLine(oneUser.UserId);
+                    if (oneUser.UserId == InputUserName)
+                    {
+                        return (true);
+                    }
+                }
 
+            }
+            else
+            {
+                System.Console.WriteLine("No Users not found");
+            }
+            //If no users or No users match
+            return (false);
+        }
+        //Works
+        private async static Task<bool> doesEmailExist(string InputEmail)
+        {
             List<User> retrievedUsers = await API_Users.GetAllUsersAsync("api/UsersDB");
             if (retrievedUsers.Count > 0)
             {
@@ -40,7 +67,7 @@ namespace RockRoute.Helper
                     System.Console.WriteLine(oneUser.Email);
                     if (oneUser.Email == InputEmail)
                     {
-                        return(true);
+                        return (true);
                     }
                 }
 
@@ -84,7 +111,7 @@ namespace RockRoute.Helper
 
             //else (If API returns code ***)
             //return(login_Status.Error);
-            
+
             return (login_Status.Account_Created);
 
         }
@@ -93,7 +120,7 @@ namespace RockRoute.Helper
         {
             //First do something like
             /*
-            If not doesExist(testUser.Email)
+            If not doesEmailExist(testUser.Email)
             {
             return(status.Account_Does_Not_Exists)
             }
