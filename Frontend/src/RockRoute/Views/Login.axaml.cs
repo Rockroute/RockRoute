@@ -50,7 +50,10 @@ namespace RockRoute.Views
         {
             AvaloniaXamlLoader.Load(this);
         }
-
+        //############################################################
+        //
+        //
+        //
         //Start of backend Testing Stuff
         //If your curious what Im doing here
         //Im just testing them all out here in the buttons at the login
@@ -73,27 +76,17 @@ namespace RockRoute.Views
         private async void DeleteClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
 
-            LoginFunctions.CreateAccountFunc("Admin", "Admin@Admin.gmail.com", "Admin", "Admin");
+            login_Status createAdminStatus = await LoginFunctions.CreateAccountFunc("Admin", "Admin@Admin.com", "Admin", "Admin");
 
+            System.Console.WriteLine("Admin Created, Name: Admin  Email:Admin@Admin.com   Pasword: Admin");
+            System.Console.WriteLine(createAdminStatus);
         }
-        private async void GetAllClimbs(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void DoesExist(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            //This works
-            System.Console.WriteLine("Get All");
 
-            List<Climb> retrievedClimbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
-            if (retrievedClimbs.Count > 0)
-            {
-                foreach (var oneClimb in retrievedClimbs)
-                {
-                    System.Console.WriteLine(oneClimb.RouteName);
-                }
+            //bool doesitExist = await LoginFunctions.doesExist(EmailTxtBox.Text);
+            //System.Console.WriteLine(doesitExist);
 
-            }
-            else
-            {
-                System.Console.WriteLine("No Climbs not found");
-            }
         }
         private async void GetAClimb(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
@@ -135,6 +128,8 @@ namespace RockRoute.Views
 
         }
         //Above this line is debug stuff
+        //############################################################
+
         private void LoginButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             //Login.LoginAccount(string email, string password)
@@ -142,6 +137,7 @@ namespace RockRoute.Views
             {
                 System.Console.WriteLine("NULL");
             }
+            System.Console.WriteLine(EmailTxtBox.Text);
             //string InputEmail = EmailTxtBox.Text;
 
             //System.Console.WriteLine(InputEmail);

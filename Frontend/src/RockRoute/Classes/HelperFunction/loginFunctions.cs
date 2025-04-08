@@ -27,17 +27,35 @@ namespace RockRoute.Helper
             //This will check exisiting UserIDs and create a new newUserID
         }
 
-        private static bool doesExist(string email)
+        //Workds
+        private async static Task<bool> doesExist(string InputEmail)
         {
-            //Complete this
-            //I need to see what the return of /api/UsersDB/{id} looks like for this
-            //and /api/UsersDB
-            //need to go through all of them to search for Email,
-            //Will be simple but just need to see the return of JSON
-            return (true);
+            //
+
+            List<User> retrievedUsers = await API_Users.GetAllUsersAsync("api/UsersDB");
+            if (retrievedUsers.Count > 0)
+            {
+                foreach (var oneUser in retrievedUsers)
+                {
+                    System.Console.WriteLine(oneUser.Email);
+                    if (oneUser.Email == InputEmail)
+                    {
+                        return(true);
+                    }
+                }
+
+            }
+            else
+            {
+                System.Console.WriteLine("No Users not found");
+            }
+            //If no users or No users match
+            return (false);
         }
         public async static Task<login_Status> CreateAccountFunc(string input_Name, string input_email, string input_Password, string input_CheckPassword)
         {
+
+            //TDO
             //Check if already exists
             //Passwords Match ✅
             //Create new UserId 

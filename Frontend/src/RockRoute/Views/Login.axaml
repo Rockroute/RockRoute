@@ -17,7 +17,7 @@
             <Button Name="LoginAsAdmin" Click="AdminLogin" Margin="5" Content="Login as Admin" HorizontalAlignment="Center"/>
 
             <Button Name="DeleteButton" Click="DeleteClimb" Margin="5" Content="Create Admin" HorizontalAlignment="Center"/>
-            <Button Name="GetAll" Click="GetAllClimbs" Margin="5" Content="getAll" HorizontalAlignment="Center"/>
+            <Button Name="GetAll" Click="DoesExist" Margin="5" Content="Does Email Exist" HorizontalAlignment="Center"/>
             <Button Name="GetA" Click="GetAClimb" Margin="5" Content="Get A" HorizontalAlignment="Center"/>
             <Button Name="SaveA" Click="SaveAClimb" Margin="5" Content="Save A" HorizontalAlignment="Center"/>
 
