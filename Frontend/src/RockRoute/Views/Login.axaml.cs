@@ -171,5 +171,18 @@ namespace RockRoute.Views
             this.Close();
 
         }
+
+        private void OpenMapTest(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            var mapWindow = new TestMapping();
+            
+            if (!Program.DebugMode)
+            {
+                mapWindow.WindowState = WindowState.Maximized;
+            }
+
+            mapWindow.Show();
+            this.Close(); // Or keep open if needed
+        }
     }
 }

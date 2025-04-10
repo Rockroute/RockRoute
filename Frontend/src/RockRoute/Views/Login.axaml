@@ -11,6 +11,7 @@
             <TextBox Watermark="Password" PasswordChar="*" Width="250" Margin="5" HorizontalAlignment="Center"/>
             <CheckBox Margin="5" Content="Show Password" HorizontalAlignment="Center"/>
             <Button Margin="5" Click="LoginButton" Content="Login" HorizontalAlignment="Center"/>
+            <Button Content="Open Map Test View" Click="OpenMapTest"/>
             
             <!--         Start of Testing Backend stuff                -->
             
