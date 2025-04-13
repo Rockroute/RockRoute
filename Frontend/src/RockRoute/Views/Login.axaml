@@ -16,7 +16,7 @@
             <!-- If change any of the temp, Please update the table in Notion Backend    -->
             <Button Name="Temp1" Click="Temp_1" Margin="5" Content="Create Admin" HorizontalAlignment="Center"/>
             <Button Name="Temp2" Click="Temp_2" Margin="5" Content="Login as Admin" HorizontalAlignment="Center"/>
-            <Button Name="Temp3" Click="Temp_3" Margin="5" Content="Find User From Email" HorizontalAlignment="Center"/>
+            <Button Name="Temp3" Click="Temp_3" Margin="5" Content="Create New Username" HorizontalAlignment="Center"/>
             <Button Name="Temp4" Click="Temp_4" Margin="5" Content="Create Accounts" HorizontalAlignment="Center"/>
             <Button Name="Temp5" Click="Temp_5" Margin="5" Content="Null" HorizontalAlignment="Center"/>
 

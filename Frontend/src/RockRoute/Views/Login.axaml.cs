@@ -105,16 +105,7 @@ namespace RockRoute.Views
         }
         private async void Temp_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            User testingUser = await LoginFunctions.findUserFromEmail(EmailTxtBox.Text);
-            if (testingUser != null)
-            {
-                System.Console.WriteLine(testingUser.Email.ToLower());
-
-            }
-            else
-            {
-                System.Console.WriteLine("No User Found");
-            }
+            LoginFunctions.CreateNewUsername("User");
 
         }
         private async void Temp_4(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

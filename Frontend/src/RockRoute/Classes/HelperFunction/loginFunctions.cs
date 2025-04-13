@@ -22,17 +22,53 @@ namespace RockRoute.Helper
             Password = "PretendThisIsEncrypted"
         };
 
-        private static void CreateNewUsername(string InputName)
+        public static async Task CreateNewUsername(string InputName) //change to private
         {
-            //FirstHalf = first 8 characters of InutName
+            //FirstHalf = first 5 characters of InutName
             //Second Half = 000
             //While (theNewUserName = FirstHalf + string(secondHalf).doesIdExist) == false
             //If the usrename exist, Add 1 digit to the three digit code
             //secondHalf += 1
             //end while
             //return theNewUserName //If the username doesnt exist then return the newUsername
+            //Input email, Returns the User
+            
+            //Will just do increment by 1 the highest, Inefficient but works
 
+            string firstHalf = InputName.Substring(0,3);
+            int secondHalf = 0;
+            string newUserid = firstHalf + secondHalf.ToString();
+            //bool doesNewExist = await doesIdExist(newUserid);
+            
+            while (await doesIdExist(newUserid))
+            {
+                secondHalf += 1;
+                newUserid = firstHalf + secondHalf.ToString("D3"); //combines both halves and keep 3 digits long
+            } 
+            
+            System.Console.WriteLine("New Username created: " + newUserid);
+/*
+            List<User> retrievedUsers = await API_Users.GetAllUsersAsync("api/UsersDB");
+            if (retrievedUsers.Count > 0)
+            {
+                //If user do exist, then go through all
+                foreach (var oneUser in retrievedUsers)
+                {
+                    //System.Console.WriteLine(oneUser.Email.ToLower());
+                    if (oneUser.Email.ToLower() == InputEmail.ToLower())
+                    {
+                        return (oneUser);
+                    }
+                }
 
+            }
+            else
+            {
+                System.Console.WriteLine("No Users not found");
+            }
+            //If no users or No users match
+            return (null);
+*/
         }
 
         public async static Task<User> findUserFromEmail(string InputEmail) //Works
@@ -71,7 +107,6 @@ namespace RockRoute.Helper
 
                 foreach (var oneUser in retrievedUsers)
                 {
-                    System.Console.WriteLine(oneUser.UserId);
                     if (oneUser.UserId == InputUserName)
                     {
                         return (true);
@@ -115,11 +150,12 @@ namespace RockRoute.Helper
 
             //TDO
             //Check if already exists
+            //The Name is longer than 3 characters
             //Passwords Match ✅
             //Create new UserId 
             //create new instance of user
             //Store the in by using -> /api/UsersDB
-
+            
             if (input_Password != input_CheckPassword) //Passwords match
             {
                 return (login_Status.Passwords_Dont_Match);
@@ -176,10 +212,6 @@ namespace RockRoute.Helper
             }
 
         }
-
-
-
-
 
     }
 
