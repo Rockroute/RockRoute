@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace RockRouteAPI.Migrations.LogBooksDBMigrations
+namespace RockRouteAPI.Migrations.UsersDBMigrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -11,20 +11,17 @@ namespace RockRouteAPI.Migrations.LogBooksDBMigrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "LogBook",
+                name: "Entries",
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "text", nullable: false),
-                    RouteId = table.Column<string>(type: "text", nullable: false),
-                    Playlist = table.Column<string>(type: "text", nullable: false),
-                    Route = table.Column<string>(type: "text", nullable: false),
-                    Activity = table.Column<string>(type: "text", nullable: false),
-                    User = table.Column<string>(type: "text", nullable: false),
-                    Climb = table.Column<string>(type: "text", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false),
+                    Password = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LogBook", x => x.UserId);
+                    table.PrimaryKey("PK_Entries", x => x.UserId);
                 });
         }
 
@@ -32,7 +29,7 @@ namespace RockRouteAPI.Migrations.LogBooksDBMigrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "LogBook");
+                name: "Entries");
         }
     }
 }

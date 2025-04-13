@@ -7,7 +7,7 @@ using RockRoute.enums;
 
 namespace RockRoute.Models //makes accessible from other areas of the project 
 {
-    [Owned] 
+    //[Owned] - attribute is used to define owned entities, which are objects that do not have their own identity or independent existence but instead are part of another entity.
     public class Climb //Defining a climb
 
     {
@@ -19,7 +19,7 @@ namespace RockRoute.Models //makes accessible from other areas of the project
         public required climbTypes Type {get; set;} 
 
         public required string YDS {get; set;}
-        public required (double Lat, double Long) ParentLocation {get; set;}
+        public required Location ParentLocation {get; set;}
         public required string LocationDescription {get; set;}
         public required string Protection_Notes {get; set;}
         public required List<CRating> UserRatings {get; set;} //List of Tuples with (String, int)
