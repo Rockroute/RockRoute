@@ -13,12 +13,12 @@
             <Button Margin="5" Click="LoginButton" Content="Login" HorizontalAlignment="Center"/>
             
             <!--         Start of Testing Backend stuff                -->
-            
-            <Button Name="Temp1" Click="Temp_1" Margin="5" Content="Login as Admin" HorizontalAlignment="Center"/>
-            <Button Name="Temp2" Click="Temp_2" Margin="5" Content="Create Admin" HorizontalAlignment="Center"/>
-            <Button Name="Temp3" Click="Temp_3" Margin="5" Content="Does Email Exist" HorizontalAlignment="Center"/>
-            <Button Name="Temp4" Click="Temp_4" Margin="5" Content="Get A" HorizontalAlignment="Center"/>
-            <Button Name="Temp5" Click="Temp_5" Margin="5" Content="Save A" HorizontalAlignment="Center"/>
+            <!-- If change any of the temp, Please update the table in Notion Backend    -->
+            <Button Name="Temp1" Click="Temp_1" Margin="5" Content="Create Admin" HorizontalAlignment="Center"/>
+            <Button Name="Temp2" Click="Temp_2" Margin="5" Content="Login as Admin" HorizontalAlignment="Center"/>
+            <Button Name="Temp3" Click="Temp_3" Margin="5" Content="Null" HorizontalAlignment="Center"/>
+            <Button Name="Temp4" Click="Temp_4" Margin="5" Content="Null" HorizontalAlignment="Center"/>
+            <Button Name="Temp5" Click="Temp_5" Margin="5" Content="Null" HorizontalAlignment="Center"/>
 
             <!--            End of Testing Backend stuff                           -->
 

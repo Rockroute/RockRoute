@@ -43,9 +43,10 @@ namespace RockRoute.Views
             hideButtonDebug("Temp4");
             hideButtonDebug("Temp5");
 
-            //Need to get the text from the email and password box
+            //Links the Textboxes across
             EmailTxtBox = this.FindControl<TextBox>("EmailTxtBox");
-            //Todo Put the code for password box here
+            PasswordTxtBox = this.FindControl<TextBox>("PasswordTxtBox");
+
         }
 
         private void InitializeComponent()
@@ -90,37 +91,6 @@ namespace RockRoute.Views
         private async void Temp_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
 
-            //bool doesitExist = await LoginFunctions.doesEmailExist(EmailTxtBox.Text);
-            //System.Console.WriteLine(doesitExist);
-
-        }
-        private async void Temp_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-
-            System.Console.WriteLine("Get A");
-            //This works
-            Climb retrievedClimb = await API_Climbs.GetClimbAsync("api/ClimbsDB/LSOSAY");
-            if (retrievedClimb != null)
-            {
-                System.Console.WriteLine(retrievedClimb.RouteName);
-            }
-            else
-            {
-                System.Console.WriteLine("Climb not found");
-            }
-
-
-        }
-        private async void Temp_4(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            System.Console.WriteLine("Save A");
-            //THIS WORKS
-            var url = await API_Climbs.CreateClimbAsync(Testclimb);
-        }
-        //End of the backend testing stuff, If you want it gone just just do one comments block shown as ->     /* The code in here  */
-
-        private void Temp_5(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
             LoginFunctions.CreateAccountFunc("Admin", "Admin@Admin.gmail.com", "Admin", "Admin");
 
             var NewWindow = new MainWindow();
@@ -133,6 +103,23 @@ namespace RockRoute.Views
             this.Close();
 
         }
+        private async void Temp_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+
+
+
+        }
+        private async void Temp_4(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+
+        }
+        //End of the backend testing stuff, If you want it gone just just do one comments block shown as ->     /* The code in here  */
+
+        private void Temp_5(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+
+
+        }
         //Above this line is debug stuff
         //############################################################
         //############################################################
@@ -143,7 +130,7 @@ namespace RockRoute.Views
         //############################################################
 
 
-        private void LoginButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void LoginButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             //Login.LoginAccount(string email, string password)
             if (EmailTxtBox.Text == null)
@@ -151,10 +138,16 @@ namespace RockRoute.Views
                 System.Console.WriteLine("NULL");
             }
             System.Console.WriteLine(EmailTxtBox.Text);
-            //string InputEmail = EmailTxtBox.Text;
+            System.Console.WriteLine(PasswordTxtBox.Text);
 
+            //string InputEmail = EmailTxtBox.Text;
+            login_Status LoginStatus = LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordTxtBox.Text);
+
+            System.Console.WriteLine(LoginStatus);
             //System.Console.WriteLine(InputEmail);
             //System.Console.WriteLine(PasswordTxtBox.Text);
+
+
 
             /*
                         if (LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordTxtBox.Text) == login_Status.Successfull_Login)
