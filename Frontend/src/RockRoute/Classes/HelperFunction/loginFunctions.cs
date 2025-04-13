@@ -32,13 +32,43 @@ namespace RockRoute.Helper
             //end while
             //return theNewUserName //If the username doesnt exist then return the newUsername
 
-             
+
         }
-        private async static Task<bool> doesIdExist(string InputUserName)
+
+        public async static Task<User> findUserFromEmail(string InputEmail) //Works
+        {
+            //Input email, Returns the User
+            List<User> retrievedUsers = await API_Users.GetAllUsersAsync("api/UsersDB");
+            if (retrievedUsers.Count > 0)
+            {
+                //If user do exist, then go through all
+                foreach (var oneUser in retrievedUsers)
+                {
+                    //System.Console.WriteLine(oneUser.Email.ToLower());
+                    if (oneUser.Email.ToLower() == InputEmail.ToLower())
+                    {
+                        return (oneUser);
+                    }
+                }
+
+            }
+            else
+            {
+                System.Console.WriteLine("No Users not found");
+            }
+            //If no users or No users match
+            return (null);
+
+
+        }
+
+        private async static Task<bool> doesIdExist(string InputUserName) //Works
         {
             List<User> retrievedUsers = await API_Users.GetAllUsersAsync("api/UsersDB");
             if (retrievedUsers.Count > 0)
             {
+                //If user do exist, then go through all
+
                 foreach (var oneUser in retrievedUsers)
                 {
                     System.Console.WriteLine(oneUser.UserId);
@@ -56,16 +86,17 @@ namespace RockRoute.Helper
             //If no users or No users match
             return (false);
         }
-        //Works
         private async static Task<bool> doesEmailExist(string InputEmail)
         {
             List<User> retrievedUsers = await API_Users.GetAllUsersAsync("api/UsersDB");
             if (retrievedUsers.Count > 0)
             {
+                //If user do exist, then go through all
+
                 foreach (var oneUser in retrievedUsers)
                 {
-                    System.Console.WriteLine(oneUser.Email);
-                    if (oneUser.Email == InputEmail)
+                    System.Console.WriteLine(oneUser.Email.ToLower());
+                    if (oneUser.Email.ToLower() == InputEmail.ToLower())
                     {
                         return (true);
                     }
@@ -94,7 +125,7 @@ namespace RockRoute.Helper
                 return (login_Status.Passwords_Dont_Match);
             }
 
-            string newUserID = "5627yh"; //Replace this with the function:
+            string newUserID = input_Name; //Replace this with the function//Temp place the Name their
             //create new userID()
 
             User newUser = new User //Creating a new instance to push to database
@@ -116,19 +147,20 @@ namespace RockRoute.Helper
 
         }
 
-        public static login_Status LoginAccount(string email, string password)
+        public static async Task<login_Status> LoginAccount(string InputEmail, string inputPassword) //This all works
         {
-            //First do something like
-            /*
-            If not doesEmailExist(testUser.Email)
+            bool doesExist = await doesEmailExist(InputEmail.ToLower());
+            if (!doesExist)
             {
-            return(status.Account_Does_Not_Exists)
+                return login_Status.Account_Does_Not_Exists;
             }
-            */
 
-            if (testUser.Email == email)
+            User loginUser = await findUserFromEmail(InputEmail.ToLower());
+
+
+            if (loginUser.Email.ToLower() == InputEmail.ToLower())
             {
-                if (testUser.Password == password)
+                if (loginUser.Password == inputPassword)
                 {
                     return (login_Status.Successfull_Login);
                 }
@@ -142,8 +174,6 @@ namespace RockRoute.Helper
                 return (login_Status.Incorrect_Details);
 
             }
-
-
 
         }
 

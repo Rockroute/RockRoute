@@ -105,12 +105,25 @@ namespace RockRoute.Views
         }
         private async void Temp_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+            User testingUser = await LoginFunctions.findUserFromEmail(EmailTxtBox.Text);
+            if (testingUser != null)
+            {
+                System.Console.WriteLine(testingUser.Email.ToLower());
 
-
+            }
+            else
+            {
+                System.Console.WriteLine("No User Found");
+            }
 
         }
         private async void Temp_4(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+            //Use these for testing functions
+            LoginFunctions.CreateAccountFunc("User", "UserNameEmail", "UserNamePassword", "UserNamePassword");
+            LoginFunctions.CreateAccountFunc("JohnBox", "JohnBoxEmail", "JohnBoxPassword", "JohnBoxPassword");
+            LoginFunctions.CreateAccountFunc("Harvey", "HarveyEmail", "HarveyPassword", "HarveyPassword");
+            LoginFunctions.CreateAccountFunc("Name", "Name82Email", "Name82Password", "Name82Password");
 
         }
         //End of the backend testing stuff, If you want it gone just just do one comments block shown as ->     /* The code in here  */
@@ -141,29 +154,28 @@ namespace RockRoute.Views
             System.Console.WriteLine(PasswordTxtBox.Text);
 
             //string InputEmail = EmailTxtBox.Text;
-            login_Status LoginStatus = LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordTxtBox.Text);
-
-            System.Console.WriteLine(LoginStatus);
-            //System.Console.WriteLine(InputEmail);
+            login_Status LoginStatus = await LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordTxtBox.Text);
+            System.Console.WriteLine("Login Status: " + LoginStatus);
+            //System.Console.WriteLine(InputEmail.ToLower());
             //System.Console.WriteLine(PasswordTxtBox.Text);
 
 
 
-            /*
-                        if (LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordTxtBox.Text) == login_Status.Successfull_Login)
-                        {
-                            var NewWindow = new MainWindow();
-                            if (!Program.DebugMode)
-                            {
-                                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
-                            }
 
-                            NewWindow.Show();
-                            this.Close();
+            if (LoginStatus == login_Status.Successfull_Login)
+            {
+                var NewWindow = new MainWindow();
+                if (!Program.DebugMode)
+                {
+                    NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+                }
 
-                        }
+                NewWindow.Show();
+                this.Close();
 
-                        */
+            }
+
+
 
 
         }
