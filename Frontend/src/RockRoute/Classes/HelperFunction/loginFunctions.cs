@@ -163,6 +163,12 @@ namespace RockRoute.Helper
                 return (login_Status.Passwords_Dont_Match);
             }
 
+            bool emailExist = await doesEmailExist(input_email);
+            if (emailExist)
+            {
+                return(login_Status.Account_Already_Exists);
+            }
+
             string newUserID = await CreateNewUsername(input_Name); //Create new username
 
             User newUser = new User //Creating a new instance to push to database
