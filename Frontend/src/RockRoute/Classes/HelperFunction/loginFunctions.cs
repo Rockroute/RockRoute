@@ -22,7 +22,7 @@ namespace RockRoute.Helper
             Password = "PretendThisIsEncrypted"
         };
 
-        public static async Task CreateNewUsername(string InputName) //change to private
+        private static async Task<string> CreateNewUsername(string InputName)
         {
             //FirstHalf = first 5 characters of InutName
             //Second Half = 000
@@ -36,7 +36,7 @@ namespace RockRoute.Helper
             //Will just do increment by 1 the highest, Inefficient but works
 
             string firstHalf = InputName.Substring(0,3);
-            int secondHalf = 0;
+            int secondHalf = 1;//If start at zero wont be three digits
             string newUserid = firstHalf + secondHalf.ToString();
             //bool doesNewExist = await doesIdExist(newUserid);
             
@@ -47,7 +47,8 @@ namespace RockRoute.Helper
             } 
             
             System.Console.WriteLine("New Username created: " + newUserid);
-/*
+            return(newUserid);
+/*          
             List<User> retrievedUsers = await API_Users.GetAllUsersAsync("api/UsersDB");
             if (retrievedUsers.Count > 0)
             {
@@ -156,13 +157,13 @@ namespace RockRoute.Helper
             //create new instance of user
             //Store the in by using -> /api/UsersDB
             
+
             if (input_Password != input_CheckPassword) //Passwords match
             {
                 return (login_Status.Passwords_Dont_Match);
             }
 
-            string newUserID = input_Name; //Replace this with the function//Temp place the Name their
-            //create new userID()
+            string newUserID = await CreateNewUsername(input_Name); //Create new username
 
             User newUser = new User //Creating a new instance to push to database
             {
@@ -171,7 +172,9 @@ namespace RockRoute.Helper
                 Email = input_email,
                 Password = input_Password
             };
-            var url = await API_Users.CreateUserAsync(newUser);
+            
+            //TODO: Need to do some error checking here
+            var url = await API_Users.CreateUserAsync(newUser); //Push to database
 
             //SEND newUser object into the API
             //if API returns code *** then 

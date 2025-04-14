@@ -105,7 +105,6 @@ namespace RockRoute.Views
         }
         private async void Temp_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            LoginFunctions.CreateNewUsername("User");
 
         }
         private async void Temp_4(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -121,6 +120,7 @@ namespace RockRoute.Views
 
         private void Temp_5(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+            LoginFunctions.CreateAccountFunc("JohnBox", "TEST", "JohnBoxPassword", "JohnBoxPassword");
 
 
         }
