@@ -11,7 +11,7 @@ using RockRoute.Models;
 namespace RockRouteAPI.Migrations.UsersDBMigrations
 {
     [DbContext(typeof(UsersDB))]
-    [Migration("20250225121441_InitialCreate")]
+    [Migration("20250405210417_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -30,10 +30,6 @@ namespace RockRouteAPI.Migrations.UsersDBMigrations
                         .HasColumnType("text");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("LogBook")
                         .IsRequired()
                         .HasColumnType("text");
 

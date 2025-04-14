@@ -57,11 +57,11 @@ namespace RockRoute.Classes {
             }
         }
         public Playlist(string name, string creatorID, List<string>? collabID, List<string>? ListOfRoute_ID, string? playlistPicture) {
-            _name = name;
-            _creatorID = creatorID;
-            _collabID = collabID;
-            _listOfRoute_ID = ListOfRoute_ID;
-            _playlistPicture = playlistPicture;
+            Name = name;
+            CreatorID = creatorID;
+            CollabID = collabID;
+            ListOfRoute_ID = ListOfRoute_ID;
+            PlaylistPicture = playlistPicture;
         }  
     }
 }

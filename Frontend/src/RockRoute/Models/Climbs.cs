@@ -9,7 +9,7 @@ using RockRoute.enums;
 
 namespace RockRoute.Models //makes accessible from other areas of the project 
 {
-    [Owned] 
+    //[Owned] - Owned types are that are part of a larger entity and don't require their own table.
     public class Climb //Defining a climb
 
     {
