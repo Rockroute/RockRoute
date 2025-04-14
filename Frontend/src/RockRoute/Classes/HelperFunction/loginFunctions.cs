@@ -22,35 +22,154 @@ namespace RockRoute.Helper
             Password = "PretendThisIsEncrypted"
         };
 
-        private static void Create_new_UserID()
+        private static async Task<string> CreateNewUsername(string InputName)
         {
-            //This will check exisiting UserIDs and create a new newUserID
+            //FirstHalf = first 5 characters of InutName
+            //Second Half = 000
+            //While (theNewUserName = FirstHalf + string(secondHalf).doesIdExist) == false
+            //If the usrename exist, Add 1 digit to the three digit code
+            //secondHalf += 1
+            //end while
+            //return theNewUserName //If the username doesnt exist then return the newUsername
+            //Input email, Returns the User
+            
+            //Will just do increment by 1 the highest, Inefficient but works
+
+            string firstHalf = InputName.Substring(0,3);
+            int secondHalf = 1;//If start at zero wont be three digits
+            string newUserid = firstHalf + secondHalf.ToString();
+            //bool doesNewExist = await doesIdExist(newUserid);
+            
+            while (await doesIdExist(newUserid))
+            {
+                secondHalf += 1;
+                newUserid = firstHalf + secondHalf.ToString("D3"); //combines both halves and keep 3 digits long
+            } 
+            
+            System.Console.WriteLine("New Username created: " + newUserid);
+            return(newUserid);
+/*          
+            List<User> retrievedUsers = await API_Users.GetAllUsersAsync("api/UsersDB");
+            if (retrievedUsers.Count > 0)
+            {
+                //If user do exist, then go through all
+                foreach (var oneUser in retrievedUsers)
+                {
+                    //System.Console.WriteLine(oneUser.Email.ToLower());
+                    if (oneUser.Email.ToLower() == InputEmail.ToLower())
+                    {
+                        return (oneUser);
+                    }
+                }
+
+            }
+            else
+            {
+                System.Console.WriteLine("No Users not found");
+            }
+            //If no users or No users match
+            return (null);
+*/
         }
 
-        private static bool doesExist(string email)
+        public async static Task<User> findUserFromEmail(string InputEmail) //Works
         {
-            //Complete this
-            //I need to see what the return of /api/UsersDB/{id} looks like for this
-            //and /api/UsersDB
-            //need to go through all of them to search for Email,
-            //Will be simple but just need to see the return of JSON
-            return (true);
+            //Input email, Returns the User
+            List<User> retrievedUsers = await API_Users.GetAllUsersAsync("api/UsersDB");
+            if (retrievedUsers.Count > 0)
+            {
+                //If user do exist, then go through all
+                foreach (var oneUser in retrievedUsers)
+                {
+                    //System.Console.WriteLine(oneUser.Email.ToLower());
+                    if (oneUser.Email.ToLower() == InputEmail.ToLower())
+                    {
+                        return (oneUser);
+                    }
+                }
+
+            }
+            else
+            {
+                System.Console.WriteLine("No Users not found");
+            }
+            //If no users or No users match
+            return (null);
+
+
         }
-        public async static Task<login_Status> CreateAccount(string input_Name, string input_email, string input_Password, string input_CheckPassword)
+
+        private async static Task<bool> doesIdExist(string InputUserName) //Works
         {
+            List<User> retrievedUsers = await API_Users.GetAllUsersAsync("api/UsersDB");
+            if (retrievedUsers.Count > 0)
+            {
+                //If user do exist, then go through all
+
+                foreach (var oneUser in retrievedUsers)
+                {
+                    if (oneUser.UserId == InputUserName)
+                    {
+                        return (true);
+                    }
+                }
+
+            }
+            else
+            {
+                System.Console.WriteLine("No Users not found");
+            }
+            //If no users or No users match
+            return (false);
+        }
+        private async static Task<bool> doesEmailExist(string InputEmail)
+        {
+            List<User> retrievedUsers = await API_Users.GetAllUsersAsync("api/UsersDB");
+            if (retrievedUsers.Count > 0)
+            {
+                //If user do exist, then go through all
+
+                foreach (var oneUser in retrievedUsers)
+                {
+                    System.Console.WriteLine(oneUser.Email.ToLower());
+                    if (oneUser.Email.ToLower() == InputEmail.ToLower())
+                    {
+                        return (true);
+                    }
+                }
+
+            }
+            else
+            {
+                System.Console.WriteLine("No Users not found");
+            }
+            //If no users or No users match
+            return (false);
+        }
+        public async static Task<login_Status> CreateAccountFunc(string input_Name, string input_email, string input_Password, string input_CheckPassword)
+        {
+
+            //TDO
             //Check if already exists
+            //The Name is longer than 3 characters
             //Passwords Match ✅
             //Create new UserId 
             //create new instance of user
             //Store the in by using -> /api/UsersDB
+            
 
             if (input_Password != input_CheckPassword) //Passwords match
             {
                 return (login_Status.Passwords_Dont_Match);
             }
 
-            string newUserID = "5627yh"; //Replace this with the function:
-            //create new userID()
+            bool emailExist = await doesEmailExist(input_email);
+            if (emailExist)
+            {
+                return(login_Status.Account_Already_Exists);
+            }
+
+            string newUserID = await CreateNewUsername(input_Name); //Create new username
 
             User newUser = new User //Creating a new instance to push to database
             {
@@ -59,31 +178,34 @@ namespace RockRoute.Helper
                 Email = input_email,
                 Password = input_Password
             };
-            var url = await API_Users.CreateUserAsync(newUser);
+            
+            //TODO: Need to do some error checking here
+            var url = await API_Users.CreateUserAsync(newUser); //Push to database
 
             //SEND newUser object into the API
             //if API returns code *** then 
 
             //else (If API returns code ***)
             //return(login_Status.Error);
-            
+
             return (login_Status.Account_Created);
 
         }
 
-        public static login_Status LoginAccount(string email, string password)
+        public static async Task<login_Status> LoginAccount(string InputEmail, string inputPassword) //This all works
         {
-            //First do something like
-            /*
-            If not doesExist(testUser.Email)
+            bool doesExist = await doesEmailExist(InputEmail.ToLower());
+            if (!doesExist)
             {
-            return(status.Account_Does_Not_Exists)
+                return login_Status.Account_Does_Not_Exists;
             }
-            */
 
-            if (testUser.Email == email)
+            User loginUser = await findUserFromEmail(InputEmail.ToLower());
+
+
+            if (loginUser.Email.ToLower() == InputEmail.ToLower())
             {
-                if (testUser.Password == password)
+                if (loginUser.Password == inputPassword)
                 {
                     return (login_Status.Successfull_Login);
                 }
@@ -98,13 +220,7 @@ namespace RockRoute.Helper
 
             }
 
-
-
         }
-
-
-
-
 
     }
 
