@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using RockRoute.Classes;
 using RockRoute.enums;
+using System.Collections.Generic; //Needed for lists
 
 
 namespace RockRoute.Models //makes accessible from other areas of the project 

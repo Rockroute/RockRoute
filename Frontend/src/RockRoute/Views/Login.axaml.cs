@@ -67,19 +67,7 @@ namespace RockRoute.Views
         //
         //I have named them all temp and I regulary change the name and was getting confused
         //with number I can remeber what number I am working on at a time
-        Climb Testclimb = new Climb
-        {
-            RouteName = "TheRouteName",
-            RouteId = "LSOSAY",
-            SectorId = "djs8d",
-            ParentSector = "ClimbSector",
-            Type = climbTypes.Boulder,
-            YDS = "V2",
-            ParentLocation = (37.733, -119.637),
-            LocationDescription = "Description of a climb",
-            Protection_Notes = "Bring snacks",
-            UserRatings = new List<CRating>()
-        };
+        
         private async void Temp_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
 
