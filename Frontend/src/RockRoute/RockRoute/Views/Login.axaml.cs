@@ -13,6 +13,7 @@ using RockRoute.Models;
 using System;
 using System.Collections.Generic; //For List
 using RockRoute.ApiTest;
+using RockRoute;
 
 
 namespace RockRoute.Views
@@ -24,7 +25,7 @@ namespace RockRoute.Views
         //Simple way of hiding buttons and can be used for future
         void hideButtonDebug(string ButtonName)
         {
-            if (!Program.DebugMode) //From the program.cs file
+            if (!Program.DebugMode) //From the Program.cs file
             {
                 //If NOT in debug mode, hide button
                 var hideButton = this.FindControl<Button>(ButtonName);
