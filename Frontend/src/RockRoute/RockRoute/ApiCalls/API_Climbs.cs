@@ -73,34 +73,7 @@ namespace RockRoute.ApiTest
 
         public static async Task RunAsync()
         {
-            try
-            {
-                Climb climb = new Climb
-                {
-                    RouteName = "TheRouteName",
-                    RouteId = "LSOSAY",
-                    SectorId = "djs8d",
-                    ParentSector = "ClimbSector",
-                    Type = climbTypes.Boulder,
-                    YDS = "V2",
-                    ParentLocation = (37.733, -119.637),
-                    LocationDescription = "Description of a climb",
-                    Protection_Notes = "Bring snacks",
-                    UserRatings = new List<CRating>()
-                };
-
-                var url = await CreateClimbAsync(climb);
-                Console.WriteLine($"Created at {url}");
-
-                climb = await GetClimbAsync(url.AbsolutePath);
-                ShowClimb(climb);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            Console.ReadLine();
+            
         }
     }
 }

@@ -9,10 +9,9 @@ using RockRoute.Models;
 using RockRoute.Classes;
 using RockRoute.Helper;
 using RockRoute.enums;
-using RockRoute;
+using System.Threading.Tasks;
 
-
-namespace RockRoute.Views 
+namespace RockRoute.Views
 {
     public partial class CreateAccount : Window
     {
@@ -21,32 +20,94 @@ namespace RockRoute.Views
             InitializeComponent();
         }
 
-        private void InitializeComponent() {
-            AvaloniaXamlLoader.Load(this);
-        }
-
-        private void GotAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
-            var NewWindow = new Login();
-           //NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
-            NewWindow.Show();
-            this.Close();
-        }
-
-        private void CreateAccountButtonClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e) 
+        private void InitializeComponent()
         {
-            //I dont know how you get the Writing from Textbox, But just fill in the function below:
-            LoginFunctions.CreateAccount("NEWUSER?A?!?!?", "NerUsersEmail", "newUsersPassword", "newUsersPassword");
-            //System.Console.WriteLine(LoginFunctions.CreateAccount("NEWUSER?A?!?!?", "NerUsersEmail", "newUsersPassword", "newUsersPassword"));
+            AvaloniaXamlLoader.Load(this);
 
-            var NewWindow = new MainWindow();
+            //Linking the textboxes across:
+            NameBox = this.FindControl<TextBox>("NameBox");
+            EmailBox = this.FindControl<TextBox>("EmailBox");
+            PasswordBox = this.FindControl<TextBox>("PasswordBox");
+            CPasswordBox = this.FindControl<TextBox>("CPasswordBox");
+
+            //Linking the text across:
+            PasswordError = this.FindControl<TextBlock>("PasswordError");
+
+
+        }
+
+        private void GotAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+
+            //This is all okay and works
+            var NewWindow = new Login();
             if (!Program.DebugMode)
             {
                 NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
             }
-           
-           //NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
             NewWindow.Show();
             this.Close();
+        }
+
+        private async void CreateAccountButtonClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+
+            if (!(NameBox.Text == null || EmailBox.Text == null || PasswordBox.Text == null || CPasswordBox.Text == null))
+            {
+                //If all boxes has something inside:
+
+                if ((NameBox.Text.Length > 3))
+                {
+                    //If the name is longer than 3 characters
+                    login_Status createAccountStatus = await LoginFunctions.CreateAccountFunc(NameBox.Text, EmailBox.Text, PasswordBox.Text, CPasswordBox.Text);
+                    System.Console.WriteLine(createAccountStatus);
+
+                    if (createAccountStatus == login_Status.Account_Created)
+                    {
+                        //if account created succesfully, then login:
+
+                        var NewWindow = new MainWindow();
+                        if (!Program.DebugMode) //Debug mode
+                        {
+                            NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+                        }
+
+                        //NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+                        NewWindow.Show();
+                        this.Close();
+                    }
+
+                    if (createAccountStatus == login_Status.Passwords_Dont_Match)
+                    {
+                        PasswordError.Text = "Passwords must match";
+                    }
+                    if (createAccountStatus == login_Status.Account_Already_Exists)
+                    {
+                        PasswordError.Text = "Account Already Exists";
+                    }
+
+
+
+
+
+                }
+                else
+                {
+                    PasswordError.Text = "Name must be more than 3 Characters";
+                }
+
+            }
+            else
+            {
+                PasswordError.Text = "Please fill in all boxes";
+
+            }
+
+
+
+
+
+
         }
     }
 }

@@ -16,7 +16,7 @@ namespace RockRoute.Models //accessible from other areas of the project
 
     public class UsersDB : DbContext
     {
-        public UsersDB(DbContextOptions options) : base(options) {}
+        public UsersDB(DbContextOptions<UsersDB> options) : base(options) {}
         public DbSet<User> Entries { get; set; } = null!;
     }
 
