@@ -53,6 +53,69 @@ namespace RockRoute.Views
         {
             AvaloniaXamlLoader.Load(this);
         }
+
+
+        private async void LoginButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            //Login.LoginAccount(string email, string password)
+            if (EmailTxtBox.Text == null)
+            {
+                System.Console.WriteLine("NULL");
+            }
+            System.Console.WriteLine(EmailTxtBox.Text);
+            System.Console.WriteLine(PasswordTxtBox.Text);
+
+            //string InputEmail = EmailTxtBox.Text;
+            login_Status LoginStatus = await LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordTxtBox.Text);
+            System.Console.WriteLine("Login Status: " + LoginStatus);
+            //System.Console.WriteLine(InputEmail.ToLower());
+            //System.Console.WriteLine(PasswordTxtBox.Text);
+
+
+
+
+            if (LoginStatus == login_Status.Successfull_Login)
+            {
+                var NewWindow = new MainWindow();
+                if (!Program.DebugMode)
+                {
+                    NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+                }
+
+                NewWindow.Show();
+                this.Close();
+
+            }
+
+
+
+
+        }
+
+        private void NeedAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            var NewWindow = new CreateAccount();
+            if (!Program.DebugMode)
+            {
+                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+            }
+
+            NewWindow.Show();
+            this.Close();
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        //Anything below here doesnt have functionality but is for easily debug stuff
         //############################################################
         //############################################################
         //############################################################
@@ -64,17 +127,13 @@ namespace RockRoute.Views
         //When they work Ill then move the code below into a helper function
         //where the data will be processed there and passed into here easily
         //This makes it all look nicer and more effienct
-        //
         //I have named them all temp and I regulary change the name and was getting confused
         //with number I can remeber what number I am working on at a time
 
         private async void Temp_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
 
-            login_Status createAdminStatus = await LoginFunctions.CreateAccountFunc("Admin", "Admin@Admin.com", "Admin", "Admin");
-
-            System.Console.WriteLine("Admin Created, Name: Admin  Email:Admin@Admin.com   Pasword: Admin");
-            System.Console.WriteLine(createAdminStatus);
+            
         }
         private async void Temp_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
@@ -134,59 +193,6 @@ namespace RockRoute.Views
         //############################################################
         //############################################################
         //############################################################
-        //############################################################
-        //############################################################
-
-
-        private async void LoginButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            //Login.LoginAccount(string email, string password)
-            if (EmailTxtBox.Text == null)
-            {
-                System.Console.WriteLine("NULL");
-            }
-            System.Console.WriteLine(EmailTxtBox.Text);
-            System.Console.WriteLine(PasswordTxtBox.Text);
-
-            //string InputEmail = EmailTxtBox.Text;
-            login_Status LoginStatus = await LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordTxtBox.Text);
-            System.Console.WriteLine("Login Status: " + LoginStatus);
-            //System.Console.WriteLine(InputEmail.ToLower());
-            //System.Console.WriteLine(PasswordTxtBox.Text);
-
-
-
-
-            if (LoginStatus == login_Status.Successfull_Login)
-            {
-                var NewWindow = new MainWindow();
-                if (!Program.DebugMode)
-                {
-                    NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
-                }
-
-                NewWindow.Show();
-                this.Close();
-
-            }
-
-
-
-
-        }
-
-
-        private void NeedAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            var NewWindow = new CreateAccount();
-            if (!Program.DebugMode)
-            {
-                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
-            }
-
-            NewWindow.Show();
-            this.Close();
-
-        }
+        
     }
 }

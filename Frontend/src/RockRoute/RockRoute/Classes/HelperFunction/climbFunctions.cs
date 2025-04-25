@@ -11,12 +11,6 @@ namespace RockRoute.Helper
 {
     public static class ClimbFunctions
     {
-       /*
-        public async static Task<User> get(string InputEmail) //Works
-        {
-            List<Climb> retrievedClimbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
-
-        }
-    */
+       
     }
 }

@@ -15,7 +15,7 @@ namespace RockRoute.ApiTest
     class API_Logbooks
 
     {
-        /*
+        
         private static readonly string _baseAPIUrl = "http://localhost:5297/";
 
         static HttpClientHandler handler = new HttpClientHandler
@@ -27,48 +27,47 @@ namespace RockRoute.ApiTest
 
         
 
-        public static async Task<Uri> CreateLogbookAsync(Logbook logbook)
+        public static async Task<Uri> CreateLogbookAsync(LogBook LogBook)
         {
-            HttpResponseMessage response = await client.PostAsJsonAsync($"{_baseAPIUrl}api/LogbooksDB", logbook);
+            HttpResponseMessage response = await client.PostAsJsonAsync($"{_baseAPIUrl}api/LogbooksDB", LogBook);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }
 
-        public static async Task<Logbook> GetLogbookAsync(string path)
+        public static async Task<LogBook> GetLogbookAsync(string path)
         {
-            Logbook logbook = null;
+            LogBook LogBook = null;
             HttpResponseMessage response = await client.GetAsync($"{_baseAPIUrl}{path}");
             if (response.IsSuccessStatusCode)
             {
-                logbook = await response.Content.ReadFromJsonAsync<Logbook>();
+                LogBook = await response.Content.ReadFromJsonAsync<LogBook>();
             }
-            return logbook;
+            return LogBook;
         }
-        public static async Task<List<Logbook>> GetAllLogbooksAsync(string path)
+        public static async Task<List<LogBook>> GetAllLogbooksAsync(string path)
         {
-            List<Logbook>? logbook = new();
+            List<LogBook>? LogBook = new();
             HttpResponseMessage response = await client.GetAsync($"{_baseAPIUrl}{path}");
             if (response.IsSuccessStatusCode)
             {
-                logbook = await response.Content.ReadFromJsonAsync<List<Logbook>>();
+                LogBook = await response.Content.ReadFromJsonAsync<List<LogBook>>();
             }
-            return logbook ?? new List<Logbook>(); //Will return the logbooks or if null return a empty list
+            return LogBook ?? new List<LogBook>(); //Will return the logbooks or if null return a empty list
         }
 
-        public static async Task<Logbook> UpdateLogbookAsync(Logbook logbook)
+        public static async Task<LogBook> UpdateLogbookAsync(LogBook LogBook)
         {
-            HttpResponseMessage response = await client.PutAsJsonAsync($"{_baseAPIUrl}api/LogbooksDB/{logbook.LogbookId}", logbook);
+            HttpResponseMessage response = await client.PutAsJsonAsync($"{_baseAPIUrl}api/LogbooksDB/{LogBook.UserId}", LogBook);
             response.EnsureSuccessStatusCode();
-            logbook = await response.Content.ReadFromJsonAsync<Logbook>();
-            return logbook;
+            LogBook = await response.Content.ReadFromJsonAsync<LogBook>();
+            return LogBook;
         }
 
-        public static async Task<HttpStatusCode> DeleteLogbookAsync(string routeId)
+        public static async Task<HttpStatusCode> DeleteLogbookAsync(string UserId)
         {
-            HttpResponseMessage response = await client.DeleteAsync($"{_baseAPIUrl}api/LogbooksDB/{routeId}");
+            HttpResponseMessage response = await client.DeleteAsync($"{_baseAPIUrl}api/LogbooksDB/{UserId}");
             return response.StatusCode;
         }
-
-       */
+       
     }
 }
