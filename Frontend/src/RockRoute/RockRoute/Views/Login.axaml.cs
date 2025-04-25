@@ -42,7 +42,6 @@ namespace RockRoute.Views
             hideButtonDebug("Temp3");
             hideButtonDebug("Temp4");
             hideButtonDebug("Temp5");
-            hideButtonDebug("Temp6");
 
             //Links the Textboxes across
             EmailTxtBox = this.FindControl<TextBox>("EmailTxtBox");
@@ -187,11 +186,6 @@ namespace RockRoute.Views
             LoginFunctions.CreateAccountFunc("JohnBox", "TEST", "JohnBoxPassword", "JohnBoxPassword");
 
 
-        }
-        private void Temp_6(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            var NewWindow = new TestMapping();
-            NewWindow.Show();
         }
         //Above this line is debug stuff
         //############################################################
