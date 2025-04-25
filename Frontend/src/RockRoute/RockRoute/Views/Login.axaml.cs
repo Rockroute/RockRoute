@@ -53,73 +53,6 @@ namespace RockRoute.Views
         {
             AvaloniaXamlLoader.Load(this);
         }
-        //############################################################
-        //############################################################
-        //############################################################
-        //############################################################
-        //
-        //Start of backend Testing Stuff
-        //If your curious what Im doing here
-        //Im just testing them all out here in the buttons at the login
-        //When they work Ill then move the code below into a helper function
-        //where the data will be processed there and passed into here easily
-        //This makes it all look nicer and more effienct
-        //
-        //I have named them all temp and I regulary change the name and was getting confused
-        //with number I can remeber what number I am working on at a time
-        
-        private async void Temp_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-
-            login_Status createAdminStatus = await LoginFunctions.CreateAccountFunc("Admin", "Admin@Admin.com", "Admin", "Admin");
-
-            System.Console.WriteLine("Admin Created, Name: Admin  Email:Admin@Admin.com   Pasword: Admin");
-            System.Console.WriteLine(createAdminStatus);
-        }
-        private async void Temp_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-
-            LoginFunctions.CreateAccountFunc("Admin", "Admin@Admin.gmail.com", "Admin", "Admin");
-
-            var NewWindow = new MainWindow();
-            if (!Program.DebugMode)
-            {
-                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
-            }
-
-            NewWindow.Show();
-            this.Close();
-
-        }
-        private async void Temp_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-
-        }
-        private async void Temp_4(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            //Use these for testing functions
-            LoginFunctions.CreateAccountFunc("User", "UserNameEmail", "UserNamePassword", "UserNamePassword");
-            LoginFunctions.CreateAccountFunc("JohnBox", "JohnBoxEmail", "JohnBoxPassword", "JohnBoxPassword");
-            LoginFunctions.CreateAccountFunc("Harvey", "HarveyEmail", "HarveyPassword", "HarveyPassword");
-            LoginFunctions.CreateAccountFunc("Name", "Name82Email", "Name82Password", "Name82Password");
-
-        }
-        //End of the backend testing stuff, If you want it gone just just do one comments block shown as ->     /* The code in here  */
-
-        private void Temp_5(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            LoginFunctions.CreateAccountFunc("JohnBox", "TEST", "JohnBoxPassword", "JohnBoxPassword");
-
-
-        }
-        //Above this line is debug stuff
-        //############################################################
-        //############################################################
-        //############################################################
-        //############################################################
-        //############################################################
-        //############################################################
-        //############################################################
 
 
         private async void LoginButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -159,7 +92,6 @@ namespace RockRoute.Views
 
         }
 
-
         private void NeedAccountButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             var NewWindow = new CreateAccount();
@@ -172,5 +104,95 @@ namespace RockRoute.Views
             this.Close();
 
         }
+
+
+
+
+
+
+
+
+
+
+
+        //Anything below here doesnt have functionality but is for easily debug stuff
+        //############################################################
+        //############################################################
+        //############################################################
+        //############################################################
+        //
+        //Start of backend Testing Stuff
+        //If your curious what Im doing here
+        //Im just testing them all out here in the buttons at the login
+        //When they work Ill then move the code below into a helper function
+        //where the data will be processed there and passed into here easily
+        //This makes it all look nicer and more effienct
+        //I have named them all temp and I regulary change the name and was getting confused
+        //with number I can remeber what number I am working on at a time
+
+        private async void Temp_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+
+            
+        }
+        private async void Temp_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+
+            LoginFunctions.CreateAccountFunc("Admin", "Admin@Admin.gmail.com", "Admin", "Admin");
+
+            var NewWindow = new MainWindow();
+            if (!Program.DebugMode)
+            {
+                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+            }
+
+            NewWindow.Show();
+            this.Close();
+
+        }
+        private async void Temp_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            List<Climb> retrievedClimbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB"); //This line works getting a list of all climbs
+            
+            if (retrievedClimbs.Count > 0)
+            {
+                //If climb do exist, then go through all
+                foreach (var oneClimb in retrievedClimbs)
+                {
+                    System.Console.WriteLine(oneClimb.RouteName);
+                }
+
+            }
+            else
+            {
+                System.Console.WriteLine("No climbs not found");
+            }
+            //If no climbs
+            //return (null);
+        }
+        private async void Temp_4(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            //Use these for testing functions
+            LoginFunctions.CreateAccountFunc("User", "UserNameEmail", "UserNamePassword", "UserNamePassword");
+            LoginFunctions.CreateAccountFunc("JohnBox", "JohnBoxEmail", "JohnBoxPassword", "JohnBoxPassword");
+            LoginFunctions.CreateAccountFunc("Harvey", "HarveyEmail", "HarveyPassword", "HarveyPassword");
+            LoginFunctions.CreateAccountFunc("Name", "Name82Email", "Name82Password", "Name82Password");
+
+        }
+        //End of the backend testing stuff, If you want it gone just just do one comments block shown as ->     /* The code in here  */
+
+        private void Temp_5(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            LoginFunctions.CreateAccountFunc("JohnBox", "TEST", "JohnBoxPassword", "JohnBoxPassword");
+
+
+        }
+        //Above this line is debug stuff
+        //############################################################
+        //############################################################
+        //############################################################
+        //############################################################
+        //############################################################
+        
     }
 }

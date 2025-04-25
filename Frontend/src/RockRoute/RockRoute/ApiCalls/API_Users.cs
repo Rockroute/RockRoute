@@ -65,9 +65,9 @@ namespace RockRoute.ApiTest
             return user;
         }
 
-        public static async Task<HttpStatusCode> DeleteUserAsync(string routeId)
+        public static async Task<HttpStatusCode> DeleteUserAsync(string UserId)
         {
-            HttpResponseMessage response = await client.DeleteAsync($"{_baseAPIUrl}api/UsersDB/{routeId}");
+            HttpResponseMessage response = await client.DeleteAsync($"{_baseAPIUrl}api/UsersDB/{UserId}");
             return response.StatusCode;
         }
 
