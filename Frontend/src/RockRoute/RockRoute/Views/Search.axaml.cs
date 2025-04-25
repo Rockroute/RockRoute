@@ -34,8 +34,6 @@ namespace RockRoute.Views
 
         public string Name => "MyLocationLayer";
         public string Category => "Navigation";
-
-        private static List<Climb> routes = new();
         //###################################################################################
 
         public Search()
@@ -89,6 +87,7 @@ namespace RockRoute.Views
                 }
 
                 // Update every 5 seconds
+                _map?.RefreshGraphics();
                 await Task.Delay(5000);
             }
         }
@@ -122,19 +121,14 @@ namespace RockRoute.Views
 
         public async Task DisplayClimbPoints()
         {
-            _map.Layers.Add(CreatePointLayer());
+            List<Climb> climbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
+            _map.Layers.Add(CreatePointLayer(climbs));
+            _map?.RefreshGraphics();
             _map.Info += MapOnInfo;
             _map.Widgets.Add(new MapInfoWidget(_map));
         }
         public async Task CreateMapAsync()
         {
-            try {
-                routes = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Request error: {e.Message}");
-            }
             _map = new Mapsui.Map();
             _map.Navigator.OverrideZoomBounds = new MMinMax(0,20000);
             _map.Layers.Add(OpenStreetMap.CreateTileLayer());
@@ -161,21 +155,20 @@ namespace RockRoute.Views
             }
         }
 
-        private static MemoryLayer CreatePointLayer()
+        private MemoryLayer CreatePointLayer(List<Climb> climbs)
         {
             return new MemoryLayer
             {
                 Name = "Climbing locations with callouts",
                 IsMapInfoLayer = true,
-                Features = new MemoryProvider(GetClimbsFromBackend()).Features,
+                Features = new MemoryProvider(GetClimbsFromBackend(climbs)).Features,
                 Style = SymbolStyles.CreatePinStyle(symbolScale: 0.7),
             };
         }
 
-        private static IEnumerable<Mapsui.IFeature> GetClimbsFromBackend()
+        private static IEnumerable<Mapsui.IFeature> GetClimbsFromBackend(List<Climb> climbs)
         {
-
-            return routes.Select(c =>
+            return climbs.Select(c =>
             {
                 var point = SphericalMercator.FromLonLat(c.ParentLocation.Long, c.ParentLocation.Lat).ToMPoint();
                 var feature = new PointFeature(point);
