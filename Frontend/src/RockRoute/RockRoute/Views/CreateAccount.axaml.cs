@@ -64,17 +64,26 @@ namespace RockRoute.Views
 
                     if (createAccountStatus == login_Status.Account_Created)
                     {
-                        //if account created succesfully, then login:
+                        //If the account is created succesfully then attempt to login
+                        //Doing this rather than auto log so it morebuilding on functions ive made (Easier to change if needed)
+                        //and adds the user to the global LoggedInUser var
 
-                        var NewWindow = new MainWindow();
-                        if (!Program.DebugMode) //Debug mode
+                        //Login attempt
+                        login_Status LoginStatus = await LoginFunctions.LoginAccount(EmailBox.Text, PasswordBox.Text);
+                        System.Console.WriteLine("Login Status: " + LoginStatus);
+                        
+                        if (LoginStatus == login_Status.Successfull_Login)
                         {
-                            NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
-                        }
+                            var NewWindow = new MainWindow();
+                            if (!Program.DebugMode)
+                            {
+                                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+                            }
 
-                        //NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
-                        NewWindow.Show();
-                        this.Close();
+                            NewWindow.Show();
+                            this.Close();
+
+                        }
                     }
 
                     if (createAccountStatus == login_Status.Passwords_Dont_Match)
