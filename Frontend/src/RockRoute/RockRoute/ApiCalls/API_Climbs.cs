@@ -10,10 +10,9 @@ using RockRoute.Classes;
 using RockRoute.Models;
 using RockRoute.enums;
 
-namespace RockRoute.ApiTest
+namespace RockRoute.ApiCalls
 {
     class API_Climbs
-    
     {
         private static readonly string _baseAPIUrl = "http://localhost:5297/";
 
