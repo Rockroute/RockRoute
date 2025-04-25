@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.VisualTree;
 using System.Linq;
 using System.Collections.Generic;
@@ -11,6 +12,17 @@ namespace RockRoute.Views {
         public LogBookTab()
         {
             InitializeComponent();
+        }
+
+        public void LogOutButtonClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
+            var window = this.GetVisualRoot() as Window;
+            var newWindow = new Login();
+            Program.loggedInUser.UserId = "NOT_LOGGED_IN";
+            Program.loggedInUser.Name = "NOT_LOGGED_IN";
+            Program.loggedInUser.Email = "NOT_LOGGED_IN";
+            Program.loggedInUser.Password = "NOT_LOGGED_IN";
+            newWindow.Show();
+            window?.Close();
         }
 
         // add image for the playlist can be writen here 
