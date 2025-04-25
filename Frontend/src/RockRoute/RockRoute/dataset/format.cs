@@ -80,17 +80,19 @@ namespace RockRoute.climbData
 
                     var newLocation = new Location
                     {
-                        Lat = 42.123,
-                        Long = -91.456
+                        Lat = Convert.ToDouble(climb.parent_loc[0]),
+                        Long = Convert.ToDouble(climb.parent_loc[1])
+                        
                     };
 
 
+                    /*
                     var rating = new CRating
                     {
                         UserID = "TEST",
                         Rating = 5
                     };
-
+                    */
 
                     var newClimb = new Climb //Make a climb to be pushed
                     {
@@ -107,8 +109,13 @@ namespace RockRoute.climbData
 
                     };
 
-                    System.Console.WriteLine(newClimb.Type);
 
+                    System.Console.WriteLine(newClimb.Type);
+                    System.Console.WriteLine(newClimb.ParentLocation.Lat);
+
+
+                    //Post the New climb to the API
+                    API_Climbs.CreateClimbAsync(newClimb);
 
                 }
             }
