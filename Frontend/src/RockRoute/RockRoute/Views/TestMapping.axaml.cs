@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Mapsui.Extensions;
 using Mapsui.Layers;
+using Mapsui;
 using Mapsui.Nts;
 using Mapsui.Nts.Extensions;
 using Mapsui.Projections;
@@ -41,8 +42,12 @@ namespace RockRoute.Views
         public TestMapping()
         {
             InitializeComponent();
-            CreateMapAsync();
-            //StartTrackingAsync();
+            this.Opened += async (sender, args) => await InitializeAsync();        }
+        private async Task InitializeAsync()
+        {
+            await CreateMapAsync();      
+            DisplayClimbPoints();        
+            await StartTrackingAsync();
         }
 
         public async Task StartTrackingAsync()
@@ -117,9 +122,10 @@ namespace RockRoute.Views
         public async Task DisplayClimbPoints()
         {
             _map.Layers.Add(CreatePointLayer());
+            _map.Info += MapOnInfo;
             _map.Widgets.Add(new MapInfoWidget(_map));
         }
-        public async void CreateMapAsync()
+        public async Task CreateMapAsync()
         {
             routes = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
             _map = new Mapsui.Map();
@@ -138,21 +144,21 @@ namespace RockRoute.Views
             };
         }
 
-        /*private static void MapOnInfo(object? sender, MapInfoEventArgs e)
+        private static void MapOnInfo(object? sender, Mapsui.MapInfoEventArgs e)
         {
             var calloutStyle = e.MapInfo?.Feature?.Styles.Where(s => s is CalloutStyle).Cast<CalloutStyle>().FirstOrDefault();
             if (calloutStyle != null)
             {
                 calloutStyle.Enabled = !calloutStyle.Enabled;
-                e.MapInfo?.Layer?.DataHasChanged(); // To trigger a refresh of graphics.
+                e.MapInfo?.Layer?.DataHasChanged(); 
             }
-        }*/
+        }
 
         private static MemoryLayer CreatePointLayer()
         {
             return new MemoryLayer
             {
-                Name = "Cities with callouts",
+                Name = "Climbing locations with callouts",
                 IsMapInfoLayer = true,
                 Features = new MemoryProvider(GetClimbsFromBackend()).Features,
                 Style = SymbolStyles.CreatePinStyle(symbolScale: 0.7),
