@@ -1,0 +1,74 @@
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
+using System.Collections.Generic; //For List
+
+
+using RockRoute.Classes;
+using RockRoute.Models;
+using RockRoute.enums;
+
+namespace RockRoute.ApiTest
+{
+    class API_Logbooks
+
+    {
+        /*
+        private static readonly string _baseAPIUrl = "http://localhost:5297/";
+
+        static HttpClientHandler handler = new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
+        };
+
+        static HttpClient client = new HttpClient(handler);
+
+        
+
+        public static async Task<Uri> CreateLogbookAsync(Logbook logbook)
+        {
+            HttpResponseMessage response = await client.PostAsJsonAsync($"{_baseAPIUrl}api/LogbooksDB", logbook);
+            response.EnsureSuccessStatusCode();
+            return response.Headers.Location;
+        }
+
+        public static async Task<Logbook> GetLogbookAsync(string path)
+        {
+            Logbook logbook = null;
+            HttpResponseMessage response = await client.GetAsync($"{_baseAPIUrl}{path}");
+            if (response.IsSuccessStatusCode)
+            {
+                logbook = await response.Content.ReadFromJsonAsync<Logbook>();
+            }
+            return logbook;
+        }
+        public static async Task<List<Logbook>> GetAllLogbooksAsync(string path)
+        {
+            List<Logbook>? logbook = new();
+            HttpResponseMessage response = await client.GetAsync($"{_baseAPIUrl}{path}");
+            if (response.IsSuccessStatusCode)
+            {
+                logbook = await response.Content.ReadFromJsonAsync<List<Logbook>>();
+            }
+            return logbook ?? new List<Logbook>(); //Will return the logbooks or if null return a empty list
+        }
+
+        public static async Task<Logbook> UpdateLogbookAsync(Logbook logbook)
+        {
+            HttpResponseMessage response = await client.PutAsJsonAsync($"{_baseAPIUrl}api/LogbooksDB/{logbook.LogbookId}", logbook);
+            response.EnsureSuccessStatusCode();
+            logbook = await response.Content.ReadFromJsonAsync<Logbook>();
+            return logbook;
+        }
+
+        public static async Task<HttpStatusCode> DeleteLogbookAsync(string routeId)
+        {
+            HttpResponseMessage response = await client.DeleteAsync($"{_baseAPIUrl}api/LogbooksDB/{routeId}");
+            return response.StatusCode;
+        }
+
+       */
+    }
+}

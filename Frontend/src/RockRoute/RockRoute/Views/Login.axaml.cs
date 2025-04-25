@@ -67,7 +67,7 @@ namespace RockRoute.Views
         //
         //I have named them all temp and I regulary change the name and was getting confused
         //with number I can remeber what number I am working on at a time
-        
+
         private async void Temp_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
 
@@ -93,7 +93,23 @@ namespace RockRoute.Views
         }
         private async void Temp_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+            List<Climb> retrievedClimbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB"); //This line works getting a list of all climbs
+            
+            if (retrievedClimbs.Count > 0)
+            {
+                //If climb do exist, then go through all
+                foreach (var oneClimb in retrievedClimbs)
+                {
+                    System.Console.WriteLine(oneClimb.RouteName);
+                }
 
+            }
+            else
+            {
+                System.Console.WriteLine("No climbs not found");
+            }
+            //If no climbs
+            //return (null);
         }
         private async void Temp_4(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {

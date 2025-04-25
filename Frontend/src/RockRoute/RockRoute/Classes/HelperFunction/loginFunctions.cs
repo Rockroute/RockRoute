@@ -207,6 +207,7 @@ namespace RockRoute.Helper
             {
                 if (loginUser.Password == inputPassword)
                 {
+                    Program.loggedInUser = loginUser;
                     return (login_Status.Successfull_Login);
                 }
                 else
