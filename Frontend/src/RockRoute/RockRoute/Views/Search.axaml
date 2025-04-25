@@ -13,7 +13,7 @@
 
         <DockPanel>
                 <avalonia:MapControl DockPanel.Dock="Top" x:Name="MapView" Height="500" HorizontalAlignment="Stretch"/>
-                <TextBlock>THIS IS A SPACER REMOVE</TextBlock>
+                <TextBlock DockPanel.Dock="Top">THIS IS A SPACER REMOVE</TextBlock>
                 <Menu DockPanel.Dock="Bottom" Background="#FFCCCB" CornerRadius="10">
                         <MenuItem Header="Settings"/>
                         <MenuItem Header="Log out"/>
