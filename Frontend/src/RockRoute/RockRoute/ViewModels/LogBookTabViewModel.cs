@@ -14,26 +14,29 @@ namespace RockRoute.ViewModels
         {
             LoadPlaylists();
         }
-
-        public List<string> Test(List<string> list) {
-            list.Add("c");
-            list.Add("c");
-            list.Add("c");
-            list.Add("c");
-            return list;
-        }
-
+        // needs to load up the playlists
         public void LoadPlaylists() {
-            playlists.Add(new Playlist("test playlist","testCreator",new List<string>(),Test(new List<string>()),null)
+            
+            //playlist playfromAPI new plaulist
+            //playlist.Add(playfromAPI)
+            playlists.Add(new Playlist("test playlist","testCreator",new List<string>(),new List<string>(),null)
             {
-                Name = "test-playlist",
+                //This is where you add the playlist from API
+                Name = "test-playlist-1",
                 CreatorID = "testID"
             });
-            playlists.Add(new Playlist("test playlist","testCreator",new List<string>(),Test(new List<string>()),null)
+            playlists.Add(new Playlist("test playlist","testCreator",new List<string>(),new List<string>(),null)
             {
-                Name = "test-playlist",
+                Name = "test-playlist-2",
                 CreatorID = "testID"
             });
+        }
+        // restest the collection and then reloads the playists 
+        public void ReloadPlaylists() {
+            while (playlists.Count > 0) {
+                playlists.RemoveAt(0);
+            }
+            LoadPlaylists();
         }
 
         public void LoadcolabIDs() {

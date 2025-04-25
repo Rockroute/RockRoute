@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.VisualTree;
 using System.Linq;
 using System.Collections.Generic;
@@ -13,16 +14,29 @@ namespace RockRoute.Views {
             InitializeComponent();
         }
 
+        public void LogOutButtonClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
+            var window = this.GetVisualRoot() as Window;
+            var newWindow = new Login();
+            Program.loggedInUser.UserId = "NOT_LOGGED_IN";
+            Program.loggedInUser.Name = "NOT_LOGGED_IN";
+            Program.loggedInUser.Email = "NOT_LOGGED_IN";
+            Program.loggedInUser.Password = "NOT_LOGGED_IN";
+            newWindow.Show();
+            window?.Close();
+        }
+
         // add image for the playlist can be writen here 
         public void AddImageToPlaylist(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
 
         }
+        
         // will make a playlist ready to be sent to the database 
         public void MakePlaylist(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
             // should print each of the string entered into the colabID textboxs
             foreach (string colabID in GetColabIDs(sender,e)) {
                 System.Console.WriteLine(colabID);
             }
+            // needs to make the playlist and sent it to the database
         }
         // get all the collaborator IDs for the colabID textBoxs and puts them into a list of strings
         public List<string> GetColabIDs(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
