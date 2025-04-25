@@ -33,11 +33,20 @@ namespace RockRoute.Views
         {
             InitializeComponent();
             CreateMapAsync();
+            //StartTrackingAsync();
         }
 
         public async Task StartTrackingAsync()
         {
             isRunning = true;
+            
+            _myLocationLayer?.Dispose();
+            _myLocationLayer = new MyLocationLayer(_map)
+            {
+                IsCentered = false,
+            };
+            _map.Layers.Add(_myLocationLayer);
+
 
             while (isRunning)
             {
@@ -69,21 +78,8 @@ namespace RockRoute.Views
             }
         }
 
-        public async void CreateMapAsync()
+        public async Task GetDirectionsAsync(string routeID)
         {
-            _map = new Mapsui.Map();
-
-            _myLocationLayer?.Dispose();
-            _myLocationLayer = new MyLocationLayer(_map)
-            {
-                IsCentered = false,
-            };
-
-            _map.Layers.Add(OpenStreetMap.CreateTileLayer());
-
-            
-
-            // Directions ########################################################################
             var testCoordinates = new List<List<double>>
             {
                 new List<double> { 8.681495, 49.41461 },
@@ -107,9 +103,13 @@ namespace RockRoute.Views
                 _map.Layers.Add(routeLayer);
                 _map.Home = n => n.CenterOnAndZoomTo(routeLayer.Extent.Centroid, 200);
             }
-            //################################################################################
+        }
 
-            _map.Layers.Add(_myLocationLayer);
+        public async void CreateMapAsync()
+        {
+            _map = new Mapsui.Map();
+
+            _map.Layers.Add(OpenStreetMap.CreateTileLayer());
             MapView.Map = _map;
         }
         
