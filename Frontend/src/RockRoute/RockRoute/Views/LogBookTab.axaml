@@ -40,8 +40,8 @@
                         <Button Name="MakePlaylistButton" Command="{Binding LoadPlaylists}" Click="MakePlaylist" Margin="3" Grid.Row="2" Grid.Column="1" Content="Make-Playlist" HorizontalAlignment="Center" Background="CornflowerBlue"/>
                 </Grid>
                 </Border>
-
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
+                <TextBlock Name="Test"/>
+                <ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
                         <StackPanel>
                         <ItemsControl ItemsSource="{Binding playlists}">
                                 <ItemsControl.ItemTemplate>
@@ -50,9 +50,7 @@
                                                 <Expander VerticalAlignment="Top" HorizontalAlignment="Stretch" Background="LightGray">
                                                         <Expander.Header>
                                                                 <StackPanel Orientation="Horizontal">
-                                                                        <TextBlock Text="no image "/>
-                                                                        <TextBlock Text="Playlist-name "/>
-                                                                        <TextBlock Text="Description"/>
+                                                                        <TextBlock Text="{Binding Name}"/>
                                                                 </StackPanel>
                                                         </Expander.Header>
 
@@ -60,11 +58,10 @@
                                                                 <ItemsControl ItemsSource="{Binding ListOfRoute_ID}">
                                                                         <ItemsControl.ItemTemplate>
                                                                         <DataTemplate>
-                                                                                <TextBlock Text="climb"/>
+                                                                                <TextBlock Text="{Binding}"/>
                                                                         </DataTemplate>
                                                                         </ItemsControl.ItemTemplate>
                                                                 </ItemsControl>
-                                                                <Button Name="AddClimbToplaylist" HorizontalAlignment="Right" Content="+"/>
                                                         </StackPanel>
                                                 </Expander>
                                                 <TextBlock/>
@@ -72,6 +69,7 @@
                                 </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                         </ItemsControl>
+                        <Button HorizontalAlignment="Right" Content="Refresh" Command="{Binding ReloadPlaylists}"/>
                         </StackPanel>
                 </ScrollViewer>
         </DockPanel>
