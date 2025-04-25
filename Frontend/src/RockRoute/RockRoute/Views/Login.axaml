@@ -19,6 +19,8 @@
             <Button Name="Temp3" Click="Temp_3" Margin="5" Content="Test Get all climbs" HorizontalAlignment="Center"/>
             <Button Name="Temp4" Click="Temp_4" Margin="5" Content="Create Accounts" HorizontalAlignment="Center"/>
             <Button Name="Temp5" Click="Temp_5" Margin="5" Content="Create a new JohnBox" HorizontalAlignment="Center"/>
+            <Button Name="Temp6" Click="Temp_6" Margin="5" Content="Map test" HorizontalAlignment="Center"/>
+
 
             <!--            End of Testing Backend stuff                           -->
 
