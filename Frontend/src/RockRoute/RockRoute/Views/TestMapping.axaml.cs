@@ -16,6 +16,12 @@ using RockRoute.HelperFunction;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Essentials;
+using RockRoute.ApiCalls;
+using Mapsui.Providers;
+using Mapsui.Widgets;
+using System.Reflection;
+using RockRoute.Models;
+
 
 
 namespace RockRoute.Views
@@ -28,6 +34,9 @@ namespace RockRoute.Views
 
         public string Name => "MyLocationLayer";
         public string Category => "Navigation";
+
+        private static List<Climb> routes = new();
+
 
         public TestMapping()
         {
@@ -105,8 +114,14 @@ namespace RockRoute.Views
             }
         }
 
+        public async Task DisplayClimbPoints()
+        {
+            _map.Layers.Add(CreatePointLayer());
+            _map.Widgets.Add(new MapInfoWidget(_map));
+        }
         public async void CreateMapAsync()
         {
+            routes = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
             _map = new Mapsui.Map();
 
             _map.Layers.Add(OpenStreetMap.CreateTileLayer());
@@ -120,6 +135,63 @@ namespace RockRoute.Views
                 Fill = null,
                 Outline = null,
                 Line = { Color = Color.FromString("Red"), Width = 10 }
+            };
+        }
+
+        /*private static void MapOnInfo(object? sender, MapInfoEventArgs e)
+        {
+            var calloutStyle = e.MapInfo?.Feature?.Styles.Where(s => s is CalloutStyle).Cast<CalloutStyle>().FirstOrDefault();
+            if (calloutStyle != null)
+            {
+                calloutStyle.Enabled = !calloutStyle.Enabled;
+                e.MapInfo?.Layer?.DataHasChanged(); // To trigger a refresh of graphics.
+            }
+        }*/
+
+        private static MemoryLayer CreatePointLayer()
+        {
+            return new MemoryLayer
+            {
+                Name = "Cities with callouts",
+                IsMapInfoLayer = true,
+                Features = new MemoryProvider(GetClimbsFromBackend()).Features,
+                Style = SymbolStyles.CreatePinStyle(symbolScale: 0.7),
+            };
+        }
+
+        private static IEnumerable<Mapsui.IFeature> GetClimbsFromBackend()
+        {
+
+            return routes.Select(c =>
+            {
+                var point = SphericalMercator.FromLonLat(c.ParentLocation.Long, c.ParentLocation.Lat).ToMPoint();
+                var feature = new PointFeature(point);
+
+                feature[nameof(Climb.RouteName)] = c.RouteName;
+                feature[nameof(Climb.RouteId)] = c.RouteId;
+                feature[nameof(Climb.SectorId)] = c.SectorId;
+                feature[nameof(Climb.ParentSector)] = c.ParentSector;
+                feature[nameof(Climb.YDS)] = c.YDS;
+                feature[nameof(Climb.Protection_Notes)] = c.Protection_Notes;
+
+                feature.Styles.Add(CreateCalloutStyle(feature.ToStringOfKeyValuePairs()));
+                
+                return feature;
+            });
+        }
+
+        private static CalloutStyle CreateCalloutStyle(string content)
+        {
+            return new CalloutStyle
+            {
+                Title = content,
+                TitleFont = { FontFamily = null, Size = 12, Italic = false, Bold = true },
+                TitleFontColor = Color.Gray,
+                MaxWidth = 120,
+                RectRadius = 10,
+                ShadowWidth = 4,
+                Enabled = false,
+                SymbolOffset = new Offset(0, SymbolStyle.DefaultHeight * 1f)
             };
         }
     }
