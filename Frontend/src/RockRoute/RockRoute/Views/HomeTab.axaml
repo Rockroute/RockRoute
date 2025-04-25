@@ -13,19 +13,23 @@
     <DockPanel>
         <Menu DockPanel.Dock="Bottom" Background="#FFCCCB" CornerRadius="10">
             <MenuItem Header="Settings"/>
-            <MenuItem Header="Log out"/>
+            <MenuItem Click="LogOutButtonClick" Header="Log out"/>
         </Menu>
 
         <Border DockPanel.Dock="Top" Margin="2" CornerRadius="10" Background="LightGray" HorizontalAlignment="Center">
-            <Grid ShowGridLines="False" Margin="5" ColumnDefinitions="200, 150" RowDefinitions="Auto, Auto, Auto">
-                <Label Grid.Row="0" Grid.Column="0" Margin="10">Activity</Label>
+            <Grid ShowGridLines="False" Margin="5" ColumnDefinitions="200, 320" RowDefinitions="Auto, Auto, Auto,Auto">
+                <Label Grid.Row="0" Grid.Column="0" Margin="10">Activity:</Label>
                 <TextBox Grid.Row="0" Grid.Column="1" Margin="0 5" Name="Activity"></TextBox>
                 <Label Grid.Row="1" Grid.Column="0" Margin="10">Description:</Label>
-                <TextBox Grid.Row="1" Grid.Column="1" Margin="0 5" Name="HowItWas" TextWrapping="Wrap"></TextBox>
-                <Button Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Foreground="Black" Background="White">
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="0 5" Name="Description" TextWrapping="Wrap"></TextBox>
+                <Label Grid.Row="2" Grid.Column="0" Margin="10">Date:</Label>
+                <Expander Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch">
+                    <Calendar Name="CalendarEntry"/>
+                </Expander>
+                <Button Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" Foreground="Black" Background="White">
                     <PathIcon Data="{StaticResource image_regular}" Foreground="Black"></PathIcon>
                 </Button>
-                <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Foreground="Black" Background="CornflowerBlue" Content="add Activity"/>
+                <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Foreground="Black" Background="CornflowerBlue" Content="add Activity"/>
 
             </Grid>
         </Border>

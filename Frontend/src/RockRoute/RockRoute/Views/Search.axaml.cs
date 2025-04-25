@@ -1,4 +1,5 @@
 using System;
+using Avalonia.VisualTree;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -199,6 +200,17 @@ namespace RockRoute.Views
                 Enabled = false,
                 SymbolOffset = new Offset(0, SymbolStyle.DefaultHeight * 1f)
             };
+        }
+
+        public void LogOutButtonClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
+            var window = this.GetVisualRoot() as Window;
+            var newWindow = new Login();
+            Program.loggedInUser.UserId = "NOT_LOGGED_IN";
+            Program.loggedInUser.Name = "NOT_LOGGED_IN";
+            Program.loggedInUser.Email = "NOT_LOGGED_IN";
+            Program.loggedInUser.Password = "NOT_LOGGED_IN";
+            newWindow.Show();
+            window?.Close();
         }
     }
 }
