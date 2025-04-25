@@ -7,13 +7,19 @@
         x:Class="RockRoute.Views.MainWindow"
         Title="RockRoute">
 
-     <TabControl HorizontalAlignment="Center">
+      <Window.Styles>
+        <Style Selector="TabControl /template/ WrapPanel">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Styles>
+     <TabControl HorizontalAlignment="Stretch">
 
         <TabItem Header="       Home       " BorderThickness="15">
             <local:HomeTab/>
         </TabItem>
 
         <TabItem Header="       Search       " BorderThickness="15">
+            <local:Search/>
         </TabItem>
 
         <TabItem Header="       Log Book       " BorderThickness="15">
