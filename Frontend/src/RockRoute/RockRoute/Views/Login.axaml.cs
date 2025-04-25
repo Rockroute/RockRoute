@@ -13,6 +13,7 @@ using RockRoute.Models;
 using System;
 using System.Collections.Generic; //For List
 using RockRoute.ApiTest;
+using RockRoute.climbData;
 
 
 namespace RockRoute.Views
@@ -183,8 +184,7 @@ namespace RockRoute.Views
 
         private void Temp_5(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            LoginFunctions.CreateAccountFunc("JohnBox", "TEST", "JohnBoxPassword", "JohnBoxPassword");
-
+            ProcessData.processAndPush();
 
         }
         //Above this line is debug stuff
