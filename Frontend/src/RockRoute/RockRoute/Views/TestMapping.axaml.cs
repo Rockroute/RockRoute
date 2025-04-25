@@ -175,7 +175,6 @@ namespace RockRoute.Views
 
                 feature[nameof(Climb.RouteName)] = c.RouteName;
                 feature[nameof(Climb.RouteId)] = c.RouteId;
-                feature[nameof(Climb.SectorId)] = c.SectorId;
                 feature[nameof(Climb.ParentSector)] = c.ParentSector;
                 feature[nameof(Climb.YDS)] = c.YDS;
                 feature[nameof(Climb.Protection_Notes)] = c.Protection_Notes;
@@ -192,8 +191,8 @@ namespace RockRoute.Views
             {
                 Title = content,
                 TitleFont = { FontFamily = null, Size = 12, Italic = false, Bold = true },
-                TitleFontColor = Color.Gray,
-                MaxWidth = 120,
+                TitleFontColor = Color.Blue,
+                MaxWidth = 180,
                 RectRadius = 10,
                 ShadowWidth = 4,
                 Enabled = false,
