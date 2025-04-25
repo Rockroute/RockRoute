@@ -1,44 +1,48 @@
 using System;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Avalonia.Controls;
 using Mapsui.Extensions;
 using Mapsui.Layers;
+using Mapsui.Nts;
+using Mapsui.Nts.Extensions;
 using Mapsui.Projections;
+using Mapsui.Styles;
 using Mapsui.Tiling;
 using Mapsui.UI.Avalonia;
+using NetTopologySuite.Geometries;
+using RockRoute.HelperFunction;
+using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Essentials;
-using Avalonia.Controls;
-using System.Threading.Tasks;
+
 
 namespace RockRoute.Views
 {
     public partial class TestMapping : Window
     {
         private MyLocationLayer? _myLocationLayer;
-        
-        private bool _isRunning = false;
+        private bool isRunning = false;
         private Mapsui.Map? _map;
 
         public string Name => "MyLocationLayer";
-
         public string Category => "Navigation";
 
         public TestMapping()
         {
             InitializeComponent();
             CreateMapAsync();
-            StartTrackingAsync(); 
-
         }
 
-        // Method to start tracking GPS and update the location every 5 seconds
         public async Task StartTrackingAsync()
         {
-            _isRunning = true;
+            isRunning = true;
 
-            while (_isRunning)
+            while (isRunning)
             {
                 try
                 {
-                    // Get the GPS location
                     var location = await Geolocation.GetLocationAsync(new GeolocationRequest
                     {
                         DesiredAccuracy = GeolocationAccuracy.Best,
@@ -47,15 +51,11 @@ namespace RockRoute.Views
 
                     if (location != null && _myLocationLayer != null)
                     {
-                        // Convert GPS coordinates to spherical mercator coordinates
                         var sphericalMercatorCoordinate = SphericalMercator.FromLonLat(location.Longitude, location.Latitude).ToMPoint();
 
-                        // Update the location on the map
                         _myLocationLayer.UpdateMyLocation(sphericalMercatorCoordinate, true);
                         _myLocationLayer.IsCentered = true;
 
-                        // Optionally, update the map's center to the user's current location
-                        // You can adjust the zoom level as needed
                         _map.Home = n => n.CenterOnAndZoomTo(sphericalMercatorCoordinate, n.Resolutions[9]);
                     }
                 }
@@ -69,7 +69,7 @@ namespace RockRoute.Views
             }
         }
 
-        public void CreateMapAsync()
+        public async void CreateMapAsync()
         {
             _map = new Mapsui.Map();
 
@@ -80,11 +80,47 @@ namespace RockRoute.Views
             };
 
             _map.Layers.Add(OpenStreetMap.CreateTileLayer());
+
+            
+
+            // Directions ########################################################################
+            var testCoordinates = new List<List<double>>
+            {
+                new List<double> { 8.681495, 49.41461 },
+                new List<double> { 8.687872, 49.420318 }
+            };
+            var route = await HelperFunction.LoginFunctions.GetDirectionsAsync(testCoordinates);
+            System.Console.WriteLine(route);
+
+            var projectedCoordinates = route.Coordinates.Select(c => SphericalMercator.FromLonLat(c.X, c.Y).ToCoordinate()).ToArray();
+            var lineString = new LineString(projectedCoordinates);
+
+            if (route != null)
+            {
+                var routeLayer = new MemoryLayer
+                {
+                    Features = new[] { new GeometryFeature { Geometry = lineString } },
+                    Name = "ORSRouteLayer",
+                    Style = CreateLineStringStyle()
+                };
+
+                _map.Layers.Add(routeLayer);
+                _map.Home = n => n.CenterOnAndZoomTo(routeLayer.Extent.Centroid, 200);
+            }
+            //################################################################################
+
             _map.Layers.Add(_myLocationLayer);
             MapView.Map = _map;
-
         }
-
         
+        public static IStyle CreateLineStringStyle()
+        {
+            return new VectorStyle
+            {
+                Fill = null,
+                Outline = null,
+                Line = { Color = Color.FromString("Red"), Width = 10 }
+            };
+        }
     }
 }

@@ -112,6 +112,11 @@ namespace RockRoute.Views
 
 
         }
+        private void Temp_6(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            var NewWindow = new TestMapping();
+            NewWindow.Show();
+        }
         //Above this line is debug stuff
         //############################################################
         //############################################################
