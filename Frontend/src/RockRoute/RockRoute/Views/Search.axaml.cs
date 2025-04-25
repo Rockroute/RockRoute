@@ -23,12 +23,11 @@ using Mapsui.Widgets;
 using System.Reflection;
 using RockRoute.Models;
 
-
-
 namespace RockRoute.Views
 {
-    public partial class TestMapping : Window
+    public partial class Search : UserControl
     {
+        // Mapping specific #################################################################
         private MyLocationLayer? _myLocationLayer;
         private bool isRunning = false;
         private Mapsui.Map? _map;
@@ -37,23 +36,25 @@ namespace RockRoute.Views
         public string Category => "Navigation";
 
         private static List<Climb> routes = new();
+        //###################################################################################
 
-
-        public TestMapping()
+        public Search()
         {
             InitializeComponent();
-            this.Opened += async (sender, args) => await InitializeAsync();        }
+            this.Loaded += async (sender, args) => await InitializeAsync();
+        }
+
         private async Task InitializeAsync()
         {
-            await CreateMapAsync();      
-            DisplayClimbPoints();        
+            await CreateMapAsync();
+            DisplayClimbPoints();
             await StartTrackingAsync();
         }
 
         public async Task StartTrackingAsync()
         {
             isRunning = true;
-            
+
             _myLocationLayer?.Dispose();
             _myLocationLayer = new MyLocationLayer(_map)
             {
@@ -133,7 +134,7 @@ namespace RockRoute.Views
             _map.Layers.Add(OpenStreetMap.CreateTileLayer());
             MapView.Map = _map;
         }
-        
+
         public static IStyle CreateLineStringStyle()
         {
             return new VectorStyle
@@ -150,7 +151,7 @@ namespace RockRoute.Views
             if (calloutStyle != null)
             {
                 calloutStyle.Enabled = !calloutStyle.Enabled;
-                e.MapInfo?.Layer?.DataHasChanged(); 
+                e.MapInfo?.Layer?.DataHasChanged();
             }
         }
 
@@ -180,7 +181,7 @@ namespace RockRoute.Views
                 feature[nameof(Climb.Protection_Notes)] = c.Protection_Notes;
 
                 feature.Styles.Add(CreateCalloutStyle(feature.ToStringOfKeyValuePairs()));
-                
+
                 return feature;
             });
         }
