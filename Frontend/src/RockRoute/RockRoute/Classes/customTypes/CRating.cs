@@ -23,6 +23,7 @@ namespace RockRoute.Classes {
                 _rating = value;
             }
         }
+        public CRating() {}
         public CRating(string userID, int rating) {
             UserID = userID;
             Rating = rating;
