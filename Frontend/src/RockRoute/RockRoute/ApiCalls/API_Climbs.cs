@@ -12,7 +12,7 @@ using RockRoute.enums;
 
 namespace RockRoute.ApiCalls
 {
-    public class API_Climbs
+    class API_Climbs
     {
         private static readonly string _baseAPIUrl = "http://localhost:5297/";
 

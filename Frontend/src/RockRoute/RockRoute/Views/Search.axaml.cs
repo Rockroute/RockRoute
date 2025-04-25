@@ -128,9 +128,15 @@ namespace RockRoute.Views
         }
         public async Task CreateMapAsync()
         {
-            routes = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
+            try {
+                routes = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Request error: {e.Message}");
+            }
             _map = new Mapsui.Map();
-
+            _map.Navigator.OverrideZoomBounds = new MMinMax(0,20000);
             _map.Layers.Add(OpenStreetMap.CreateTileLayer());
             MapView.Map = _map;
         }
