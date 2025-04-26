@@ -27,8 +27,17 @@ public partial class HomeTab : UserControl
         newWindow.Show();
         window?.Close();
     }
+    // should happen upon add activity button press
     //needs to send the activity to the logbook database 
     public void MakeActivity() {
-        
+        // Activity.Text to get the activity name 
+        // Description.Text for the description of the activity
+        // CalendarEntry.SelectedDate to get datetime 
+
+    }
+    
+    // will contain functionaly for the Add to logbook Button
+    public void AddToLogBook() {
+    
     }
 }
