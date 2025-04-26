@@ -80,8 +80,8 @@ namespace RockRoute.climbData
 
                     var newLocation = new Location
                     {
-                        Lat = Convert.ToDouble(climb.parent_loc[0]),
-                        Long = Convert.ToDouble(climb.parent_loc[1])
+                        Lat = Convert.ToDouble(climb.parent_loc[1]),
+                        Long = Convert.ToDouble(climb.parent_loc[0])
                         
                     };
 

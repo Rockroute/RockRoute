@@ -100,8 +100,6 @@ namespace RockRoute.Views
                 new List<double> { 8.687872, 49.420318 }
             };
             var route = await HelperFunction.LoginFunctions.GetDirectionsAsync(testCoordinates);
-            System.Console.WriteLine(route);
-
             var projectedCoordinates = route.Coordinates.Select(c => SphericalMercator.FromLonLat(c.X, c.Y).ToCoordinate()).ToArray();
             var lineString = new LineString(projectedCoordinates);
 
@@ -123,7 +121,6 @@ namespace RockRoute.Views
         {
             List<Climb> climbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
             _map.Layers.Add(CreatePointLayer(climbs));
-            _map?.RefreshGraphics();
             _map.Info += MapOnInfo;
             _map.Widgets.Add(new MapInfoWidget(_map));
         }
