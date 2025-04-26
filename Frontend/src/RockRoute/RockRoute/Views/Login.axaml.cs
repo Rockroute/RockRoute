@@ -114,15 +114,15 @@ namespace RockRoute.Views
         public bool RevealPassword { get; set; }
         public void ShowPassword(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-             if (Box.IsChecked == true)
+             if (CheckBox.IsChecked == true)
              {
                  RevealPassword = true;
-                 PasswordBox.RevealPassword = RevealPassword;
+                 PasswordTxtBox.RevealPassword = RevealPassword;
              }
-             if (Box.IsChecked == false)
+             if (CheckBox.IsChecked == false)
              {
                  RevealPassword = false;
-                 PasswordBox.RevealPassword = RevealPassword;
+                 PasswordTxtBox.RevealPassword = RevealPassword;
              }
          }
 
