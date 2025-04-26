@@ -106,6 +106,26 @@ namespace RockRoute.Views
 
         }
 
+        //RevealPassword currently works for:
+        //obscuring password without check box interaction
+        //changing obscured password to letters once checked 
+        //--- doesn't change them back instantly once unnchecked, have to delete all typed characters first then retype (think it's a feature with RevealPassword)
+
+        public bool RevealPassword { get; set; }
+        public void ShowPassword(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+             if (Box.IsChecked == true)
+             {
+                 RevealPassword = true;
+                 PasswordBox.RevealPassword = RevealPassword;
+             }
+             if (Box.IsChecked == false)
+             {
+                 RevealPassword = false;
+                 PasswordBox.RevealPassword = RevealPassword;
+             }
+         }
+
 
 
 
