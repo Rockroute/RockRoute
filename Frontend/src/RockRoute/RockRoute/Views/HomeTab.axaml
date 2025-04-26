@@ -13,7 +13,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Bottom" Background="#FFCCCB" CornerRadius="10">
             <MenuItem Header="Settings"/>
-            <MenuItem Header="Log out"/>
+            <MenuItem Click="LogOutButtonClick" Header="Log out"/>
         </Menu>
 
         <Border DockPanel.Dock="Top" Margin="2" CornerRadius="10" Background="LightGray" HorizontalAlignment="Center">
