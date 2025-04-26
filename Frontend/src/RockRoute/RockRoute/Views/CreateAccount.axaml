@@ -26,7 +26,6 @@
                 
                 <Button Click="GotAccountButton" Margin="5" Background="White" Foreground="#349beb" Content="Got an Account?" HorizontalAlignment="Center"/>
                 
-                <Button Margin="5" Content="Continue as Guest" HorizontalAlignment="Right"/>
         </StackPanel>
 
 </Window>
