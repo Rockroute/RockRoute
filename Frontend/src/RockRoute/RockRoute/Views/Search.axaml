@@ -5,19 +5,41 @@
         xmlns:local="clr-namespace:RockRoute.ViewModels"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         xmlns:avalonia="clr-namespace:Mapsui.UI.Avalonia;assembly=Mapsui.UI.Avalonia"        
-        x:DataType="local:LogBookTabViewModel"
+        x:DataType="local:SearchViewModel"
         x:Class="RockRoute.Views.Search">
         <UserControl.DataContext>
-         <local:LogBookTabViewModel/>
+         <local:SearchViewModel/>
         </UserControl.DataContext>
 
         <DockPanel>
-                <avalonia:MapControl DockPanel.Dock="Top" x:Name="MapView" Height="500" HorizontalAlignment="Stretch"/>
-                <TextBlock DockPanel.Dock="Top">THIS IS A SPACER REMOVE</TextBlock>
                 <Menu DockPanel.Dock="Bottom" Background="#FFCCCB" CornerRadius="10">
                         <MenuItem Header="Settings"/>
-                        <MenuItem Header="Log out"/>
+                        <MenuItem Click="LogOutButtonClick"  Header="Log out"/>
                 </Menu>
+
+                <avalonia:MapControl DockPanel.Dock="Top" x:Name="MapView" Height="300" HorizontalAlignment="Stretch"/>
+
+                <ScrollViewer Margin="5" DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
+                <StackPanel >
+                        <Grid HorizontalAlignment="Center" Margin="5" ColumnDefinitions="400, 100" RowDefinitions="Auto">
+                                <TextBox Watermark="Search" Grid.Row="0" Grid.Column="0"/>
+                                <Button Command="{Binding SearchClimbs}" Content="Search" Grid.Row="0" Grid.Column="1"/>
+                        </Grid>
+
+                        <ItemsControl ItemsSource="{Binding ListOfClimbs}">
+                                <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                        <Border Background="LightGray" CornerRadius="10" Margin="5" HorizontalAlignment="Center">
+                                                <StackPanel>
+                                                        <TextBlock Text="{Binding}"/>
+                                                        <TextBlock Text="description: a big climb with lots of moves"/>
+                                                </StackPanel>
+                                        </Border>
+                                </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                </StackPanel>
+                </ScrollViewer>
         </DockPanel>
 
 </UserControl>
