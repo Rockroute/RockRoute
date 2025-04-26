@@ -24,6 +24,5 @@
             <!--            End of Testing Backend stuff                           -->
 
             <Button Click="NeedAccountButton" Margin="5" Background="White" Foreground="#349beb" Content="Need an Account?" HorizontalAlignment="Center"/>
-            <Button Margin="5" Content="Continue as Guest" HorizontalAlignment="Right"/>
         </StackPanel>
 </Window>
