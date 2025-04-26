@@ -21,17 +21,13 @@
 
                 <ScrollViewer Margin="5" DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
                 <StackPanel >
-                        <Grid HorizontalAlignment="Center" Margin="5" ColumnDefinitions="400, 100" RowDefinitions="Auto">
-                                <TextBox Watermark="Search" Grid.Row="0" Grid.Column="0"/>
-                                <Button Command="{Binding SearchClimbs}" Content="Search" Grid.Row="0" Grid.Column="1"/>
-                        </Grid>
-
-                        <ItemsControl ItemsSource="{Binding ListOfClimbs}">
+                        <TextBox Watermark="Search" Text="{Binding SearchInput, UpdateSourceTrigger=PropertyChanged}"/>
+                        <ItemsControl ItemsSource="{Binding FilteredListOfClimbs}">
                                 <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                         <Border Background="LightGray" CornerRadius="10" Margin="5" HorizontalAlignment="Center">
                                                 <StackPanel>
-                                                        <TextBlock Text="{Binding}"/>
+                                                        <TextBlock Text="{Binding RouteName}"/>
                                                         <TextBlock Text="description: a big climb with lots of moves"/>
                                                 </StackPanel>
                                         </Border>

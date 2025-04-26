@@ -2,48 +2,70 @@ using RockRoute.Classes;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Reactive.Linq;
+using System.Linq;
 using ReactiveUI;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using RockRoute.Models;
+using RockRoute.ApiCalls;
 
 namespace RockRoute.ViewModels
 {
     public class SearchViewModel : ReactiveObject
     {
-        public ObservableCollection<string> ListOfClimbs {get;} = new();
+        private List<Climb> AllClimbs = new();
 
-        private string _SearchInput;
-
-        public string SearchInput
+        private ObservableCollection<Climb> _filteredFilteredListOfClimbs = new();
+        public ObservableCollection<Climb> FilteredListOfClimbs
         {
-            get => _SearchInput;
-            set => this.RaiseAndSetIfChanged(ref _SearchInput, value);
+            get => _filteredFilteredListOfClimbs;
+            set => this.RaiseAndSetIfChanged(ref _filteredFilteredListOfClimbs, value);
         }
 
-        public SearchViewModel() 
+        private string _searchInput;
+        public string SearchInput
         {
+            get => _searchInput;
+            set => this.RaiseAndSetIfChanged(ref _searchInput, value);
+        }
+
+
+
+        public SearchViewModel()
+        {
+            // Anytime SearchInput property changes this is triggered. Throttling to prevent unnecessary calls which could be an issue for if our dataset is larger.
+            // Also ensures that the input has to be distinct from the last and keeps it on the main thread avoiding exceptions.
+            this.WhenAnyValue(x => x.SearchInput)
+                .Throttle(TimeSpan.FromMilliseconds(300))
+                .DistinctUntilChanged() 
+                .ObserveOn(RxApp.MainThreadScheduler) 
+                .Subscribe(x => FilterClimbs());
+
             LoadClimbs();
         }
 
-        public void LoadClimbs() {
-            //needs to get all the climbs names and add then to the collection
-            ListOfClimbs.Add("climb1");
-            ListOfClimbs.Add("climb2");
-            ListOfClimbs.Add("climb3");
-            ListOfClimbs.Add("climb1");
-            ListOfClimbs.Add("climb2");
-            ListOfClimbs.Add("climb3");
-            ListOfClimbs.Add("climb1");
-            ListOfClimbs.Add("climb2");
-            ListOfClimbs.Add("climb3");
+        public async void LoadClimbs()
+        {
+            List<Climb> climbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
+            AllClimbs = climbs;
+            FilterClimbs(); 
         }
 
-        public void SearchClimbs(){
-            while (ListOfClimbs.Count > 0) {
-                ListOfClimbs.RemoveAt(0);
+        private void FilterClimbs()
+        {
+            if (string.IsNullOrWhiteSpace(SearchInput))
+            {
+                FilteredListOfClimbs = new ObservableCollection<Climb>(AllClimbs);
             }
-            // get the route names of all the climbs prefrably in a list
-            // search through the list for each instance where it starts with wathever is in SearchInput
-            // if they do start with that then add it to ListOfClimbs with ListOfClibs.Add(string);
-        
+            else
+            {
+                // Filters climbs based on input, alphanumeric case agnostic.
+                var filtered = AllClimbs.Where(c => c.RouteName.StartsWith(SearchInput, StringComparison.OrdinalIgnoreCase)).ToList();
+                FilteredListOfClimbs = new ObservableCollection<Climb>(filtered);
+            }
         }
     }
 }
