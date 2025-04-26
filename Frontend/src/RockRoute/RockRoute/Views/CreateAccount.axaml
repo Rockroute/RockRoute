@@ -12,12 +12,12 @@
                 <TextBox Name="EmailBox" Watermark="Enter Email" Width="250" Margin="5" HorizontalAlignment="Center"/>
                 
                 <TextBlock Margin="5" HorizontalAlignment="Center" Text="Password:"/>
-                <TextBox Name="PasswordBox" Watermark="Password" PasswordChar="*" Width="250" Margin="5" HorizontalAlignment="Center"/>
+                <TextBox Name="PasswordBox" Watermark="Password" PasswordChar="*" Width="250" Margin="5" HorizontalAlignment="Center" RevealPassword="false"/>
                 
                 <TextBlock Margin="5" HorizontalAlignment="Center" Text="Confirm Password:"/>
-                <TextBox Name="CPasswordBox" Watermark="Password" PasswordChar="*" Width="250" Margin="5" HorizontalAlignment="Center"/>
+                <TextBox Name="CPasswordBox" Watermark="Password" PasswordChar="*" Width="250" Margin="5" HorizontalAlignment="Center" RevealPassword="false"/>
                 
-                <CheckBox Margin="5" Content="Show Passwords" HorizontalAlignment="Center"/>
+                <CheckBox Name="CheckBox" Margin="5" Content="Show Passwords" HorizontalAlignment="Center"/>
                 
                 <Button Margin="5" Content="Create account" HorizontalAlignment="Center" Click="CreateAccountButtonClick"/>
                 
