@@ -44,14 +44,24 @@ namespace RockRouteAPI.Controllers
         // PUT: api/LogBookDB/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutLogBook(string id, LogBook logBook)
+        public async Task<IActionResult> PutLogBook(string id, [FromBody] LogBook updatedLogBook)
         {
-            if (id != logBook.UserId)
+            if (id != updatedLogBook.UserId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(logBook).State = EntityState.Modified;
+            var existingLogBook = await _context.LogBook.FindAsync(id);
+
+            if (existingLogBook == null)
+            {
+                return NotFound();
+            }
+
+            existingLogBook.Playlist = updatedLogBook.Playlist;
+            existingLogBook.Route = updatedLogBook.Route;
+            existingLogBook.Activity = updatedLogBook.Activity;
+            existingLogBook.RouteId = updatedLogBook.RouteId;
 
             try
             {
@@ -69,8 +79,9 @@ namespace RockRouteAPI.Controllers
                 }
             }
 
-            return NoContent();
+            return Ok(existingLogBook);
         }
+
 
         // POST: api/LogBookDB
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

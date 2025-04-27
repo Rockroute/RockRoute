@@ -10,8 +10,9 @@ class Program
     //Dont remove the DebugMode line, Just change between true and false
     //Hides and shows test / buttons that are being used to debug and jump to certain scenarios
     public static bool DebugMode = true;
-    public static string runOn = "http://rockroute.flarenet.co.uk/";
+    public static string runOn = "http://localhost:5297/"; //DONT FORGET THE FORWARD SLASH
 //"http://rockroute.flarenet.co.uk/";
+//http://localhost:5297/  //DONT FORGET THE FORWARD SLASH
 
     public static User loggedInUser = new User //Global Var that holds the user logged in details
     {

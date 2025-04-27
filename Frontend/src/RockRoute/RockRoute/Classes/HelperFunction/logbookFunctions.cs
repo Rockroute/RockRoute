@@ -43,7 +43,7 @@ namespace RockRoute.Helper
         public async static Task<bool> newPlaylist(string InputUserId, string playlistName, List<string> collabIds)
         {
             var logbook = await LogBookFunctions.findLogbookFromId(InputUserId);
-            
+
             List<string> NewCollabID = collabIds;
             if (NewCollabID == null)
             {
@@ -121,20 +121,29 @@ namespace RockRoute.Helper
                     PlaylistPicture = "image_url_here"
                 };
 
+                if (logbook.Playlist == null)
+                {
+                    logbook.Playlist = new List<Playlist>();
+                }
                 logbook.Playlist.Add(NewPlaylist);
 
 
                 try
                 {
-                    await API_Logbooks.UpdateLogbookAsync(logbook);
+                    var updatedLogbook = await API_Logbooks.UpdateLogbookAsync(logbook);
                     System.Console.WriteLine("Logbook updated!!");
-                    return (true);
+
+                    // Print the full updated logbook nicely
+                    System.Console.WriteLine(JsonConvert.SerializeObject(updatedLogbook, Formatting.Indented));
+
+                    return true;
                 }
                 catch (Exception ErrorNOOOO)
                 {
-                    System.Console.WriteLine(ErrorNOOOO.Message);
+                    System.Console.WriteLine("Error while updating logbook: " + ErrorNOOOO.Message);
                     return false;
                 }
+
 
             }
 
