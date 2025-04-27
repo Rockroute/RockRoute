@@ -19,7 +19,7 @@ namespace RockRoute.ViewModels
         }
         // needs to load up the playlists
         public async void LoadPlaylists() {
-    
+            
             string path = "api/LogBookDB/"+ Program.loggedInUser.UserId;
             LogBook retrievedLogBook = await API_Logbooks.GetLogbookAsync(path);
 
@@ -29,6 +29,7 @@ namespace RockRoute.ViewModels
                     playlists.Add(UserPlaylist);
                 }
             }
+            
             
         }
         // restest the collection and then reloads the playists 
