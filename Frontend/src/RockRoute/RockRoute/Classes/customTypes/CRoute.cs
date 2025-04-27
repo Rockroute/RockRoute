@@ -49,6 +49,7 @@ namespace RockRoute.Classes {
                 _notes = value;
             }
         }
+        public CRoute() { }
 
         public CRoute(string routeID, DateTime? completedDate,List<string>? partnerID, int? attempts, bool? isOnSite, string? notes) {
             RouteID = routeID;

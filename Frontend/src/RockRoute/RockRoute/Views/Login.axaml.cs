@@ -71,6 +71,7 @@ namespace RockRoute.Views
             //Login.LoginAccount(string email, string password)
             if (!(EmailTxtBox.Text == null || PasswordBox.Text == null))
             {
+
                 System.Console.WriteLine(EmailTxtBox.Text);
                 System.Console.WriteLine(PasswordBox.Text);
 
@@ -88,9 +89,6 @@ namespace RockRoute.Views
                 {
                     PasswordError.Text = "Incorrect Details";
                 }
-
-
-
 
 
                 if (LoginStatus == login_Status.Successfull_Login)
@@ -205,13 +203,13 @@ namespace RockRoute.Views
                 //If climb do exist, then go through all
                 foreach (var oneClimb in retrievedClimbs)
                 {
-                    System.Console.WriteLine(oneClimb.RouteName);
+                    //System.Console.WriteLine(oneClimb.RouteName);
                 }
 
             }
             else
             {
-                System.Console.WriteLine("No climbs not found");
+                //System.Console.WriteLine("No climbs not found");
             }
             //If no climbs
             //return (null);
@@ -229,7 +227,6 @@ namespace RockRoute.Views
 
         private void Temp_5(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            ProcessData.processAndPush();
 
         }
         //Above this line is debug stuff

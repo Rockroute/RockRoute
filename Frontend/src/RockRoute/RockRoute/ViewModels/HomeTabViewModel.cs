@@ -48,7 +48,7 @@ namespace RockRoute.ViewModels
 
         // functionalty to the see more feature - adds more to the recommendations list
         public void SeeMore() {
-            System.Console.WriteLine("See More Test");
+            //System.Console.WriteLine("See More Test");
         }
    }
 }

@@ -64,7 +64,7 @@ namespace RockRoute.Views
                 {
                     //If the name is longer than 3 characters
                     login_Status createAccountStatus = await LoginFunctions.CreateAccountFunc(NameBox.Text, EmailBox.Text, PasswordBox.Text, CPasswordBox.Text);
-                    System.Console.WriteLine(createAccountStatus);
+                    //System.Console.WriteLine(createAccountStatus);
 
                     if (createAccountStatus == login_Status.Account_Created)
                     {
@@ -74,7 +74,7 @@ namespace RockRoute.Views
 
                         //Login attempt
                         login_Status LoginStatus = await LoginFunctions.LoginAccount(EmailBox.Text, PasswordBox.Text);
-                        System.Console.WriteLine("Login Status: " + LoginStatus);
+                        //System.Console.WriteLine("Login Status: " + LoginStatus);
 
                         if (LoginStatus == login_Status.Successfull_Login)
                         {

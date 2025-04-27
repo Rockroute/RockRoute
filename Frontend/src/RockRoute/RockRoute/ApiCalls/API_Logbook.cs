@@ -29,7 +29,7 @@ namespace RockRoute.ApiTest
 
         public static async Task<Uri> CreateLogbookAsync(LogBook LogBook)
         {
-            HttpResponseMessage response = await client.PostAsJsonAsync($"{_baseAPIUrl}api/LogbooksDB", LogBook);
+            HttpResponseMessage response = await client.PostAsJsonAsync($"{_baseAPIUrl}api/LogbookDB", LogBook);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }

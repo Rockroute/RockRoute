@@ -34,9 +34,9 @@ public partial class HomeTab : UserControl
         // Activity.Text to get the activity name 
         // Description.Text for the description of the activity
         // CalendarEntry.SelectedDate to get datetime 
-        System.Console.WriteLine(Activity.Text);
-        System.Console.WriteLine(Description.Text);
-        System.Console.WriteLine(CalendarEntry.SelectedDate);
+        //System.Console.WriteLine(Activity.Text);
+        //System.Console.WriteLine(Description.Text);
+        //System.Console.WriteLine(CalendarEntry.SelectedDate);
 
     }
     

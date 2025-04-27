@@ -118,8 +118,8 @@ namespace RockRoute.Views
                     return;   
                 }
 
-                System.Console.WriteLine(selected.ParentLocation.Lat);
-                System.Console.WriteLine(selected.ParentLocation.Long);
+                //System.Console.WriteLine(selected.ParentLocation.Lat);
+                //System.Console.WriteLine(selected.ParentLocation.Long);
 
                 var currentPos = _myLocationLayer.MyLocation;
                 (double lon, double lat) = SphericalMercator.ToLonLat(currentPos.X, currentPos.Y);
