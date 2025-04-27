@@ -42,12 +42,17 @@
             <ItemsControl ItemsSource="{Binding recommendations}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="10" Background="LightGray" CornerRadius="10"><StackPanel>
-                            <TextBlock Text="{Binding routeName}" HorizontalAlignment="Center" />
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock Text="{Binding routeName}" HorizontalAlignment="Center" />
+                            </Expander.Header>
+
+                            <Border BorderThickness="10" Background="LightGray" CornerRadius="10"><StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <TextBlock Width="300" TextWrapping="Wrap" Text="{Binding routeDescription}" HorizontalAlignment="Center" />
                             </StackPanel>
                         </StackPanel></Border>
+                        </Expander>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
