@@ -10,8 +10,8 @@ class Program
     //Dont remove the DebugMode line, Just change between true and false
     //Hides and shows test / buttons that are being used to debug and jump to certain scenarios
     public static bool DebugMode = true;
-    public static string runOn;
-
+    public static string runOn = "http://localhost:5297/";
+//"http://rockroute.flarenet.co.uk/";
 
     public static User loggedInUser = new User //Global Var that holds the user logged in details
     {
@@ -25,17 +25,7 @@ class Program
     // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
     // yet and stuff might break.
 
-    static Program()
-    {
-        if (DebugMode)
-        {
-            runOn = "http://localhost:5297";
-        }
-        else
-        {
-            runOn = "http://rockroute.flarenet.co.uk/";
-        }
-    }
+    
 
 
 
