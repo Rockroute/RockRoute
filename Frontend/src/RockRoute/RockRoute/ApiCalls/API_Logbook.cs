@@ -27,9 +27,9 @@ namespace RockRoute.ApiTest
 
         
 
-        public static async Task<Uri> CreateLogbookAsync(LogBook LogBook)
+        public static async Task<Uri> CreateLogbookAsync(LogBook logBook)
         {
-            HttpResponseMessage response = await client.PostAsJsonAsync($"{_baseAPIUrl}api/LogbookDB", LogBook);
+            HttpResponseMessage response = await client.PostAsJsonAsync($"{_baseAPIUrl}api/LogBookDB", logBook);
             response.EnsureSuccessStatusCode();
             return response.Headers.Location;
         }
@@ -55,17 +55,24 @@ namespace RockRoute.ApiTest
             return LogBook ?? new List<LogBook>(); //Will return the logbooks or if null return a empty list
         }
 
-        public static async Task<LogBook> UpdateLogbookAsync(LogBook LogBook)
+        public static async Task<LogBook> UpdateLogbookAsync(LogBook logBook)
         {
-            HttpResponseMessage response = await client.PutAsJsonAsync($"{_baseAPIUrl}api/LogbooksDB/{LogBook.UserId}", LogBook);
+            HttpResponseMessage response = await client.PutAsJsonAsync($"{_baseAPIUrl}api/LogBookDB/{logBook.UserId}", logBook);
             response.EnsureSuccessStatusCode();
-            LogBook = await response.Content.ReadFromJsonAsync<LogBook>();
-            return LogBook;
+
+            if (response.Content.Headers.ContentLength == 0)
+            {
+                return logBook;
+            }
+            else
+            {
+                return await response.Content.ReadFromJsonAsync<LogBook>() ?? logBook;
+            }
         }
 
         public static async Task<HttpStatusCode> DeleteLogbookAsync(string UserId)
         {
-            HttpResponseMessage response = await client.DeleteAsync($"{_baseAPIUrl}api/LogbooksDB/{UserId}");
+            HttpResponseMessage response = await client.DeleteAsync($"{_baseAPIUrl}api/LogBookDB/{UserId}");
             return response.StatusCode;
         }
        

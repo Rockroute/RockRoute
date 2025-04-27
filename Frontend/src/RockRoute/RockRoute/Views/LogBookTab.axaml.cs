@@ -5,6 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using RockRoute.ViewModels;
 using RockRoute.Classes;
+using RockRoute.Helper;
 
 namespace RockRoute.Views {
     public partial class LogBookTab : UserControl
@@ -31,11 +32,20 @@ namespace RockRoute.Views {
         }
         
         // will make a playlist ready to be sent to the database 
-        public void MakePlaylist(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
+        public async void MakePlaylist(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
             // should print each of the string entered into the colabID textboxs
-            foreach (string colabID in GetColabIDs(sender,e)) {
-                ////System.Console.WriteLine(colabID);
+            
+            var newPlaylist = await LogBookFunctions.newPlaylist(Program.loggedInUser.UserId, PlaylistNameBox.Text, GetColabIDs(sender,e));
+            if (newPlaylist)
+            {
+                System.Console.WriteLine("Updated");
+            } else
+            {
+                System.Console.WriteLine("Something went wrong");
             }
+            
+
+
             // needs to make the playlist and sent it to the database
         }
         // get all the collaborator IDs for the colabID textBoxs and puts them into a list of strings
