@@ -16,11 +16,11 @@
             
             <!--         Start of Testing Backend stuff                -->
             <!-- If change any of the temp, Please update the table in Notion Backend    -->
-            <Button Name="Temp1" Click="Temp_1" Margin="5" Content="ADD THINGS TO DATABASE" HorizontalAlignment="Center"/>
-            <Button Name="Temp2" Click="Temp_2" Margin="5" Content="Login as Admin" HorizontalAlignment="Center"/>
-            <Button Name="Temp3" Click="Temp_3" Margin="5" Content="Test Get all climbs" HorizontalAlignment="Center"/>
-            <Button Name="Temp4" Click="Temp_4" Margin="5" Content="Create Accounts" HorizontalAlignment="Center"/>
-            <Button Name="Temp5" Click="Temp_5" Margin="5" Content="Process the Climb Data" HorizontalAlignment="Center"/>
+            <Button Name="Temp1" Click="Temp_1" Margin="5" Content="Add info to database" HorizontalAlignment="Center"/>
+            <Button Name="Temp2" Click="Temp_2" Margin="5" Content="Null" HorizontalAlignment="Center"/>
+            <Button Name="Temp3" Click="Temp_3" Margin="5" Content="Null" HorizontalAlignment="Center"/>
+            <Button Name="Temp4" Click="Temp_4" Margin="5" Content="Null" HorizontalAlignment="Center"/>
+            <Button Name="Temp5" Click="Temp_5" Margin="5" Content="Null" HorizontalAlignment="Center"/>
 
 
             <!--            End of Testing Backend stuff                           -->

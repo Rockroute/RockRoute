@@ -72,12 +72,12 @@ namespace RockRoute.Views
             if (!(EmailTxtBox.Text == null || PasswordBox.Text == null))
             {
 
-               //System.Console.WriteLine(EmailTxtBox.Text);
-               //System.Console.WriteLine(PasswordBox.Text);
+                //System.Console.WriteLine(EmailTxtBox.Text);
+                //System.Console.WriteLine(PasswordBox.Text);
 
                 //string InputEmail = EmailTxtBox.Text;
                 login_Status LoginStatus = await LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordBox.Text);
-               //System.Console.WriteLine("Login Status: " + LoginStatus);
+                //System.Console.WriteLine("Login Status: " + LoginStatus);
                 //System.Console.WriteLine(InputEmail.ToLower());
                 //System.Console.WriteLine(PasswordTxtBox.Text);
 
@@ -107,7 +107,7 @@ namespace RockRoute.Views
             else
             {
                 //If one of the text boxes are empty
-               //System.Console.WriteLine("NULL");
+                //System.Console.WriteLine("NULL");
                 PasswordError.Text = "Fill in all information";
             }
 
@@ -176,55 +176,24 @@ namespace RockRoute.Views
 
         private async void Temp_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-
+            ProcessData.createAndPushData();
 
         }
         private async void Temp_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
 
-            LoginFunctions.CreateAccountFunc("Admin", "Admin@Admin.gmail.com", "Admin", "Admin");
-            ProcessData.createAndPushData();
 
-            var NewWindow = new MainWindow();
-            if (!Program.DebugMode)
-            {
-                NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
-            }
-
-            NewWindow.Show();
-            this.Close();
 
         }
         private async void Temp_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            List<Climb> retrievedClimbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB"); //This line works getting a list of all climbs
 
-            if (retrievedClimbs.Count > 0)
-            {
-                //If climb do exist, then go through all
-                foreach (var oneClimb in retrievedClimbs)
-                {
-                    //System.Console.WriteLine(oneClimb.RouteName);
-                }
-
-            }
-            else
-            {
-                //System.Console.WriteLine("No climbs not found");
-            }
-            //If no climbs
-            //return (null);
         }
         private async void Temp_4(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            //Use these for testing functions
-            LoginFunctions.CreateAccountFunc("User", "UserNameEmail", "UserNamePassword", "UserNamePassword");
-            LoginFunctions.CreateAccountFunc("JohnBox", "JohnBoxEmail", "JohnBoxPassword", "JohnBoxPassword");
-            LoginFunctions.CreateAccountFunc("Harvey", "HarveyEmail", "HarveyPassword", "HarveyPassword");
-            LoginFunctions.CreateAccountFunc("Name", "Name82Email", "Name82Password", "Name82Password");
+
 
         }
-        //End of the backend testing stuff, If you want it gone just just do one comments block shown as ->     /* The code in here  */
 
         private void Temp_5(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
