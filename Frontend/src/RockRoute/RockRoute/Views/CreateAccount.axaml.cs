@@ -15,6 +15,8 @@ namespace RockRoute.Views
 {
     public partial class CreateAccount : Window
     {
+        private CheckBox ShowPasswordCheckBox;
+
         public CreateAccount()
         {
             InitializeComponent();
@@ -32,6 +34,10 @@ namespace RockRoute.Views
 
             //Linking the text across:
             PasswordError = this.FindControl<TextBlock>("PasswordError");
+
+
+            ShowPasswordCheckBox = this.FindControl<CheckBox>("CheckBox");
+
 
 
         }
@@ -112,30 +118,31 @@ namespace RockRoute.Views
 
             }
 
-            //ShowPassword currently works for:
-            //obscuring password without check box interaction
-            //changing obscured password to letters once checked 
-            //--- doesn't change them back instantly once unnchecked, have to delete all typed characters first then retype (think it's a feature with RevealPassword)
+
 
 
 
         }
 
+        //ShowPassword currently works for:
+        //obscuring password without check box interaction
+        //changing obscured password to letters once checked 
+        //--- doesn't change them back instantly once unnchecked, have to delete all typed characters first then retype (think it's a feature with RevealPassword)
+        
+        
         public bool RevealPassword { get; set; }
         public void ShowPassword(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            if (CheckBox.IsChecked == true)
+            if (ShowPasswordCheckBox.IsChecked == true)
             {
                 RevealPassword = true;
-                PasswordBox.RevealPassword = RevealPassword;
-                CPasswordBox.RevealPassword = RevealPassword;
             }
-            if (CheckBox.IsChecked == false)
+            else
             {
                 RevealPassword = false;
-                PasswordBox.RevealPassword = RevealPassword;
-                CPasswordBox.RevealPassword = RevealPassword;
             }
+            PasswordBox.RevealPassword = RevealPassword;
+            CPasswordBox.RevealPassword = RevealPassword;
         }
 
 

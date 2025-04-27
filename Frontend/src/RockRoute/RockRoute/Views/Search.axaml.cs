@@ -40,16 +40,7 @@ namespace RockRoute.Views
         public string Category => "Navigation";
         //###################################################################################
 
-        public void LogOutButtonClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
-            var window = this.GetVisualRoot() as Window;
-            var newWindow = new Login();
-            Program.loggedInUser.UserId = "NOT_LOGGED_IN";
-            Program.loggedInUser.Name = "NOT_LOGGED_IN";
-            Program.loggedInUser.Email = "NOT_LOGGED_IN";
-            Program.loggedInUser.Password = "NOT_LOGGED_IN";
-            newWindow.Show();
-            window?.Close();
-        }
+        
         
         public Search()
         {
