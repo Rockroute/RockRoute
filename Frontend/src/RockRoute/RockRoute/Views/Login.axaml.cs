@@ -212,7 +212,6 @@ namespace RockRoute.Views
 
         private void Temp_5(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            ProcessData.processAndPush();
 
         }
         //Above this line is debug stuff
