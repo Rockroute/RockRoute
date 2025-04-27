@@ -5,7 +5,7 @@ using System.Collections.Generic;//for a list
 
 using RockRoute.Classes;
 using RockRoute.Models;
-using RockRoute.ApiTest;
+using RockRoute.ApiCalls;
 using RockRoute.enums;
 
 
@@ -80,8 +80,8 @@ namespace RockRoute.climbData
 
                     var newLocation = new Location
                     {
-                        Lat = Convert.ToDouble(climb.parent_loc[0]),
-                        Long = Convert.ToDouble(climb.parent_loc[1])
+                        Lat = Convert.ToDouble(climb.parent_loc[1]),
+                        Long = Convert.ToDouble(climb.parent_loc[0])
                         
                     };
 
