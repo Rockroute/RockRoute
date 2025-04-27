@@ -235,6 +235,7 @@ namespace RockRoute.Views
                 var feature = new PointFeature(point);
 
                 feature[nameof(Climb.RouteName)] = c.RouteName;
+                feature[nameof(Climb.RouteId)] = c.RouteId;
                 feature[nameof(Climb.ParentSector)] = c.ParentSector;
                 feature[nameof(Climb.Type)] = c.Type;
                 feature[nameof(Climb.YDS)] = c.YDS;
