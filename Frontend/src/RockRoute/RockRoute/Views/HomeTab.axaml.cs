@@ -1,6 +1,8 @@
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.VisualTree;
 using RockRoute.ViewModels;
+using RockRoute.Helper;
 
 namespace RockRoute.Views;
 
@@ -30,14 +32,23 @@ public partial class HomeTab : UserControl
     }
     // should happen upon add activity button press
     //needs to send the activity to the logbook database 
-    public void AddActivity(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
+    public async void Add2Activity(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
         // Activity.Text to get the activity name 
         // Description.Text for the description of the activity
         // CalendarEntry.SelectedDate to get datetime 
-        //System.Console.WriteLine(Activity.Text);
-        //System.Console.WriteLine(Description.Text);
-        //System.Console.WriteLine(CalendarEntry.SelectedDate);
+        System.Console.WriteLine(Activity.Text);
+        System.Console.WriteLine(Description.Text);
+        System.Console.WriteLine(CalendarEntry.SelectedDate);
 
+        bool doesWork = await LogBookFunctions.newActivity(Program.loggedInUser.UserId, Activity.Text, Description.Text, CalendarEntry.SelectedDate.Value);
+        if (doesWork)
+        {
+            System.Console.WriteLine("Saved new activity");
+        }
+        else
+        {
+            System.Console.WriteLine("Something wrong");
+        }
     }
     
 }

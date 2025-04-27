@@ -53,7 +53,7 @@ namespace RockRoute.Helper
 
             if (logbook == null)
             {
-               //System.Console.WriteLine("Logbook not exists!!! but will make it now");
+                //System.Console.WriteLine("Logbook not exists!!! but will make it now");
 
                 var NewActivity = new Activity(
                 Name: "Activity",
@@ -98,12 +98,12 @@ namespace RockRoute.Helper
                 try
                 {
                     await API_Logbooks.CreateLogbookAsync(NewlogBook);
-                   //System.Console.WriteLine("New logbook created!");
+                    //System.Console.WriteLine("New logbook created!");
                     return true;
                 }
                 catch (Exception ErrorNOOOO)
                 {
-                   //System.Console.WriteLine(ErrorNOOOO.Message);
+                    //System.Console.WriteLine(ErrorNOOOO.Message);
                     return false;
                 }
             }
@@ -131,7 +131,7 @@ namespace RockRoute.Helper
                 try
                 {
                     var updatedLogbook = await API_Logbooks.UpdateLogbookAsync(logbook);
-                   //System.Console.WriteLine("Logbook updated!!");
+                    //System.Console.WriteLine("Logbook updated!!");
 
                     //System.Console.WriteLine(JsonConvert.SerializeObject(updatedLogbook, Formatting.Indented));
 
@@ -139,7 +139,7 @@ namespace RockRoute.Helper
                 }
                 catch (Exception ErrorNOOOO)
                 {
-                   //System.Console.WriteLine("Error while updating logbook: " + ErrorNOOOO.Message);
+                    //System.Console.WriteLine("Error while updating logbook: " + ErrorNOOOO.Message);
                     return false;
                 }
 
@@ -147,12 +147,69 @@ namespace RockRoute.Helper
             }
 
 
-
-
-
-
-
         }
+
+
+        public async static Task<bool> newActivity(string InputUserId, string InputActivityName, string InputDescription, DateTime InputDate)
+        {
+            var logbook = await LogBookFunctions.findLogbookFromId(InputUserId);
+
+            if (logbook == null)
+            {
+                //logbook no exist
+                var NewActivity = new Activity(
+                    Name: InputActivityName,
+                    Date: InputDate,
+                    Notes: InputDescription
+                );
+
+                var NewlogBook = new LogBook
+                {
+                    UserId = InputUserId,
+                    RouteId = "TEST",
+                    Playlist = new List<Playlist>(),
+                    Route = new List<CRoute>(),
+                    Activity = new List<Activity> { NewActivity }
+                };
+
+                try
+                {
+                    await API_Logbooks.CreateLogbookAsync(NewlogBook);
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                //LogBook exists
+                var NewActivity = new Activity(
+                    Name: InputActivityName,
+                    Date: InputDate,
+                    Notes: InputDescription
+                );
+
+                if (logbook.Activity == null)
+                {
+                    logbook.Activity = new List<Activity>();
+                }
+
+                logbook.Activity.Add(NewActivity);
+
+                try
+                {
+                    await API_Logbooks.UpdateLogbookAsync(logbook);
+                    return true;
+                }
+                catch (Exception error)
+                {
+                    return false;
+                }
+            }
+        }
+
 
 
 
