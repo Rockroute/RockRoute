@@ -146,7 +146,9 @@ namespace RockRoute.Helper
 
             }
 
+            public async void AddClimbToPlaylist(string ) {
 
+            }
 
 
 

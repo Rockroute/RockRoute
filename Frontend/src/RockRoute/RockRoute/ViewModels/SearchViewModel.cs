@@ -63,6 +63,9 @@ namespace RockRoute.ViewModels
         }
 
         public async void loadPlaylists() {
+            while (UserPlaylists.Count > 0) {
+                UserPlaylists.RemoveAt(0);
+            }
             string path = "api/LogBookDB/"+ Program.loggedInUser.UserId;
             LogBook retrievedLogBook = await API_Logbooks.GetLogbookAsync(path);
             

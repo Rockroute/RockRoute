@@ -7,6 +7,7 @@
         xmlns:avalonia="clr-namespace:Mapsui.UI.Avalonia;assembly=Mapsui.UI.Avalonia"        
         x:DataType="local:SearchViewModel"
         x:Class="RockRoute.Views.Search"
+        PointerPressed="refresh"
         >
         <UserControl.DataContext>
          <local:SearchViewModel/>
@@ -25,7 +26,7 @@
                 <StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <TextBox Watermark="Search" Text="{Binding SearchInput, UpdateSourceTrigger=PropertyChanged}" Width="800"/>
-                                <ComboBox SelectedIndex="0" ItemsSource="{Binding UserPlaylists}" SelectedItem="{Binding SelectedPlaylist}">
+                                <ComboBox Name="PlaylistComboBox" SelectedIndex="0" ItemsSource="{Binding UserPlaylists}" SelectedItem="{Binding SelectedPlaylist}">
                                         <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                                 <TextBlock Text="{Binding Name}"/>
@@ -52,7 +53,7 @@
 
                                                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                                                         <Button Content="Find" Click="OnClickFind" Margin="5,0"/>
-                                                        <Button Content="+" Margin="5,0"/>
+                                                        <Button Content="+" Margin="5,0" CommandParameter="{Binding}"/>
                                                 </StackPanel>
                                                 </Grid>
                                         </Expander.Header>
