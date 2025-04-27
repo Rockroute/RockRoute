@@ -18,6 +18,7 @@ public partial class HomeTab : UserControl
     }
 
     public void LogOutButtonClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
+
         var window = this.GetVisualRoot() as Window;
         var newWindow = new Login();
         Program.loggedInUser.UserId = "NOT_LOGGED_IN";
