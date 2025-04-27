@@ -26,7 +26,7 @@ public partial class HomeTab : UserControl
     }
     // should happen upon add activity button press
     //needs to send the activity to the logbook database 
-    public void MakeActivity(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
+    public void AddActivity(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
         // Activity.Text to get the activity name 
         // Description.Text for the description of the activity
         // CalendarEntry.SelectedDate to get datetime 
