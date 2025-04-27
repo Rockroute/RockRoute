@@ -146,9 +146,10 @@ namespace RockRoute.Helper
 
             }
 
-            public async void AddClimbToPlaylist(string ) {
-
-            }
+            /*public async static Task<bool> AddClimbToPlaylist(string InputUserId, Climb newClimb, string playlistName)
+            {
+                return false
+            }*/
 
 
 

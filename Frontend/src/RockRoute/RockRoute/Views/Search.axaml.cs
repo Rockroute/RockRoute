@@ -53,13 +53,13 @@ namespace RockRoute.Views
             this.Loaded += async (sender, args) => await InitializeAsync();
         }
 
-        public void AddClimbToPlaylistButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
+        /*public void AddClimbToPlaylistButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
             Climb climb = button?.CommandParameter as Climb;
             Playlist selectedPlaylist = PlaylistComboBox.SelectedItem as Playlist;
 
-            
+            LogBookFunctions.AddClimbToPlaylist(LoggedInUser.UserID,climb, selectedPlaylist.Name);
 
-        }
+        }*/
 
         public void refresh(object? sender, Avalonia.Input.PointerPressedEventArgs e) {
             (this.DataContext as SearchViewModel)?.loadPlaylists();
