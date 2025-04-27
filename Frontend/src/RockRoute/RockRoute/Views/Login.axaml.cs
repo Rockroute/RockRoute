@@ -52,6 +52,8 @@ namespace RockRoute.Views
             //Links the Textboxes across
             EmailTxtBox = this.FindControl<TextBox>("EmailTxtBox");
             PasswordBox = this.FindControl<TextBox>("PasswordBox");
+            PasswordError = this.FindControl<TextBlock>("PasswordError");
+
 
             ShowPasswordCheckBox = this.FindControl<CheckBox>("CheckBox");
             //Assigns the variable to link accross to the axaml
@@ -67,34 +69,50 @@ namespace RockRoute.Views
         private async void LoginButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             //Login.LoginAccount(string email, string password)
-            if (EmailTxtBox.Text == null)
+            if (!(EmailTxtBox.Text == null || PasswordBox.Text == null))
             {
-                System.Console.WriteLine("NULL");
-            }
-            System.Console.WriteLine(EmailTxtBox.Text);
-            System.Console.WriteLine(PasswordBox.Text);
+                System.Console.WriteLine(EmailTxtBox.Text);
+                System.Console.WriteLine(PasswordBox.Text);
 
-            //string InputEmail = EmailTxtBox.Text;
-            login_Status LoginStatus = await LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordBox.Text);
-            System.Console.WriteLine("Login Status: " + LoginStatus);
-            //System.Console.WriteLine(InputEmail.ToLower());
-            //System.Console.WriteLine(PasswordTxtBox.Text);
+                //string InputEmail = EmailTxtBox.Text;
+                login_Status LoginStatus = await LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordBox.Text);
+                System.Console.WriteLine("Login Status: " + LoginStatus);
+                //System.Console.WriteLine(InputEmail.ToLower());
+                //System.Console.WriteLine(PasswordTxtBox.Text);
 
-
-
-
-            if (LoginStatus == login_Status.Successfull_Login)
-            {
-                var NewWindow = new MainWindow();
-                if (!Program.DebugMode)
+                if (LoginStatus == login_Status.Account_Does_Not_Exists)
                 {
-                    NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+                    PasswordError.Text = "Account Does Not Exist";
+                }
+                if (LoginStatus == login_Status.Incorrect_Details)
+                {
+                    PasswordError.Text = "Incorrect Details";
                 }
 
-                NewWindow.Show();
-                this.Close();
 
+
+
+
+                if (LoginStatus == login_Status.Successfull_Login)
+                {
+                    var NewWindow = new MainWindow();
+                    if (!Program.DebugMode)
+                    {
+                        NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
+                    }
+
+                    NewWindow.Show();
+                    this.Close();
+
+                }
             }
+            else
+            {
+                //If one of the text boxes are empty
+                System.Console.WriteLine("NULL");
+                PasswordError.Text = "Fill in all information";
+            }
+
 
 
 
@@ -161,7 +179,7 @@ namespace RockRoute.Views
         private async void Temp_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
 
-            
+
         }
         private async void Temp_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
@@ -181,7 +199,7 @@ namespace RockRoute.Views
         private async void Temp_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             List<Climb> retrievedClimbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB"); //This line works getting a list of all climbs
-            
+
             if (retrievedClimbs.Count > 0)
             {
                 //If climb do exist, then go through all
@@ -220,6 +238,6 @@ namespace RockRoute.Views
         //############################################################
         //############################################################
         //############################################################
-        
+
     }
 }
