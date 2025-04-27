@@ -59,16 +59,21 @@ namespace RockRoute.ViewModels
                 .Subscribe(x => FilterClimbs());
 
             LoadClimbs();
-            //loadPlaylists();
+            loadPlaylists();
         }
 
         public async void loadPlaylists() {
             string path = "api/LogBookDB/"+ Program.loggedInUser.UserId;
             LogBook retrievedLogBook = await API_Logbooks.GetLogbookAsync(path);
+            
+            System.Console.WriteLine("going to" + path);
             if (retrievedLogBook.Playlist != null) {
+                System.Console.WriteLine((retrievedLogBook));
+                
                 foreach (Playlist UserPlaylist in retrievedLogBook.Playlist) {
                     UserPlaylists.Add(UserPlaylist);
                 }
+                
             }
         }
 

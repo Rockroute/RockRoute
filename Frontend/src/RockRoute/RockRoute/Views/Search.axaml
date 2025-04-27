@@ -28,7 +28,7 @@
                                 <ComboBox SelectedIndex="0" ItemsSource="{Binding UserPlaylists}" SelectedItem="{Binding SelectedPlaylist}">
                                         <ComboBox.ItemTemplate>
                                         <DataTemplate>
-                                                <TextBlock Text="test"/>
+                                                <TextBlock Text="{Binding Name}"/>
                                         </DataTemplate>
                                         </ComboBox.ItemTemplate>
                                 </ComboBox>
