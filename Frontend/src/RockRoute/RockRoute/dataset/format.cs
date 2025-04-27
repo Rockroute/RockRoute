@@ -245,6 +245,20 @@ namespace RockRoute.climbData
 
         }
 
+        public static async Task<List<Climb>> CreateRandomClimbs() {
+            Random rand = new Random();
+            int randomNumber;
+            List<Climb> AllClimbs = await API_Climbs.GetAllClimbsAsync("api/UsersDB");
+            List<Climb> RandomClimbs = new List<Climb>();
+
+            for (int i =0; i <= 10; i++) {
+                randomNumber = rand.Next(AllClimbs.Count);
+                RandomClimbs.Add(AllClimbs[randomNumber]);
+            }
+            
+
+            return RandomClimbs;
+        }
 
     }
 
