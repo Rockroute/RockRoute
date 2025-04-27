@@ -19,7 +19,7 @@
                         <MenuItem Click="LogOutButtonClick"  Header="Log out"/>
                 </Menu>
 
-                <avalonia:MapControl DockPanel.Dock="Top" x:Name="MapView" Height="300" HorizontalAlignment="Stretch"/>
+                <avalonia:MapControl DockPanel.Dock="Top" x:Name="MapView" Height="400" HorizontalAlignment="Stretch"/>
 
                 <ScrollViewer Margin="5" DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
                 <StackPanel>
@@ -41,7 +41,7 @@
                                                         <TextBlock Text="{Binding RouteName}"/>
                                                         <TextBlock Text="{Binding LocationDescription}" TextWrapping="Wrap"/>
                                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                                                <Button Content="Find"/>
+                                                                <Button Click="OnClickFind" Content="Find"/>
                                                                 <Button Content="+"/>
                                                         </StackPanel>
                                                 </StackPanel>

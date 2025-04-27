@@ -133,7 +133,7 @@ namespace RockRoute.climbData
         public async static Task createAndPushData()
         {
 
-           processAndPush();
+           await processAndPush();
            
            
            List<Climb> retrievedClimbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");

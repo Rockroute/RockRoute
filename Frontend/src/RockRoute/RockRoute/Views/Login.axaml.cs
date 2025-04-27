@@ -183,6 +183,7 @@ namespace RockRoute.Views
         {
 
             LoginFunctions.CreateAccountFunc("Admin", "Admin@Admin.gmail.com", "Admin", "Admin");
+            ProcessData.createAndPushData();
 
             var NewWindow = new MainWindow();
             if (!Program.DebugMode)

@@ -30,6 +30,8 @@ namespace RockRoute.Views
     {
         // Mapping specific #################################################################
         private MyLocationLayer? _myLocationLayer;
+        private MemoryLayer? _currentRouteLayer;
+
         private bool isRunning = false;
         private Mapsui.Map? _map;
         private List<Climb> climbs;
@@ -55,6 +57,24 @@ namespace RockRoute.Views
 
             await StartTrackingAsync();
         }
+        private async void OnClickFind(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                Climb climb = button.DataContext as Climb;
+                if (climb != null)
+                {
+                    selectedRouteId = climb.RouteId;
+                    if (string.IsNullOrEmpty(selectedRouteId))
+                    {
+                        return;
+                    }
+                    await GetDirectionsAsync();
+                }
+            }
+
+        }
+
 
         public async Task StartTrackingAsync()
         {
@@ -63,7 +83,7 @@ namespace RockRoute.Views
             _myLocationLayer?.Dispose();
             _myLocationLayer = new MyLocationLayer(_map)
             {
-                IsCentered = false,
+                IsCentered = true,
             };
             _map.Layers.Add(_myLocationLayer);
 
@@ -118,9 +138,6 @@ namespace RockRoute.Views
                     return;   
                 }
 
-                //System.Console.WriteLine(selected.ParentLocation.Lat);
-                //System.Console.WriteLine(selected.ParentLocation.Long);
-
                 var currentPos = _myLocationLayer.MyLocation;
                 (double lon, double lat) = SphericalMercator.ToLonLat(currentPos.X, currentPos.Y);
                 var coordinates = new List<List<double>>
@@ -137,20 +154,24 @@ namespace RockRoute.Views
                 var projectedCoordinates = route.Coordinates.Select(c => SphericalMercator.FromLonLat(c.X, c.Y).ToCoordinate()).ToArray();
                 var lineString = new LineString(projectedCoordinates);
 
-                if (route != null)
+                if (_currentRouteLayer != null)
                 {
-                    var routeLayer = new MemoryLayer
-                    {
-                        Features = new[] { new GeometryFeature { Geometry = lineString } },
-                        Name = "ORSRouteLayer",
-                        Style = CreateLineStringStyle()
-                    };
-
-                    _map.Layers.Add(routeLayer);
-                    MapView.RefreshGraphics();
-                    _map.Home = n => n.CenterOnAndZoomTo(routeLayer.Extent.Centroid, 200);
+                    _map?.Layers.Remove(_currentRouteLayer);
+                    _currentRouteLayer = null;
                 }
-            } 
+
+                _currentRouteLayer = new MemoryLayer
+                {
+                    Features = new[] { new GeometryFeature { Geometry = lineString } },
+                    Name = "ORSRouteLayer",
+                    Style = CreateLineStringStyle()
+                };
+
+                _map.Layers.Add(_currentRouteLayer);
+                MapView.RefreshGraphics();
+                _map.Home = n => n.CenterOnAndZoomTo(_currentRouteLayer.Extent.Centroid, 200);
+            }
+             
         }
 
         public async Task DisplayClimbPoints()
@@ -188,7 +209,9 @@ namespace RockRoute.Views
             }
             selectedRouteId = e.MapInfo?.Feature?["RouteId"]?.ToString();
             if (string.IsNullOrEmpty(selectedRouteId))
-            return;
+            {
+                return;
+            }
 
             await GetDirectionsAsync();
         }
