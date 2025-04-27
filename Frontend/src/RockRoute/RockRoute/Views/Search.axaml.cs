@@ -90,7 +90,7 @@ namespace RockRoute.Views
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Location error: {ex.Message}");
+                    //Console.WriteLine($"Location error: {ex.Message}");
                     if (_myLocationLayer != null)
                     {
                         var sphericalMercatorCoordinate = SphericalMercator.FromLonLat(-93.664905, 41.950914).ToMPoint();
