@@ -146,8 +146,10 @@ namespace RockRoute.Helper
 
             }
 
+            public async void AddClimbToPlaylist(string ) {
 
         }
+
 
 
         public async static Task<bool> newActivity(string InputUserId, string InputActivityName, string InputDescription, DateTime InputDate)

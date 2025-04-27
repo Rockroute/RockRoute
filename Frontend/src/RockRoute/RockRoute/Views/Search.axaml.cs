@@ -24,6 +24,8 @@ using Mapsui.Providers;
 using Mapsui.Widgets;
 using System.Reflection;
 using RockRoute.Models;
+using RockRoute.ViewModels;
+using RockRoute.Classes;
 
 namespace RockRoute.Views
 {
@@ -49,6 +51,18 @@ namespace RockRoute.Views
         {
             InitializeComponent();
             this.Loaded += async (sender, args) => await InitializeAsync();
+        }
+
+        public void AddClimbToPlaylistButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
+            Climb climb = button?.CommandParameter as Climb;
+            Playlist selectedPlaylist = PlaylistComboBox.SelectedItem as Playlist;
+
+            
+
+        }
+
+        public void refresh(object? sender, Avalonia.Input.PointerPressedEventArgs e) {
+            (this.DataContext as SearchViewModel)?.loadPlaylists();
         }
 
         private async Task InitializeAsync()

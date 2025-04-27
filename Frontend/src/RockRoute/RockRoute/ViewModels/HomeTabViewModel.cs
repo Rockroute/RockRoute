@@ -4,29 +4,24 @@ using System.ComponentModel;
 using RockRoute.climbData;
 using RockRoute.Models;
 using System.Threading.Tasks;
+using ReactiveUI;
 
 
 namespace RockRoute.ViewModels 
 {
-    // 
-    public class Recommendation 
-    {
-        public string routeName {get; set;}
-        public string routeDescription {get; set;}
-
-        public Recommendation(string name, string description) 
-        {
-            routeName = name;
-            routeDescription = description;
-        }
-    }
    
-   public class HomeTabViewModel : INotifyPropertyChanged 
+   public class HomeTabViewModel : ReactiveObject 
    {
         // event handler for handeling upadates to the page when changes are made by the behinded code
         public event  PropertyChangedEventHandler? PropertyChanged;
         // the collection used to store the recommendations used for the Home page
-        public ObservableCollection<Recommendation> recommendations {get;} = new(); 
+        private ObservableCollection<Climb> _recommendations = new();
+        public ObservableCollection<Climb> recommendations
+        {
+            get => _recommendations;
+            set => this.RaiseAndSetIfChanged(ref _recommendations, value);
+        }
+         
 
         // initialses the class HomeTabViewModel
         public HomeTabViewModel() 
@@ -38,9 +33,8 @@ namespace RockRoute.ViewModels
         public async Task LoadRecommendations() 
         {
             List<Climb> RecomendedClimbs = await ProcessData.CreateRandomClimbs();
-            foreach (Climb Recomended in RecomendedClimbs) {
-                recommendations.Add(new Recommendation(Recomended.RouteName,Recomended.LocationDescription));
-            }
+            recommendations = new ObservableCollection<Climb>(RecomendedClimbs);
+
             
         }
 
