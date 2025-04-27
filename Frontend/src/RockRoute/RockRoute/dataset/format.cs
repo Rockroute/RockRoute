@@ -7,6 +7,8 @@ using RockRoute.Classes;
 using RockRoute.Models;
 using RockRoute.ApiCalls;
 using RockRoute.enums;
+using RockRoute.Helper;
+
 
 
 namespace RockRoute.climbData
@@ -37,8 +39,6 @@ namespace RockRoute.climbData
 
     class ProcessData
     {
-
-
         private static climbTypes ProcessClimbTypes(string climbType)
         //Process from string to the corresponding enum
         {
@@ -66,9 +66,9 @@ namespace RockRoute.climbData
         {
 
             string Dir = Directory.GetCurrentDirectory() + "/dataset/dataset_normalised.json"; //Using string the slash may be different for windows
-            System.Console.WriteLine("things with data!");
+            ////System.Console.WriteLine("things with data!");
             //List<preProcessedClimb> climbs = new List<preProcessedClimb>();
-            //System.Console.WriteLine(Dir);
+            ////System.Console.WriteLine(Dir);
 
 
             foreach (var Oneline in File.ReadLines(Dir)) //each line at a time
@@ -82,7 +82,7 @@ namespace RockRoute.climbData
                     {
                         Lat = Convert.ToDouble(climb.parent_loc[1]),
                         Long = Convert.ToDouble(climb.parent_loc[0])
-                        
+
                     };
 
 
@@ -110,8 +110,8 @@ namespace RockRoute.climbData
                     };
 
 
-                    System.Console.WriteLine(newClimb.Type);
-                    System.Console.WriteLine(newClimb.ParentLocation.Lat);
+                    ////System.Console.WriteLine(newClimb.Type);
+                    ////System.Console.WriteLine(newClimb.ParentLocation.Lat);
 
 
                     //Post the New climb to the API
@@ -122,7 +122,68 @@ namespace RockRoute.climbData
 
         }
 
+        public static void createAndPushData()
+        {
 
+            //Creates Accounts
+            LoginFunctions.CreateAccountFunc("Harvey", "Harvey@Gmail.com", "1234", "1234");
+            LoginFunctions.CreateAccountFunc("Sam", "Sam@Yahoo.com", "Climber1234", "Climber1234");
+            LoginFunctions.CreateAccountFunc("Libby", "Libby@Yahoo.com", "Passsword", "Passsword");
+            LoginFunctions.CreateAccountFunc("David", "David@Gmail.com", "hde7DN(02-MS98)", "hde7DN(02-MS98)");
+            LoginFunctions.CreateAccountFunc("Lilly", "Lilly@Gmail.com", "CatAreOKay", "CatAreOKay");
+            LoginFunctions.CreateAccountFunc("Jake", "Jake@Gmail.com", "IloveComputers", "IloveComputers");
+            LoginFunctions.CreateAccountFunc("Nate", "Nate@Yahoo.com", "sk8t4Life", "sk8t4Life");
+            LoginFunctions.CreateAccountFunc("Kyle", "Kyle@Gmail.com", "liverp00lisG8t", "liverp00lisG8t");
+            LoginFunctions.CreateAccountFunc("Seb", "Seb@Gmail.com", "pythonIsBest", "pythonIsBest");
+            LoginFunctions.CreateAccountFunc("JohnBox", "JohnBox@Gmail.com", "HaskellIsLitBro", "HaskellIsLitBro");
+            LoginFunctions.CreateAccountFunc("Phil", "Phil@Yahoo.com", "IloveApple", "IloveApple");
+
+
+            System.Console.WriteLine("Making activity");
+            var activity = new Activity(
+    Name: "Indoor Bouldering",
+    Date: DateTime.Now,
+    Notes: "Worked on overhangs and footwork."
+);
+
+            // Create a sample Playlist
+            var playlist = new Playlist(
+                name: "Crag Classics",
+                creatorID: "user123",
+                collabID: new List<string> { "collab1", "collab2" },
+                ListOfRoute_ID: new List<string> { "route1", "route2" },
+                playlistPicture: "image_url_here"
+            )
+            {
+                Name = "Crag Classics",        // required member satisfied
+                CreatorID = "user123"           // required member satisfied
+            };
+
+            // Create a sample CRoute
+            var route = new CRoute(
+                routeID: "route123",
+                completedDate: DateTime.Now,
+                partnerID: new List<string> { "partner1", "partner2" },
+                attempts: 2,
+                isOnSite: true,
+                notes: "Flashed second attempt!"
+            )
+            {
+                RouteID = "route123"            // required member satisfied
+            };
+
+            // Now create the full LogBook
+            var logBook = new LogBook
+            {
+                UserId = "user123",
+                RouteId = "route123",
+                Playlist = new List<Playlist> { playlist },
+                Route = new List<CRoute> { route },
+                Activity = new List<Activity> { activity }
+            };
+
+            System.Console.WriteLine(logBook.UserId);
+        }
 
 
     }

@@ -46,7 +46,7 @@ namespace RockRoute.Helper
                 newUserid = firstHalf + secondHalf.ToString("D3"); //combines both halves and keep 3 digits long
             } 
             
-            System.Console.WriteLine("New Username created: " + newUserid);
+            ////System.Console.WriteLine("New Username created: " + newUserid);
             return(newUserid);
 /*          
             List<User> retrievedUsers = await API_Users.GetAllUsersAsync("api/UsersDB");
@@ -55,7 +55,7 @@ namespace RockRoute.Helper
                 //If user do exist, then go through all
                 foreach (var oneUser in retrievedUsers)
                 {
-                    //System.Console.WriteLine(oneUser.Email.ToLower());
+                    ////System.Console.WriteLine(oneUser.Email.ToLower());
                     if (oneUser.Email.ToLower() == InputEmail.ToLower())
                     {
                         return (oneUser);
@@ -65,7 +65,7 @@ namespace RockRoute.Helper
             }
             else
             {
-                System.Console.WriteLine("No Users not found");
+                //System.Console.WriteLine("No Users not found");
             }
             //If no users or No users match
             return (null);
@@ -81,7 +81,7 @@ namespace RockRoute.Helper
                 //If user do exist, then go through all
                 foreach (var oneUser in retrievedUsers)
                 {
-                    //System.Console.WriteLine(oneUser.Email.ToLower());
+                    ////System.Console.WriteLine(oneUser.Email.ToLower());
                     if (oneUser.Email.ToLower() == InputEmail.ToLower())
                     {
                         return (oneUser);
@@ -91,7 +91,7 @@ namespace RockRoute.Helper
             }
             else
             {
-                System.Console.WriteLine("No Users not found");
+                //System.Console.WriteLine("No Users not found");
             }
             //If no users or No users match
             return (null);
@@ -117,7 +117,7 @@ namespace RockRoute.Helper
             }
             else
             {
-                System.Console.WriteLine("No Users not found");
+                //System.Console.WriteLine("No Users not found");
             }
             //If no users or No users match
             return (false);
@@ -131,7 +131,7 @@ namespace RockRoute.Helper
 
                 foreach (var oneUser in retrievedUsers)
                 {
-                    System.Console.WriteLine(oneUser.Email.ToLower());
+                    //System.Console.WriteLine(oneUser.Email.ToLower());
                     if (oneUser.Email.ToLower() == InputEmail.ToLower())
                     {
                         return (true);
@@ -141,7 +141,7 @@ namespace RockRoute.Helper
             }
             else
             {
-                System.Console.WriteLine("No Users not found");
+                //System.Console.WriteLine("No Users not found");
             }
             //If no users or No users match
             return (false);

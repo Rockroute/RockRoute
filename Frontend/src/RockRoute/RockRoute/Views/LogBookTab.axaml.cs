@@ -34,7 +34,7 @@ namespace RockRoute.Views {
         public void MakePlaylist(object? sender, Avalonia.Interactivity.RoutedEventArgs e) {
             // should print each of the string entered into the colabID textboxs
             foreach (string colabID in GetColabIDs(sender,e)) {
-                System.Console.WriteLine(colabID);
+                ////System.Console.WriteLine(colabID);
             }
             // needs to make the playlist and sent it to the database
         }

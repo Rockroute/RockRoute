@@ -40,7 +40,7 @@ namespace RockRoute.ViewModels
 
             // Creating an instance
             //string ApiAsString = JsonConvert.SerializeObject(myRoute); //Converts the ApiJson into JSON String
-            //System.Console.WriteLine(ApiAsString); //Prints the JSON string
+            ////System.Console.WriteLine(ApiAsString); //Prints the JSON string
 
         }
 

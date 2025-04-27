@@ -69,16 +69,16 @@ namespace RockRoute.Views
             //Login.LoginAccount(string email, string password)
             if (EmailTxtBox.Text == null)
             {
-                System.Console.WriteLine("NULL");
+                //System.Console.WriteLine("NULL");
             }
-            System.Console.WriteLine(EmailTxtBox.Text);
-            System.Console.WriteLine(PasswordBox.Text);
+            //System.Console.WriteLine(EmailTxtBox.Text);
+            //System.Console.WriteLine(PasswordBox.Text);
 
             //string InputEmail = EmailTxtBox.Text;
             login_Status LoginStatus = await LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordBox.Text);
-            System.Console.WriteLine("Login Status: " + LoginStatus);
-            //System.Console.WriteLine(InputEmail.ToLower());
-            //System.Console.WriteLine(PasswordTxtBox.Text);
+            //System.Console.WriteLine("Login Status: " + LoginStatus);
+            ////System.Console.WriteLine(InputEmail.ToLower());
+            ////System.Console.WriteLine(PasswordTxtBox.Text);
 
 
 
@@ -160,8 +160,8 @@ namespace RockRoute.Views
 
         private async void Temp_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+            ProcessData.createAndPushData();
 
-            
         }
         private async void Temp_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
@@ -181,19 +181,19 @@ namespace RockRoute.Views
         private async void Temp_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             List<Climb> retrievedClimbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB"); //This line works getting a list of all climbs
-            
+
             if (retrievedClimbs.Count > 0)
             {
                 //If climb do exist, then go through all
                 foreach (var oneClimb in retrievedClimbs)
                 {
-                    System.Console.WriteLine(oneClimb.RouteName);
+                    //System.Console.WriteLine(oneClimb.RouteName);
                 }
 
             }
             else
             {
-                System.Console.WriteLine("No climbs not found");
+                //System.Console.WriteLine("No climbs not found");
             }
             //If no climbs
             //return (null);
@@ -220,6 +220,6 @@ namespace RockRoute.Views
         //############################################################
         //############################################################
         //############################################################
-        
+
     }
 }

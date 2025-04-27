@@ -33,7 +33,7 @@ namespace RockRoute.Classes
                     throw new ArgumentException("Notes cannot be null or empty.");
                     _notes = value; }
         } 
-
+        public Activity() {}
         public Activity(string Name, DateTime? Date, string Notes) { //When initialising the Class
             _date = Date;
             _name = Name;
