@@ -133,10 +133,10 @@ namespace RockRoute.climbData
         public async static Task createAndPushData()
         {
 
-           await processAndPush();
-           
-           
-           List<Climb> retrievedClimbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
+            await processAndPush();
+
+
+            List<Climb> retrievedClimbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
 
 
 
@@ -184,25 +184,14 @@ namespace RockRoute.climbData
 
                 int index = random.Next(retrievedClimbs.Count);
                 string randomClimbID = retrievedClimbs[index].RouteId;
-               //System.Console.WriteLine((randomClimbID));
+                //System.Console.WriteLine((randomClimbID));
 
                 if (user == null || collab1 == null || collab2 == null)
                 {
                     //Skip iteration if null
-                   //System.Console.WriteLine(("Skipped"));
+                    //System.Console.WriteLine(("Skipped"));
                     continue;
                 }
-
-
-                var NewPlaylist = new Playlist
-                {
-                    Name = playListName[random.Next(0, 8)] + " " + playListName[random.Next(0, 8)],
-                    CreatorID = user.UserId,
-                    CollabID = new List<string> { collab1.UserId, collab2.UserId },
-                    ListOfRoute_ID = new List<string> { randomClimbID },
-                    PlaylistPicture = "image_url_here"
-                };
-
 
 
 
@@ -223,7 +212,7 @@ namespace RockRoute.climbData
                 {
                     UserId = user.UserId,
                     RouteId = randomClimbID,
-                    Playlist = new List<Playlist> { NewPlaylist },
+                    Playlist = new List<Playlist>(), //Blank as it gets updated later
                     Route = new List<CRoute> { NewRoute },
                     Activity = new List<Activity> { NewActivity }
                 };
@@ -231,12 +220,38 @@ namespace RockRoute.climbData
                 try
                 {
                     await API_Logbooks.CreateLogbookAsync(NewlogBook);
-                   //System.Console.WriteLine("Logbook created!");
+                    //System.Console.WriteLine("Logbook created!");
                 }
                 catch (Exception ErrorNOOOO)
                 {
-                   //System.Console.WriteLine(ErrorNOOOO.Message);
+                    //System.Console.WriteLine(ErrorNOOOO.Message);
                 }
+
+
+
+
+                for (int i = 0; i < 10; i++)
+                {
+                    string randomName = playListName[random.Next(0, 9)] + " " + playListName[random.Next(0, 9)];
+
+
+
+                    var collabIds = new List<string> { collab1.UserId, collab2.UserId };
+
+                    bool doesWork = await LogBookFunctions.newPlaylist(user.UserId, randomName, collabIds);
+
+                    if (!doesWork)
+                    {
+                        Console.WriteLine($"Failed to create playlist '{randomName}' for user {user.UserId}");
+                    }
+                }
+
+
+
+
+
+
+
 
             }
 
@@ -245,17 +260,19 @@ namespace RockRoute.climbData
 
         }
 
-        public static async Task<List<Climb>> CreateRandomClimbs() {
+        public static async Task<List<Climb>> CreateRandomClimbs()
+        {
             Random rand = new Random();
             int randomNumber;
             List<Climb> AllClimbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
             List<Climb> RandomClimbs = new List<Climb>();
 
-            for (int i = 0; i <= 10; i++) {
+            for (int i = 0; i <= 10; i++)
+            {
                 randomNumber = rand.Next(AllClimbs.Count);
                 RandomClimbs.Add(AllClimbs[randomNumber]);
             }
-            
+
 
             return RandomClimbs;
         }
