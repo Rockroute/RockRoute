@@ -1,6 +1,7 @@
 using System.Collections.Generic; //to use List
 using Newtonsoft.Json;//for JSON serilization
 using System.Threading.Tasks;
+using System;
 
 using RockRoute.enums;
 using RockRoute.Classes;
@@ -21,6 +22,7 @@ namespace RockRoute.Helper
             Email = "Admin@Admin.com",
             Password = "PretendThisIsEncrypted"
         };
+
 
         private static async Task<string> CreateNewUsername(string InputName)
         {
@@ -146,6 +148,72 @@ namespace RockRoute.Helper
             //If no users or No users match
             return (false);
         }
+
+        public async static Task<bool> CreateNewLogbook(string userId)
+        {
+            //Input Userid then creates and push a blank logbook
+            if ((LogBookFunctions.findLogbookFromId(userId)) != null) {
+                System.Console.WriteLine("Logbook already exists");
+                return true;
+            }else
+            {
+                var NewActivity = new Activity(
+                Name: "Activity",
+                Date: DateTime.Now,
+                Notes: "Notes"
+                );
+
+
+                var NewPlaylist = new Playlist
+                {
+                    Name = "Example",
+                    CreatorID = userId,
+                    CollabID = new List<string> { userId },
+                    ListOfRoute_ID = new List<string> { "Example" },
+                    PlaylistPicture = "image_url_here"
+                };
+
+
+                var NewRoute = new CRoute
+                {
+                    RouteID = "Example",
+                    CompletedDate = DateTime.Now,
+                    PartnerID = new List<string> { userId },
+                    Attempts = 1,
+                    IsOnSite = true,
+                    Notes = "Note"
+                };
+
+
+
+                var NewlogBook = new LogBook
+                {
+                    UserId = userId,
+                    RouteId = "TEST",
+                    Playlist = new List<Playlist> { NewPlaylist },
+                    Route = new List<CRoute> { NewRoute },
+                    Activity = new List<Activity> { NewActivity }
+                };
+
+                try
+                {
+                    await API_Logbooks.CreateLogbookAsync(NewlogBook);
+                    System.Console.WriteLine("Logbook created!");
+                    return (true);
+                }
+                catch (Exception ErrorNOOOO)
+                {
+                    System.Console.WriteLine(ErrorNOOOO.Message);
+                    return false;
+                }
+                
+            }
+
+
+
+        }
+
+
         public async static Task<login_Status> CreateAccountFunc(string input_Name, string input_email, string input_Password, string input_CheckPassword)
         {
 
@@ -187,6 +255,8 @@ namespace RockRoute.Helper
 
             //else (If API returns code ***)
             //return(login_Status.Error);
+            CreateNewLogbook(newUserID);
+
 
             return (login_Status.Account_Created);
 
