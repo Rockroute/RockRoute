@@ -1,0 +1,30 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RockRoute.Views;assembly=RockRoute"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="RockRoute.Views.MainWindow"
+        Title="RockRoute">
+
+      <Window.Styles>
+        <Style Selector="TabControl /template/ WrapPanel">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Styles>
+     <TabControl HorizontalAlignment="Stretch">
+
+        <TabItem Header="       Home       " BorderThickness="15">
+            <local:HomeTab/>
+        </TabItem>
+
+        <TabItem Header="       Search       " BorderThickness="15">
+            <local:Search/>
+        </TabItem>
+
+        <TabItem Header="       Log Book       " BorderThickness="15">
+            <local:LogBookTab/>
+        </TabItem>
+
+    </TabControl>
+</Window>

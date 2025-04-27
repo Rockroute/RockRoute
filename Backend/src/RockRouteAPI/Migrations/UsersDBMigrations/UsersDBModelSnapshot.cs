@@ -30,10 +30,6 @@ namespace RockRouteAPI.Migrations.UsersDBMigrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("LogBook")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");

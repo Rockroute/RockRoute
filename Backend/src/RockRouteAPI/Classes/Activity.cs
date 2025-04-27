@@ -1,42 +1,40 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace RockRoute.Classes
 {
+    [Owned]
     public class Activity
     {
-        private string _name; 
+        private string _name;
         private DateTime? _date;
         private string _notes;
-
 
         public string Name
         {
             get => _name;
-            set { 
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Name cannot be null or empty.");
-                    _name = value; }
+            set => _name = value;
         }
 
-        public DateTime? Date 
+        public DateTime? Date
         {
             get => _date;
-            set { _date = value;}
+            set => _date = value;
         }
 
-        public string Notes 
+        public string Notes
         {
-            get => _notes; 
-            set { 
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Notes cannot be null or empty.");
-                    _notes = value; }
-        } 
+            get => _notes;
+            set => _notes = value;
+        }
 
-        public Activity(string Name, DateTime? Date, string Notes) { //When initialising the Class
-            _date = Date;
-            _name = Name;
-            _notes = Notes;
+        public Activity(string name, DateTime? date, string notes)
+        {
+            _name = name;
+            _date = date;
+            _notes = notes;
         }
     }
 }

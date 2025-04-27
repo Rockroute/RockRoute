@@ -7,10 +7,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddDbContext<ClimbsDB>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("ClimbsDB")));
-builder.Services.AddDbContext<LogBooksDB>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("LogBooksDB")));
-builder.Services.AddDbContext<UsersDB>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("UsersDB")));
-
+if(builder.Environment.IsDevelopment()) {
+    builder.Services.AddDbContext<UsersDB>(opt => opt.UseInMemoryDatabase("UsersDB"));
+    builder.Services.AddDbContext<ClimbsDB>(opt => opt.UseInMemoryDatabase("ClimbsDB"));
+    builder.Services.AddDbContext<LogBooksDB>(opt => opt.UseInMemoryDatabase("LogBooksDB"));
+}
+else {
+    builder.Services.AddDbContext<ClimbsDB>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("ClimbsDB")));
+    builder.Services.AddDbContext<LogBooksDB>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("LogBooksDB")));
+    builder.Services.AddDbContext<UsersDB>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("UsersDB")));
+}
 
 builder.Services.AddControllers();
 if (builder.Environment.IsDevelopment())

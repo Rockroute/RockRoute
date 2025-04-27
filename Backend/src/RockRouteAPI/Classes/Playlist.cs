@@ -1,7 +1,14 @@
 using System;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
 using System.Collections.Generic; //to use List
 
 namespace RockRoute.Classes {
+    [Owned]
+
     public class Playlist {
         private string _name = string.Empty;
         private string _creatorID = string.Empty;
@@ -13,8 +20,9 @@ namespace RockRoute.Classes {
             then a helper function will match them up
         */
         private List<String>? _listOfRoute_ID;
-        private byte[]? _playlistPicture;
+        private string? _playlistPicture;
 
+        
         public required string Name {
             get => _name;
             set {
@@ -42,19 +50,18 @@ namespace RockRoute.Classes {
                 _listOfRoute_ID = value;}
         }
         
-        public byte[]? PlaylistPicture {
+        public string? PlaylistPicture {
             get => _playlistPicture;
             set {
                 _playlistPicture = value;
             }
         }
-        public Playlist(string name, string creatorID, List<string>? collabID, List<string>? ListOfRoute_ID, byte[]? playlistPicture) {
-            _name = name;
-            _creatorID = creatorID;
-            _collabID = collabID;
-            _listOfRoute_ID = ListOfRoute_ID;
-            _playlistPicture = playlistPicture;
-
+        public Playlist(string name, string creatorID, List<string>? collabID, List<string>? ListOfRoute_ID, string? playlistPicture) {
+            Name = name;
+            CreatorID = creatorID;
+            CollabID = collabID;
+            ListOfRoute_ID = ListOfRoute_ID;
+            PlaylistPicture = playlistPicture;
         }  
     }
 }
