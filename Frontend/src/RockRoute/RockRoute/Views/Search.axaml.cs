@@ -235,9 +235,11 @@ namespace RockRoute.Views
                 var feature = new PointFeature(point);
 
                 feature[nameof(Climb.RouteName)] = c.RouteName;
-                feature[nameof(Climb.RouteId)] = c.RouteId;
                 feature[nameof(Climb.ParentSector)] = c.ParentSector;
+                feature[nameof(Climb.Type)] = c.Type;
                 feature[nameof(Climb.YDS)] = c.YDS;
+                feature[nameof(Climb.ParentLocation.Lat)] = c.ParentLocation.Lat;
+                feature[nameof(Climb.ParentLocation.Long)] = c.ParentLocation.Long;
                 feature[nameof(Climb.Protection_Notes)] = c.Protection_Notes;
 
                 feature.Styles.Add(CreateCalloutStyle(feature.ToStringOfKeyValuePairs()));
