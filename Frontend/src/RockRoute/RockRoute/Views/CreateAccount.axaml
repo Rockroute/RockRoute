@@ -21,7 +21,6 @@
                 
                 <Button Margin="5" Content="Create account" HorizontalAlignment="Center" Click="CreateAccountButtonClick"/>
                 
-                <!-- SAM THE LINE BELOW?! PasswordError. Hope your having a good easter-->
                 <TextBlock Name="PasswordError" Margin="5" Foreground="Red" Text="" HorizontalAlignment="Center"/>
                 
                 <Button Click="GotAccountButton" Margin="5" Background="White" Foreground="#349beb" Content="Got an Account?" HorizontalAlignment="Center"/>
