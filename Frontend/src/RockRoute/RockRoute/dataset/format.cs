@@ -2,12 +2,16 @@ using System;
 using System.IO;
 using System.Text.Json;
 using System.Collections.Generic;//for a list
+using System.Threading.Tasks;
+
 
 using RockRoute.Classes;
 using RockRoute.Models;
 using RockRoute.ApiCalls;
 using RockRoute.enums;
 using RockRoute.Helper;
+
+
 
 
 
@@ -39,6 +43,9 @@ namespace RockRoute.climbData
 
     class ProcessData
     {
+        //List to store all the routenames for when generating playlist
+        public static List<string> routeIds = new List<string>();
+
         private static climbTypes ProcessClimbTypes(string climbType)
         //Process from string to the corresponding enum
         {
@@ -62,7 +69,7 @@ namespace RockRoute.climbData
 
 
         }
-        public static void processAndPush()
+        public static async Task processAndPush()
         {
 
             string Dir = Directory.GetCurrentDirectory() + "/dataset/dataset_normalised.json"; //Using string the slash may be different for windows
@@ -93,7 +100,7 @@ namespace RockRoute.climbData
                         Rating = 5
                     };
                     */
-
+                    routeIds.Add(climb.route_ID);
                     var newClimb = new Climb //Make a climb to be pushed
                     {
                         RouteName = climb.route_name,
@@ -115,15 +122,20 @@ namespace RockRoute.climbData
 
 
                     //Post the New climb to the API
-                    API_Climbs.CreateClimbAsync(newClimb);
+                    await API_Climbs.CreateClimbAsync(newClimb);
 
                 }
             }
 
         }
 
-        public static void createAndPushData()
+        public async static Task createAndPushData()
         {
+
+            List<Climb> retrievedClimbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
+
+
+
 
             //Creates Accounts
             LoginFunctions.CreateAccountFunc("Harvey", "Harvey@Gmail.com", "1234", "1234");
@@ -139,50 +151,101 @@ namespace RockRoute.climbData
             LoginFunctions.CreateAccountFunc("Phil", "Phil@Yahoo.com", "IloveApple", "IloveApple");
 
 
-            System.Console.WriteLine("Making activity");
-            var activity = new Activity(
-    Name: "Indoor Bouldering",
-    Date: DateTime.Now,
-    Notes: "Worked on overhangs and footwork."
-);
+            Random random = new Random(); //object Random with name random
 
-            // Create a sample Playlist
-            var playlist = new Playlist(
-                name: "Crag Classics",
-                creatorID: "user123",
-                collabID: new List<string> { "collab1", "collab2" },
-                ListOfRoute_ID: new List<string> { "route1", "route2" },
-                playlistPicture: "image_url_here"
-            )
+            //To generate random but slightly realistic activities
+            string[] activity = { "Indoor Sport", "Indoor Boulder", "Indoor trad", "Outdoor Sport", "Outdoor Boulder", "Outdoor Trad" };
+            string[] workedOn = { "Footwork", "Overhang", "hangboard", "Cardio", "weights", "fingers", "Slab", "dyno", "static" };
+
+
+            for (int i = 0; i < 50; i++)
             {
-                Name = "Crag Classics",        // required member satisfied
-                CreatorID = "user123"           // required member satisfied
-            };
+                var NewActivity = new Activity(
+                Name: activity[random.Next(0, 5)],
+                Date: DateTime.Now,
+                Notes: "Worked on" + workedOn[random.Next(0, 8)] + " and " + workedOn[random.Next(0, 8)]
+                );
 
-            // Create a sample CRoute
-            var route = new CRoute(
-                routeID: "route123",
-                completedDate: DateTime.Now,
-                partnerID: new List<string> { "partner1", "partner2" },
-                attempts: 2,
-                isOnSite: true,
-                notes: "Flashed second attempt!"
-            )
-            {
-                RouteID = "route123"            // required member satisfied
-            };
 
-            // Now create the full LogBook
-            var logBook = new LogBook
-            {
-                UserId = "user123",
-                RouteId = "route123",
-                Playlist = new List<Playlist> { playlist },
-                Route = new List<CRoute> { route },
-                Activity = new List<Activity> { activity }
-            };
 
-            System.Console.WriteLine(logBook.UserId);
+                string[] playListName = { "Cup ", "Crag ", "Modern ", "Classic ", "Fun Day out at ", "France 2026 ", "The Lads ", "Summer ", "Crazy" };
+                string[] possibleEmails = { "Phil@Yahoo.com", "JohnBox@Gmail.com", "Seb@Gmail.com", "Kyle@Gmail.com", "Harvey@Gmail.com", "Nate@Yahoo.com", "Jake@Gmail.com", "Lilly@Gmail.com", "David@Gmail.com", "Libby@Yahoo.com", "Sam@Yahoo.com" };
+
+                var user = await LoginFunctions.findUserFromEmail(possibleEmails[random.Next(0, 10)]); //get the ID of the random chosen email
+                var collab1 = await LoginFunctions.findUserFromEmail(possibleEmails[random.Next(0, 10)]); //get the ID of the random chosen email
+                var collab2 = await LoginFunctions.findUserFromEmail(possibleEmails[random.Next(0, 10)]); //get the ID of the random chosen email
+
+                int index = random.Next(retrievedClimbs.Count);
+                string randomClimbID = retrievedClimbs[index].RouteId;
+                System.Console.WriteLine((randomClimbID));
+                if (user == null || collab1 == null || collab2 == null)
+                {
+                    //Skip iteration if null
+                    continue; 
+                }
+
+
+                var playlist = new Playlist
+                {
+                    Name = playListName[random.Next(0, 8)] + " " + playListName[random.Next(0, 8)],
+                    CreatorID = user.UserId,
+                    CollabID = new List<string> { collab1.UserId, collab2.UserId },
+                    ListOfRoute_ID = new List<string> { randomClimbID, randomClimbID },
+                    PlaylistPicture = "image_url_here"
+                };
+
+
+        
+
+
+
+
+
+            }
+
+
+
+
+            /*
+
+                        // Create a sample Playlist
+                        var playlist = new Playlist(
+                            name: "Crag Classics",
+                            creatorID: "user123",
+                            collabID: new List<string> { "collab1", "collab2" },
+                            ListOfRoute_ID: new List<string> { "route1", "route2" },
+                            playlistPicture: "image_url_here"
+                        )
+                        {
+                            Name = "Crag Classics",        // required member satisfied
+                            CreatorID = "user123"           // required member satisfied
+                        };
+
+                        // Create a sample CRoute
+                        var route = new CRoute(
+                            routeID: "route123",
+                            completedDate: DateTime.Now,
+                            partnerID: new List<string> { "partner1", "partner2" },
+                            attempts: 2,
+                            isOnSite: true,
+                            notes: "Flashed second attempt!"
+                        )
+                        {
+                            RouteID = "route123"            // required member satisfied
+                        };
+
+                        // Now create the full LogBook
+                        var logBook = new LogBook
+                        {
+                            UserId = "user123",
+                            RouteId = "route123",
+                            Playlist = new List<Playlist> { playlist },
+                            Route = new List<CRoute> { route },
+                            Activity = new List<Activity> { activity }
+                        };
+
+                        System.Console.WriteLine(logBook.UserId);
+                        */
         }
 
 

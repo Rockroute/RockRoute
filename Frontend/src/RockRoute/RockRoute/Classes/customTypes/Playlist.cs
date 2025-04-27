@@ -42,6 +42,8 @@ namespace RockRoute.Classes {
                 _playlistPicture = value;
             }
         }
+        public Playlist() { }
+
         public Playlist(string name, string creatorID, List<string>? collabID, List<string>? ListOfRoute_ID, string? playlistPicture) {
             _name = name;
             _creatorID = creatorID;
