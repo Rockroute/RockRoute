@@ -34,8 +34,6 @@ namespace RockRoute.Views
 
             //Linking the text across:
             PasswordError = this.FindControl<TextBlock>("PasswordError");
-
-
             ShowPasswordCheckBox = this.FindControl<CheckBox>("CheckBox");
 
 
