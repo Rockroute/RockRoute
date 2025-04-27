@@ -150,7 +150,7 @@ namespace RockRoute.Helper
 
 
 
-            public async void AddClimbToPlaylist(string ) {
+            
 
         }
 
@@ -217,8 +217,8 @@ namespace RockRoute.Helper
         }
 
 
-
-        public async static Task<bool> newClimb(string InputUserId, string InputPlaylistName, CRoute  InputNewClimb)
+/*
+        public async static Task<bool> newClimb(string InputUserId, string InputPlaylistName, Climb InputNewClimb)
         {
             var logbook = await LogBookFunctions.findLogbookFromId(InputUserId);
 
@@ -316,7 +316,7 @@ namespace RockRoute.Helper
 
 
 
-
+*/
 
 
 
