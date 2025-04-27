@@ -40,8 +40,4 @@ public partial class HomeTab : UserControl
 
     }
     
-    // will contain functionaly for the Add to logbook Button
-    public void AddToLogBook() {
-    
-    }
 }

@@ -1,4 +1,7 @@
 using RockRoute.Classes;
+using RockRoute.ApiTest;
+using RockRoute.ApiCalls;
+using RockRoute.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -15,23 +18,8 @@ namespace RockRoute.ViewModels
             LoadPlaylists();
         }
         // needs to load up the playlists
-        public void LoadPlaylists() {
-            
-            //playlist playfromAPI new plaulist
-            //playlist.Add(playfromAPI)
-            playlists.Add(new Playlist("test playlist","testCreator",new List<string>(),new List<string>(),null)
-            {
-                //This is where you add the playlist from API
-                Name = "test-playlist-1",
-                CreatorID = "testID"
-            });
-            playlists.Add(new Playlist("test playlist","testCreator",new List<string>(),new List<string>(),null)
-            {
-                Name = "test-playlist-2",
-                CreatorID = "testID"
-            });
-
-            /*
+        public async void LoadPlaylists() {
+    
             string path = "api/LogBookDB/"+ Program.loggedInUser.UserId;
             LogBook retrievedLogBook = await API_Logbooks.GetLogbookAsync(path);
 
@@ -41,7 +29,7 @@ namespace RockRoute.ViewModels
                     playlists.Add(UserPlaylist);
                 }
             }
-            */
+            
         }
         // restest the collection and then reloads the playists 
         public void ReloadPlaylists() {

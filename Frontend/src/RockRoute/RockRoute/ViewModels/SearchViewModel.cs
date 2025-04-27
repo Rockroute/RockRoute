@@ -59,7 +59,7 @@ namespace RockRoute.ViewModels
                 .Subscribe(x => FilterClimbs());
 
             LoadClimbs();
-            //loadPlaylists();
+            loadPlaylists();
         }
 
         public async void loadPlaylists() {

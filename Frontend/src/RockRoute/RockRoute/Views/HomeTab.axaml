@@ -35,7 +35,7 @@
             </Grid>
         </Border>
 
-        <Border CornerRadius="10" DockPanel.Dock="Top" BorderThickness="10"><TextBlock Text="Climbing near you" HorizontalAlignment="Center"/></Border>
+        <Border CornerRadius="10" DockPanel.Dock="Top" BorderThickness="10"><TextBlock Text="Climbs you could try:" HorizontalAlignment="Center"/></Border>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
         <StackPanel>
@@ -44,10 +44,8 @@
                     <DataTemplate>
                         <Border BorderThickness="10" Background="LightGray" CornerRadius="10"><StackPanel>
                             <TextBlock Text="{Binding routeName}" HorizontalAlignment="Center" />
-                            <TextBlock Text="{Binding imageUrl}" HorizontalAlignment="Center" />
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <TextBlock Width="300" TextWrapping="Wrap" Text="{Binding routeDescription}" HorizontalAlignment="Center" />
-                                <Button Content="Add to logbook?"/>
                             </StackPanel>
                         </StackPanel></Border>
                     </DataTemplate>
