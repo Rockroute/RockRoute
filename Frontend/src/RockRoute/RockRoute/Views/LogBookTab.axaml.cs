@@ -39,17 +39,25 @@ namespace RockRoute.Views
         {
             // should print each of the string entered into the colabID textboxs
 
-            var newPlaylist = await LogBookFunctions.newPlaylist(Program.loggedInUser.UserId, PlaylistNameBox.Text, GetColabIDs(sender, e));
-            if (newPlaylist)
+            if (!(PlaylistNameBox.Text == null))
             {
-               //System.Console.WriteLine("Updated");
-                var newInstance = this.DataContext as LogBookTabViewModel;
-                newInstance?.ReloadPlaylists();
+                var newPlaylist = await LogBookFunctions.newPlaylist(Program.loggedInUser.UserId, PlaylistNameBox.Text, GetColabIDs(sender, e));
+                if (newPlaylist)
+                {
+                    //System.Console.WriteLine("Updated");
+                    var newInstance = this.DataContext as LogBookTabViewModel;
+                    newInstance?.ReloadPlaylists();
+                }
+                else
+                {
+                    //System.Console.WriteLine("Something went wrong");
+                }
             }
             else
             {
-               //System.Console.WriteLine("Something went wrong");
+
             }
+
 
 
             // needs to make the playlist and sent it to the database
