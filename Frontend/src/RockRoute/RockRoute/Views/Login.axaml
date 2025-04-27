@@ -8,8 +8,8 @@
             <TextBlock Margin="5" HorizontalAlignment="Center" Text="Email:"/>
             <TextBox Name="EmailTxtBox" Watermark="Enter Email" Width="250" Margin="5" HorizontalAlignment="Center"/>
             <TextBlock Margin="5" HorizontalAlignment="Center" Text="Password:"/>
-            <TextBox x:Name="PasswordTxtBox" Watermark="Password" PasswordChar="*" RevealPassword="False" Width="250" Margin="5" HorizontalAlignment="Center"/>
-            <CheckBox Name="CheckBox" Margin="5" Content="Show Password" HorizontalAlignment="Center"/>
+            <TextBox Name="PasswordBox" Watermark="Password" PasswordChar="*" Width="250" Margin="5" HorizontalAlignment="Center" RevealPassword="false"/>
+            <CheckBox x:Name="CheckBox" Margin="5" Content="Show Password" HorizontalAlignment="Center" Click="ShowPassword"/>
             <Button Margin="5" Click="LoginButton" Content="Login" HorizontalAlignment="Center"/>
             
             <!--         Start of Testing Backend stuff                -->

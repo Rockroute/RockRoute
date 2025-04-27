@@ -22,6 +22,11 @@ namespace RockRoute.Views
 
     public partial class Login : Window
     {
+
+        private CheckBox ShowPasswordCheckBox;
+        //Of type check box to be used later on
+
+
         //Simple way of hiding buttons and can be used for future
         void hideButtonDebug(string ButtonName)
         {
@@ -46,7 +51,10 @@ namespace RockRoute.Views
 
             //Links the Textboxes across
             EmailTxtBox = this.FindControl<TextBox>("EmailTxtBox");
-            PasswordTxtBox = this.FindControl<TextBox>("PasswordTxtBox");
+            PasswordBox = this.FindControl<TextBox>("PasswordBox");
+
+            ShowPasswordCheckBox = this.FindControl<CheckBox>("CheckBox");
+            //Assigns the variable to link accross to the axaml
 
         }
 
@@ -64,10 +72,10 @@ namespace RockRoute.Views
                 System.Console.WriteLine("NULL");
             }
             System.Console.WriteLine(EmailTxtBox.Text);
-            System.Console.WriteLine(PasswordTxtBox.Text);
+            System.Console.WriteLine(PasswordBox.Text);
 
             //string InputEmail = EmailTxtBox.Text;
-            login_Status LoginStatus = await LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordTxtBox.Text);
+            login_Status LoginStatus = await LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordBox.Text);
             System.Console.WriteLine("Login Status: " + LoginStatus);
             //System.Console.WriteLine(InputEmail.ToLower());
             //System.Console.WriteLine(PasswordTxtBox.Text);
@@ -114,17 +122,16 @@ namespace RockRoute.Views
         public bool RevealPassword { get; set; }
         public void ShowPassword(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-             if (CheckBox.IsChecked == true)
-             {
-                 RevealPassword = true;
-                 PasswordTxtBox.RevealPassword = RevealPassword;
-             }
-             if (CheckBox.IsChecked == false)
-             {
-                 RevealPassword = false;
-                 PasswordTxtBox.RevealPassword = RevealPassword;
-             }
-         }
+            if (ShowPasswordCheckBox.IsChecked == true)
+            {
+                RevealPassword = true;
+            }
+            else
+            {
+                RevealPassword = false;
+            }
+            PasswordBox.RevealPassword = RevealPassword;
+        }
 
 
 
