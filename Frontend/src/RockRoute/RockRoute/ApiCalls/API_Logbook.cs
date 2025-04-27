@@ -16,7 +16,7 @@ namespace RockRoute.ApiTest
 
     {
         
-        private static readonly string _baseAPIUrl = "http://rockroute.flarenet.co.uk/";
+        private static readonly string _baseAPIUrl = Program.runOn;
 
         static HttpClientHandler handler = new HttpClientHandler
         {

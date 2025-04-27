@@ -10,6 +10,16 @@ class Program
     //Dont remove the DebugMode line, Just change between true and false
     //Hides and shows test / buttons that are being used to debug and jump to certain scenarios
     public static bool DebugMode = true;
+    public static string runOn = "http://localhost:5297"
+    if (DebugMode)
+    {
+        runOn = "http://localhost:5297"
+    }else
+    {
+       runOn = "http://rockroute.flarenet.co.uk/"
+    }
+
+
     public static User loggedInUser = new User //Global Var that holds the user logged in details
     {
         UserId = "NOT_LOGGED_IN",
@@ -18,17 +28,17 @@ class Program
         Password = "NOT_LOGGED_IN"
     };
 
-    // Initialization code. Don't use any Avalonia, third-party APIs or any
-    // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
-    // yet and stuff might break.
-    [STAThread]
-    public static void Main(string[] args) => BuildAvaloniaApp()
-        .StartWithClassicDesktopLifetime(args);
+// Initialization code. Don't use any Avalonia, third-party APIs or any
+// SynchronizationContext-reliant code before AppMain is called: things aren't initialized
+// yet and stuff might break.
+[STAThread]
+public static void Main(string[] args) => BuildAvaloniaApp()
+    .StartWithClassicDesktopLifetime(args);
 
-    // Avalonia configuration, don't remove; also used by visual designer.
-    public static AppBuilder BuildAvaloniaApp()
-        => AppBuilder.Configure<App>()
-            .UsePlatformDetect()
-            .WithInterFont()
-            .LogToTrace();
+// Avalonia configuration, don't remove; also used by visual designer.
+public static AppBuilder BuildAvaloniaApp()
+    => AppBuilder.Configure<App>()
+        .UsePlatformDetect()
+        .WithInterFont()
+        .LogToTrace();
 }
