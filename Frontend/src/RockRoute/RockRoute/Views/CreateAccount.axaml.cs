@@ -78,7 +78,7 @@ namespace RockRoute.Views
 
                         if (LoginStatus == login_Status.Successfull_Login)
                         {
-                            var NewWindow = new MainWindow();
+                            var NewWindow = new Login();
                             if (!Program.DebugMode)
                             {
                                 NewWindow.WindowState = WindowState.Maximized; //Uncomment this, This is just so i need minimise all the time to see debugger
