@@ -32,6 +32,9 @@ namespace RockRoute.Views
         private MyLocationLayer? _myLocationLayer;
         private bool isRunning = false;
         private Mapsui.Map? _map;
+        private List<Climb> climbs;
+
+        private string selectedRouteId;
 
         public string Name => "MyLocationLayer";
         public string Category => "Navigation";
@@ -46,7 +49,8 @@ namespace RockRoute.Views
         private async Task InitializeAsync()
         {
             await CreateMapAsync();
-            DisplayClimbPoints();
+            await DisplayClimbPoints();
+
             await StartTrackingAsync();
         }
 
@@ -85,6 +89,15 @@ namespace RockRoute.Views
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Location error: {ex.Message}");
+                    if (_myLocationLayer != null)
+                    {
+                        var sphericalMercatorCoordinate = SphericalMercator.FromLonLat(-93.664905, 41.950914).ToMPoint();
+
+                        _myLocationLayer.UpdateMyLocation(sphericalMercatorCoordinate, true);
+                        _myLocationLayer.IsCentered = true;
+
+                        _map.Home = n => n.CenterOnAndZoomTo(sphericalMercatorCoordinate, n.Resolutions[9]);
+                    }
                 }
 
                 // Update every 5 seconds
@@ -93,34 +106,54 @@ namespace RockRoute.Views
             }
         }
 
-        public async Task GetDirectionsAsync(string routeID)
+        public async Task GetDirectionsAsync()
         {
-            var testCoordinates = new List<List<double>>
-            {
-                new List<double> { 8.681495, 49.41461 },
-                new List<double> { 8.687872, 49.420318 }
-            };
-            var route = await HelperFunction.LoginFunctions.GetDirectionsAsync(testCoordinates);
-            var projectedCoordinates = route.Coordinates.Select(c => SphericalMercator.FromLonLat(c.X, c.Y).ToCoordinate()).ToArray();
-            var lineString = new LineString(projectedCoordinates);
-
-            if (route != null)
-            {
-                var routeLayer = new MemoryLayer
+            Climb selected;
+            if(selectedRouteId != null) {
+                selected = climbs.Where(c => c.RouteId.Equals(selectedRouteId)).FirstOrDefault();
+                if (selected == null)
                 {
-                    Features = new[] { new GeometryFeature { Geometry = lineString } },
-                    Name = "ORSRouteLayer",
-                    Style = CreateLineStringStyle()
-                };
+                    return;   
+                }
 
-                _map.Layers.Add(routeLayer);
-                _map.Home = n => n.CenterOnAndZoomTo(routeLayer.Extent.Centroid, 200);
-            }
+                System.Console.WriteLine(selected.ParentLocation.Lat);
+                System.Console.WriteLine(selected.ParentLocation.Long);
+
+                var currentPos = _myLocationLayer.MyLocation;
+                (double lon, double lat) = SphericalMercator.ToLonLat(currentPos.X, currentPos.Y);
+                var coordinates = new List<List<double>>
+                {
+                    new List<double> { lon, lat },
+                    new List<double> { selected.ParentLocation.Long, selected.ParentLocation.Lat }
+                };
+                var route = await HelperFunction.LoginFunctions.GetDirectionsAsync(coordinates);
+                if (route == null)
+                {
+                    return;
+                }
+
+                var projectedCoordinates = route.Coordinates.Select(c => SphericalMercator.FromLonLat(c.X, c.Y).ToCoordinate()).ToArray();
+                var lineString = new LineString(projectedCoordinates);
+
+                if (route != null)
+                {
+                    var routeLayer = new MemoryLayer
+                    {
+                        Features = new[] { new GeometryFeature { Geometry = lineString } },
+                        Name = "ORSRouteLayer",
+                        Style = CreateLineStringStyle()
+                    };
+
+                    _map.Layers.Add(routeLayer);
+                    MapView.RefreshGraphics();
+                    _map.Home = n => n.CenterOnAndZoomTo(routeLayer.Extent.Centroid, 200);
+                }
+            } 
         }
 
         public async Task DisplayClimbPoints()
         {
-            List<Climb> climbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
+            climbs = await API_Climbs.GetAllClimbsAsync("api/ClimbsDB");
             _map.Layers.Add(CreatePointLayer(climbs));
             _map.Info += MapOnInfo;
             _map.Widgets.Add(new MapInfoWidget(_map));
@@ -139,11 +172,11 @@ namespace RockRoute.Views
             {
                 Fill = null,
                 Outline = null,
-                Line = { Color = Color.FromString("Red"), Width = 10 }
+                Line = { Color = Color.FromString("Red"), Width = 8 }
             };
         }
 
-        private static void MapOnInfo(object? sender, Mapsui.MapInfoEventArgs e)
+        private async void MapOnInfo(object? sender, Mapsui.MapInfoEventArgs e)
         {
             var calloutStyle = e.MapInfo?.Feature?.Styles.Where(s => s is CalloutStyle).Cast<CalloutStyle>().FirstOrDefault();
             if (calloutStyle != null)
@@ -151,6 +184,11 @@ namespace RockRoute.Views
                 calloutStyle.Enabled = !calloutStyle.Enabled;
                 e.MapInfo?.Layer?.DataHasChanged();
             }
+            selectedRouteId = e.MapInfo?.Feature?["RouteId"]?.ToString();
+            if (string.IsNullOrEmpty(selectedRouteId))
+            return;
+
+            await GetDirectionsAsync();
         }
 
         private MemoryLayer CreatePointLayer(List<Climb> climbs)

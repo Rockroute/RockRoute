@@ -16,78 +16,73 @@ namespace RockRoute.HelperFunction
 {
     public static class LoginFunctions
     {
-            public static async Task<LineString?> GetDirectionsAsync(List<List<double>> inputCoordinates)
+        public static async Task<LineString?> GetDirectionsAsync(List<List<double>> inputCoordinates)
+        {
+            using var client = new HttpClient();
+
+            var lonLat = new[]
             {
-                using var client = new HttpClient();
+                new[] { inputCoordinates[0][0], inputCoordinates[0][1] },
+                new[] { inputCoordinates[1][0], inputCoordinates[1][1] }
+            };
 
-                var startCoordinates = $"{inputCoordinates[0][0]},{inputCoordinates[0][1]}"; // Longitude, Latitude
-                var endCoordinates = $"{inputCoordinates[1][0]},{inputCoordinates[1][1]}"; // Longitude, Latitude
+            var payload = new
+            {
+                coordinates = lonLat,
+                radiuses = new int[] {-1}
+            };
+            var json = JsonSerializer.Serialize(payload);
 
-                var requestUri = $"https://api.openrouteservice.org/v2/directions/driving-car?start={HttpUtility.UrlEncode(startCoordinates)}&end={HttpUtility.UrlEncode(endCoordinates)}";
-
-                // Set up the HTTP request
-                var request = new HttpRequestMessage
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri("https://api.openrouteservice.org/v2/directions/driving-car/geojson"),
+                Headers =
                 {
-                    Method = HttpMethod.Get, 
-                    RequestUri = new Uri(requestUri),
-                    Headers =
-                    {
-                        { "Accept", "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8" },
-                        { "Authorization", "APIKEYHERE" } 
-                    }
-                };
+                    { "Accept",        "application/json, application/geo+json" },
+                    { "Authorization", "APIKEYHERE" }
+                },
+                Content = new StringContent(json, Encoding.UTF8, "application/json")
+            };
 
-                try
+            try
+            {
+                using var response = await client.SendAsync(request);
+                if (!response.IsSuccessStatusCode)
                 {
-                    // Send the request and get response
-                    using var response = await client.SendAsync(request);
-                    response.EnsureSuccessStatusCode();
-                    var returnBody = await response.Content.ReadAsStringAsync();
-
-                    using (JsonDocument doc = JsonDocument.Parse(returnBody))
-                    {
-                        // Ensure the features array exists and has elements
-                        if (doc.RootElement.TryGetProperty("features", out var features) && features.GetArrayLength() > 0)
-                        {
-                            var feature = features[0];
-                            if (feature.TryGetProperty("geometry", out var geometry) &&
-                                geometry.TryGetProperty("coordinates", out var coordinates))
-                            {
-                                var points = new List<Coordinate>();
-
-                                // Iterate through the coordinates and add them as Coordinates to the list
-                                foreach (var coordinate in coordinates.EnumerateArray())
-                                {
-                                    // Ensure the coordinates are in the correct order (Longitude, Latitude)
-                                    double lon = coordinate[0].GetDouble();  // Longitude
-                                    double lat = coordinate[1].GetDouble();  // Latitude
-                                    points.Add(new Coordinate(lon, lat));  
-                                }
-                                return new LineString(points.ToArray());
-                            }
-                            else
-                            {
-                                Console.WriteLine("No geometry or coordinates found in the feature.");
-                                return null;
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("No features found in the API response.");
-                            return null;
-                        }
-                    }
-                }
-                catch (HttpRequestException e)
-                {
-                    Console.WriteLine($"Request error: {e.Message}");
+                    Console.WriteLine($"ORS returned {(int)response.StatusCode}: {response.ReasonPhrase}");
                     return null;
                 }
-                catch (JsonException e)
+
+                var body = await response.Content.ReadAsStringAsync();
+                using var doc = JsonDocument.Parse(body);
+
+                if (doc.RootElement.TryGetProperty("features", out var features) &&
+                    features.GetArrayLength() > 0)
                 {
-                    Console.WriteLine($"JSON parsing error: {e.Message}");
-                    return null;
+                    var coords = features[0]
+                        .GetProperty("geometry")
+                        .GetProperty("coordinates");
+
+                    var pts = new List<Coordinate>();
+                    foreach (var coord in coords.EnumerateArray())
+                    {
+                        pts.Add(new Coordinate(
+                            coord[0].GetDouble(),
+                            coord[1].GetDouble()
+                        ));
+                    }
+                    return new LineString(pts.ToArray());
                 }
+
+                Console.WriteLine("No features or geometry found.");
+                return null;
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during ORS request or parsing: {ex.Message}");
+                return null;
+            }
+        }
     }
 }

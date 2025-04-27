@@ -17,7 +17,7 @@
                         <MenuItem Click="LogOutButtonClick"  Header="Log out"/>
                 </Menu>
 
-                <avalonia:MapControl DockPanel.Dock="Top" x:Name="MapView" Height="300" HorizontalAlignment="Stretch"/>
+                <avalonia:MapControl DockPanel.Dock="Top" x:Name="MapView" Height="600" HorizontalAlignment="Stretch"/>
 
                 <ScrollViewer Margin="5" DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
                 <StackPanel >
