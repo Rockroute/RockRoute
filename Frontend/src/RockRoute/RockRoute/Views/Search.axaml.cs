@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Essentials;
 using RockRoute.ApiCalls;
+using Mapsui.Widgets.ScaleBar;
 using Mapsui.Providers;
 using Mapsui.Widgets;
 using System.Reflection;
@@ -186,6 +187,7 @@ namespace RockRoute.Views
             _map = new Mapsui.Map();
             _map.Navigator.OverrideZoomBounds = new MMinMax(0,20000);
             _map.Layers.Add(OpenStreetMap.CreateTileLayer());
+            _map.Widgets.Add(new ScaleBarWidget(_map) { ScaleBarMode = ScaleBarMode.Both, MarginX = 10, MarginY = 10 });
             MapView.Map = _map;
         }
 
