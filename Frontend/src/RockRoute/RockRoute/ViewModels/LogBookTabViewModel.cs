@@ -30,6 +30,18 @@ namespace RockRoute.ViewModels
                 Name = "test-playlist-2",
                 CreatorID = "testID"
             });
+
+            /*
+            string path = "api/LogBookDB/"+ Program.loggedInUser.UserId;
+            LogBook retrievedLogBook = await API_Logbooks.GetLogbookAsync(path);
+
+            if (retrievedLogBook.Playlist != null) {
+                
+                foreach (Playlist UserPlaylist in retrievedLogBook.Playlist) {
+                    playlists.Add(UserPlaylist);
+                }
+            }
+            */
         }
         // restest the collection and then reloads the playists 
         public void ReloadPlaylists() {

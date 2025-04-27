@@ -1,4 +1,5 @@
 using RockRoute.Classes;
+using RockRoute.ApiTest;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -16,6 +17,19 @@ namespace RockRoute.ViewModels
 {
     public class SearchViewModel : ReactiveObject
     {
+        private Playlist _selectedPlaylist;
+        public Playlist SelectedPlaylist
+        {
+            get => _selectedPlaylist;
+            set => this.RaiseAndSetIfChanged(ref _selectedPlaylist, value);
+        }
+
+        private ObservableCollection<Playlist> _userPlaylists = new ObservableCollection<Playlist>();
+        public ObservableCollection<Playlist> UserPlaylists
+        {
+            get => _userPlaylists;
+            set => this.RaiseAndSetIfChanged(ref _userPlaylists, value);
+        }
         private List<Climb> AllClimbs = new();
 
         private ObservableCollection<Climb> _filteredFilteredListOfClimbs = new();
@@ -45,6 +59,22 @@ namespace RockRoute.ViewModels
                 .Subscribe(x => FilterClimbs());
 
             LoadClimbs();
+            //loadPlaylists();
+        }
+
+        public async void loadPlaylists() {
+            string path = "api/LogBookDB/"+ Program.loggedInUser.UserId;
+            LogBook retrievedLogBook = await API_Logbooks.GetLogbookAsync(path);
+            
+            System.Console.WriteLine("going to" + path);
+            if (retrievedLogBook.Playlist != null) {
+                //System.Console.WriteLine((retrievedLogBook));
+                
+                foreach (Playlist UserPlaylist in retrievedLogBook.Playlist) {
+                    UserPlaylists.Add(UserPlaylist);
+                }
+                
+            }
         }
 
         public async void LoadClimbs()
