@@ -37,8 +37,8 @@ namespace RockRoute.ViewModels
         // home pages recommendations will be loaded with this function 
         public async Task LoadRecommendations() 
         {
-            List<Climb> RecomendedClimds = await ProcessData.CreateRandomClimbs();
-            foreach (Climb Recomended in RecomendedClimds) {
+            List<Climb> RecomendedClimbs = await ProcessData.CreateRandomClimbs();
+            foreach (Climb Recomended in RecomendedClimbs) {
                 recommendations.Add(new Recommendation(Recomended.RouteName,Recomended.LocationDescription));
             }
             
