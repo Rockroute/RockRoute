@@ -184,12 +184,12 @@ namespace RockRoute.climbData
 
                 int index = random.Next(retrievedClimbs.Count);
                 string randomClimbID = retrievedClimbs[index].RouteId;
-                System.Console.WriteLine((randomClimbID));
+               //System.Console.WriteLine((randomClimbID));
 
                 if (user == null || collab1 == null || collab2 == null)
                 {
                     //Skip iteration if null
-                    System.Console.WriteLine(("Skipped"));
+                   //System.Console.WriteLine(("Skipped"));
                     continue;
                 }
 
@@ -231,11 +231,11 @@ namespace RockRoute.climbData
                 try
                 {
                     await API_Logbooks.CreateLogbookAsync(NewlogBook);
-                    System.Console.WriteLine("Logbook created!");
+                   //System.Console.WriteLine("Logbook created!");
                 }
                 catch (Exception ErrorNOOOO)
                 {
-                    System.Console.WriteLine(ErrorNOOOO.Message);
+                   //System.Console.WriteLine(ErrorNOOOO.Message);
                 }
 
             }

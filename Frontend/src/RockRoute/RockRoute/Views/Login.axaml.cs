@@ -72,12 +72,12 @@ namespace RockRoute.Views
             if (!(EmailTxtBox.Text == null || PasswordBox.Text == null))
             {
 
-                System.Console.WriteLine(EmailTxtBox.Text);
-                System.Console.WriteLine(PasswordBox.Text);
+               //System.Console.WriteLine(EmailTxtBox.Text);
+               //System.Console.WriteLine(PasswordBox.Text);
 
                 //string InputEmail = EmailTxtBox.Text;
                 login_Status LoginStatus = await LoginFunctions.LoginAccount(EmailTxtBox.Text, PasswordBox.Text);
-                System.Console.WriteLine("Login Status: " + LoginStatus);
+               //System.Console.WriteLine("Login Status: " + LoginStatus);
                 //System.Console.WriteLine(InputEmail.ToLower());
                 //System.Console.WriteLine(PasswordTxtBox.Text);
 
@@ -107,7 +107,7 @@ namespace RockRoute.Views
             else
             {
                 //If one of the text boxes are empty
-                System.Console.WriteLine("NULL");
+               //System.Console.WriteLine("NULL");
                 PasswordError.Text = "Fill in all information";
             }
 

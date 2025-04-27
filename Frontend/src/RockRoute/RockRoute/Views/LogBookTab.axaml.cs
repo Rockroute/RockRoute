@@ -42,13 +42,13 @@ namespace RockRoute.Views
             var newPlaylist = await LogBookFunctions.newPlaylist(Program.loggedInUser.UserId, PlaylistNameBox.Text, GetColabIDs(sender, e));
             if (newPlaylist)
             {
-                System.Console.WriteLine("Updated");
+               //System.Console.WriteLine("Updated");
                 var newInstance = this.DataContext as LogBookTabViewModel;
                 newInstance?.ReloadPlaylists();
             }
             else
             {
-                System.Console.WriteLine("Something went wrong");
+               //System.Console.WriteLine("Something went wrong");
             }
 
 

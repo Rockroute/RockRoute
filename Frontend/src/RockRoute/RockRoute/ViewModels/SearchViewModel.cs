@@ -66,7 +66,7 @@ namespace RockRoute.ViewModels
             string path = "api/LogBookDB/"+ Program.loggedInUser.UserId;
             LogBook retrievedLogBook = await API_Logbooks.GetLogbookAsync(path);
             
-            System.Console.WriteLine("going to" + path);
+           //System.Console.WriteLine("going to" + path);
             if (retrievedLogBook.Playlist != null) {
                 //System.Console.WriteLine((retrievedLogBook));
                 

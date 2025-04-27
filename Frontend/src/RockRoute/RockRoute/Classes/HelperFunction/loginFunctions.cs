@@ -155,7 +155,7 @@ namespace RockRoute.Helper
 
             if (logbook != null)
             {
-                System.Console.WriteLine("Logbook already exists!!!");
+               //System.Console.WriteLine("Logbook already exists!!!");
                 return true;
             }
             else
@@ -201,12 +201,12 @@ namespace RockRoute.Helper
                 try
                 {
                     await API_Logbooks.CreateLogbookAsync(NewlogBook);
-                    System.Console.WriteLine("Logbook created!");
+                   //System.Console.WriteLine("Logbook created!");
                     return (true);
                 }
                 catch (Exception ErrorNOOOO)
                 {
-                    System.Console.WriteLine(ErrorNOOOO.Message);
+                   //System.Console.WriteLine(ErrorNOOOO.Message);
                     return false;
                 }
 

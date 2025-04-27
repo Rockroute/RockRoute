@@ -53,7 +53,7 @@ namespace RockRoute.Helper
 
             if (logbook == null)
             {
-                System.Console.WriteLine("Logbook not exists!!! but will make it now");
+               //System.Console.WriteLine("Logbook not exists!!! but will make it now");
 
                 var NewActivity = new Activity(
                 Name: "Activity",
@@ -98,12 +98,12 @@ namespace RockRoute.Helper
                 try
                 {
                     await API_Logbooks.CreateLogbookAsync(NewlogBook);
-                    System.Console.WriteLine("New logbook created!");
+                   //System.Console.WriteLine("New logbook created!");
                     return true;
                 }
                 catch (Exception ErrorNOOOO)
                 {
-                    System.Console.WriteLine(ErrorNOOOO.Message);
+                   //System.Console.WriteLine(ErrorNOOOO.Message);
                     return false;
                 }
             }
@@ -131,16 +131,15 @@ namespace RockRoute.Helper
                 try
                 {
                     var updatedLogbook = await API_Logbooks.UpdateLogbookAsync(logbook);
-                    System.Console.WriteLine("Logbook updated!!");
+                   //System.Console.WriteLine("Logbook updated!!");
 
-                    // Print the full updated logbook nicely
-                    System.Console.WriteLine(JsonConvert.SerializeObject(updatedLogbook, Formatting.Indented));
+                    //System.Console.WriteLine(JsonConvert.SerializeObject(updatedLogbook, Formatting.Indented));
 
                     return true;
                 }
                 catch (Exception ErrorNOOOO)
                 {
-                    System.Console.WriteLine("Error while updating logbook: " + ErrorNOOOO.Message);
+                   //System.Console.WriteLine("Error while updating logbook: " + ErrorNOOOO.Message);
                     return false;
                 }
 
