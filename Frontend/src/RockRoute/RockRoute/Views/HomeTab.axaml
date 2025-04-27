@@ -30,7 +30,7 @@
                 <Button Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" Foreground="Black" Background="White">
                     <PathIcon Data="{StaticResource image_regular}" Foreground="Black"></PathIcon>
                 </Button>
-                <Button Click="AddActivity" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Foreground="Black" Background="CornflowerBlue" Content="add Activity"/>
+                <Button Click="Add2Activity" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Foreground="Black" Background="CornflowerBlue" Content="add Activity"/>
 
             </Grid>
         </Border>
