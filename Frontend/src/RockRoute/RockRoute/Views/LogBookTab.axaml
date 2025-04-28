@@ -6,72 +6,115 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:DataType="local:LogBookTabViewModel"
         x:Class="RockRoute.Views.LogBookTab">
-        <UserControl.DataContext>
-         <local:LogBookTabViewModel/>
-        </UserControl.DataContext>
+    <UserControl.DataContext>
+        <local:LogBookTabViewModel/>
+    </UserControl.DataContext>
 
-        <DockPanel>
-                <Menu DockPanel.Dock="Bottom" Background="#FFCCCB" CornerRadius="10">
-                        <MenuItem Header="Settings"/>
-                        <MenuItem Click="LogOutButtonClick" Header="Log out"/>
-                </Menu>
+    <DockPanel>
+        <Menu DockPanel.Dock="Bottom" Background="#FFCCCB" CornerRadius="10">
+            <MenuItem Header="Settings"/>
+            <MenuItem Click="LogOutButtonClick" Header="Log out"/>
+        </Menu>
 
-                <Border Margin="10" DockPanel.Dock="Top" CornerRadius="10" Background="LightGray" HorizontalAlignment="Center">
-                <Grid Margin="5" RowDefinitions="auto,auto,auto" ColumnDefinitions="200,200">
-                        <TextBlock Margin="3" Text="Playlist-Name:" Grid.Row="0" Grid.Column="0"/>
-                        <TextBox Name="PlaylistNameBox" Margin="3" Grid.Row="0" Grid.Column="1"/>
-                        <TextBlock Margin="3" Text="Collaborator-ID:" Grid.Row="1" Grid.Column="0"/>
-                        <StackPanel Margin="3" Grid.Row="1" Grid.Column="1">
-                                <ItemsControl Name="ColabIDsControl" ItemsSource="{Binding colabIDs}">
-                                        <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                                <TextBox Watermark="Collaborator-ID"/>
-                                        </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                                <StackPanel Orientation="Horizontal">
-                                        <Button Content="-" Command="{Binding RemoveCollaborator}"/>
-                                        <Button Content="+" Command="{Binding AddCollaborator}"/>
-                                </StackPanel>
-                        </StackPanel>
-                        <Button Name="AddImageButton" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Foreground="Black" Background="White" Click="AddImageToPlaylist">
-                                <PathIcon Data="{StaticResource image_regular}" Foreground="Black"></PathIcon>
-                        </Button>
-                        <Button Name="MakePlaylistButton" Command="{Binding LoadPlaylists}" Click="MakePlaylist" Margin="3" Grid.Row="2" Grid.Column="1" Content="Make-Playlist" HorizontalAlignment="Center" Background="CornflowerBlue"/>
-                </Grid>
-                </Border>
-                <TextBlock Name="Test"/>
-                <ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
-                        <StackPanel>
-                        <ItemsControl ItemsSource="{Binding playlists}">
-                                <ItemsControl.ItemTemplate>
+        <SplitView IsPaneOpen="True"
+                   DisplayMode="Inline"
+                   OpenPaneLength="300">
+            <SplitView.Pane>
+                <StackPanel>
+                    <TextBox Watermark="Search Activites" Text="{}"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{}">
+                            <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                        <Border><StackPanel>
-                                                <Expander VerticalAlignment="Top" HorizontalAlignment="Stretch" Background="LightGray">
-                                                        <Expander.Header>
-                                                                <StackPanel Orientation="Horizontal">
-                                                                        <TextBlock Text="{Binding Name}"/>
-                                                                </StackPanel>
-                                                        </Expander.Header>
+                                    <Border>
+                                        <StackPanel>
+                                            <Expander VerticalAlignment="Top" HorizontalAlignment="Stretch" Background="LightGray">
+                                                <Expander.Header>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="{}"/>
+                                                    </StackPanel>
+                                                </Expander.Header>
 
-                                                        <StackPanel>
-                                                                <ItemsControl ItemsSource="{Binding ListOfRoute_ID}">
-                                                                        <ItemsControl.ItemTemplate>
-                                                                        <DataTemplate>
-                                                                                <TextBlock Text="{Binding}"/>
-                                                                        </DataTemplate>
-                                                                        </ItemsControl.ItemTemplate>
-                                                                </ItemsControl>
-                                                        </StackPanel>
-                                                </Expander>
-                                                <TextBlock/>
-                                        </StackPanel></Border>
+                                                <StackPanel>
+                                                    <ItemsControl ItemsSource="{}">
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{}"/>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </StackPanel>
+                                            </Expander>
+                                            <TextBlock/>
+                                        </StackPanel>
+                                    </Border>
                                 </DataTemplate>
-                                </ItemsControl.ItemTemplate>
+                            </ItemsControl.ItemTemplate>
                         </ItemsControl>
-                        <Button HorizontalAlignment="Right" Content="Refresh" Command="{Binding ReloadPlaylists}"/>
-                        </StackPanel>
-                </ScrollViewer>
-        </DockPanel>
+                    </ScrollViewer>
+                </StackPanel>
+            </SplitView.Pane>
+        </SplitView>
 
+        <Border Margin="10" DockPanel.Dock="Top" CornerRadius="10" Background="LightGray" HorizontalAlignment="Center">
+            <Grid Margin="5" RowDefinitions="auto,auto,auto" ColumnDefinitions="200,200">
+                <TextBlock Margin="3" Text="Playlist-Name:" Grid.Row="0" Grid.Column="0"/>
+                <TextBox Name="PlaylistNameBox" Margin="3" Grid.Row="0" Grid.Column="1"/>
+                <TextBlock Margin="3" Text="Collaborator-ID:" Grid.Row="1" Grid.Column="0"/>
+                <StackPanel Margin="3" Grid.Row="1" Grid.Column="1">
+                    <ItemsControl Name="ColabIDsControl" ItemsSource="{Binding colabIDs}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBox Watermark="Collaborator-ID"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="-" Command="{Binding RemoveCollaborator}"/>
+                        <Button Content="+" Command="{Binding AddCollaborator}"/>
+                    </StackPanel>
+                </StackPanel>
+                <Button Name="AddImageButton" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Foreground="Black" Background="White" Click="AddImageToPlaylist">
+                    <PathIcon Data="{StaticResource image_regular}" Foreground="Black"></PathIcon>
+                </Button>
+                <Button Name="MakePlaylistButton" Command="{Binding LoadPlaylists}" Click="MakePlaylist" Margin="3" Grid.Row="2" Grid.Column="1" Content="Make-Playlist" HorizontalAlignment="Center" Background="CornflowerBlue"/>
+            </Grid>
+        </Border>
+        <TextBlock Name="Test"/>
+        <ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
+            <StackPanel>
+                <ItemsControl ItemsSource="{Binding playlists}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <StackPanel>
+                                    <Expander VerticalAlignment="Top" HorizontalAlignment="Stretch" Background="LightGray">
+                                        <Expander.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Name}"/>
+                                            </StackPanel>
+                                        </Expander.Header>
+
+                                        <StackPanel>
+                                            <ItemsControl ItemsSource="{Binding ListOfRoute_ID}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding}"/>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </StackPanel>
+                                    </Expander>
+                                    <TextBlock/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Button HorizontalAlignment="Right" Content="Refresh" Command="{Binding ReloadPlaylists}"/>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
 </UserControl>
+
+
