@@ -77,7 +77,7 @@
                 <Button Name="AddImageButton" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Foreground="Black" Background="White" Click="AddImageToPlaylist">
                     <PathIcon Data="{StaticResource image_regular}" Foreground="Black"></PathIcon>
                 </Button>
-                <Button Name="MakePlaylistButton" Command="{Binding LoadPlaylists}" Click="MakePlaylist" Margin="3" Grid.Row="2" Grid.Column="1" Content="Make-Playlist" HorizontalAlignment="Center" Background="CornflowerBlue"/>
+                <Button Name="MakePlaylistButton" Click="MakePlaylist" Margin="3" Grid.Row="2" Grid.Column="1" Content="Make-Playlist" HorizontalAlignment="Center" Background="CornflowerBlue"/>
             </Grid>
         </Border>
         <TextBlock Name="Test"/>
