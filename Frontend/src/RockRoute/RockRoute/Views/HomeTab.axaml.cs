@@ -35,15 +35,16 @@ public partial class HomeTab : UserControl
         System.Console.WriteLine(Activity.Text);
         System.Console.WriteLine(Description.Text);
         System.Console.WriteLine(CalendarEntry.SelectedDate);
-
-        bool doesWork = await LogBookFunctions.newActivity(Program.loggedInUser.UserId, Activity.Text, Description.Text, CalendarEntry.SelectedDate.Value);
-        if (doesWork)
-        {
-            System.Console.WriteLine("Saved new activity");
-        }
-        else
-        {
-            System.Console.WriteLine("Something wrong");
+        if (CalendarEntry.SelectedDate.Value != null) {
+            bool doesWork = await LogBookFunctions.newActivity(Program.loggedInUser.UserId, Activity.Text, Description.Text, CalendarEntry.SelectedDate.Value);
+            if (doesWork)
+            {
+                System.Console.WriteLine("Saved new activity");
+            }
+            else
+            {
+                System.Console.WriteLine("Something wrong");
+            }
         }
     }
     
